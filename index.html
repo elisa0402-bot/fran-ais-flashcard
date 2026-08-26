@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>프랑스어 SRS 플래시카드 앱</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .perspective-1000 { perspective: 1000px; }
+    .transform-style-3d { transform-style: preserve-3d; }
+    .backface-hidden { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+    .flipped { transform: rotateY(180deg); }
+    body { -webkit-tap-highlight-color: transparent; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col items-center select-none pb-8">
+
+  <!-- Header -->
+  <header class="w-full max-w-md bg-indigo-600 text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="flex justify-between items-center">
+      <h1 class="text-base font-bold flex items-center gap-2">
+        <span>🇫🇷</span> 프랑스어 플래시카드
+      </h1>
+      <div class="flex gap-1.5">
+        <button id="btn-tab-study" onclick="switchTab('study')" class="px-3 py-1.5 bg-indigo-900 text-white rounded-lg text-xs font-semibold transition shadow-sm">카드 학습</button>
+        <button id="btn-tab-list" onclick="switchTab('list')" class="px-3 py-1.5 bg-indigo-500 text-white rounded-lg text-xs font-semibold transition shadow-sm">전체 목록</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w-full max-w-md p-4 flex-1 flex flex-col gap-3">
+
+    <!-- Progress Bar & Top Tools -->
+    <section class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200 flex justify-between items-center text-xs">
+      <div>
+        <span class="text-slate-400 font-medium">학습 카드: </span>
+        <span id="card-progress-text" class="font-bold text-indigo-600">1 / 130</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleStarCurrentCard()" id="btn-star" class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-400 hover:text-amber-500 transition flex items-center gap-1 font-medium text-xs">
+          <i class="fa-solid fa-star"></i> <span id="star-btn-label">즐겨찾기</span>
+        </button>
+        <button onclick="shuffleDeck()" class="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition font-medium text-xs flex items-center gap-1" title="카드 무작위 섞기">
+          <i class="fa-solid fa-shuffle"></i> 섞기
+        </button>
+        <button onclick="shareCurrentCard()" class="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition font-medium text-xs flex items-center gap-1" title="현재 카드 공유하기">
+          <i class="fa-solid fa-share-nodes"></i> 공유
+        </button>
+      </div>
+    </section>
+
+    <!-- Study View -->
+    <div id="tab-study" class="flex-1 flex flex-col justify-between gap-3">
+      
+      <!-- Category Filter Pills -->
+      <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+        <button onclick="filterCategory('all')" id="cat-all" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-indigo-600 text-white shadow-xs whitespace-nowrap">전체 (130)</button>
+        <button onclick="filterCategory('starred')" id="cat-starred" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">⭐ 즐겨찾기</button>
+        <button onclick="filterCategory('pc')" id="cat-pc" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">복합과거</button>
+        <button onclick="filterCategory('imparfait')" id="cat-imparfait" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">반과거</button>
+        <button onclick="filterCategory('futur')" id="cat-futur" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">단순미래</button>
+        <button onclick="filterCategory('pdf30')" id="cat-pdf30" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-amber-50 text-amber-700 border border-amber-200 whitespace-nowrap">PDF 핵심 30문장</button>
+      </div>
+
+      <!-- Direction Toggle Switcher -->
+      <div class="flex justify-between items-center bg-white px-3 py-2 rounded-xl border border-slate-200 text-xs shadow-2xs">
+        <span class="font-medium text-slate-500">학습 방향</span>
+        <button onclick="toggleDirection()" class="px-3 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold rounded-lg transition border border-indigo-200 flex items-center gap-1.5">
+          <i class="fa-solid fa-arrows-rotate text-xs"></i>
+          <span id="direction-label">프랑스어 ➔ 한국어</span>
+        </button>
+      </div>
+
+      <!-- Flashcard Interactive Container -->
+      <div id="card-container" class="relative w-full h-80 perspective-1000 my-auto">
+        <div id="flashcard" class="w-full h-full transform-style-3d transition-transform duration-500 relative cursor-pointer rounded-2xl shadow-sm border border-slate-200 bg-white" onclick="flipCard()">
+          
+          <!-- Front Face -->
+          <div id="card-front" class="absolute w-full h-full backface-hidden flex flex-col justify-between p-5 rounded-2xl bg-white">
+            <div class="flex justify-between items-center text-xs text-slate-400">
+              <div class="flex items-center gap-1.5">
+                <span id="front-category" class="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-600 font-semibold text-[10px]">복합과거</span>
+                <span id="front-starred-icon" class="text-amber-400 hidden"><i class="fa-solid fa-star"></i></span>
+              </div>
+              <span class="text-[11px]"><i class="fa-solid fa-rotate-right mr-1"></i>터치하여 뒤집기</span>
+            </div>
+            
+            <div class="text-center my-auto px-2">
+              <h2 id="front-main" class="text-2xl font-bold text-slate-800 break-words mb-1">--</h2>
+              <p id="front-sub" class="text-xs text-indigo-600 font-medium italic">--</p>
+            </div>
+
+            <div class="flex justify-end">
+              <button onclick="speakCurrentCard(event, 'front')" class="p-3 text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-full transition active:scale-95 shadow-2xs" title="원어민 발음 듣기">
+                <i class="fa-solid fa-volume-high text-lg"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Back Face -->
+          <div id="card-back" class="absolute w-full h-full backface-hidden rotate-y-180 flex flex-col justify-between p-5 rounded-2xl bg-slate-50 border-2 border-indigo-100">
+            <div class="flex justify-between items-center text-xs text-slate-400">
+              <span id="back-category" class="px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-700 font-semibold text-[10px]">답안</span>
+              <button onclick="speakCurrentCard(event, 'back')" class="p-2 text-indigo-600 bg-white rounded-full shadow-2xs transition active:scale-95" title="발음 듣기">
+                <i class="fa-solid fa-volume-high text-base"></i>
+              </button>
+            </div>
+
+            <div class="my-auto space-y-3 overflow-y-auto max-h-[200px] pr-1">
+              <h3 id="back-main" class="text-lg font-bold text-slate-900 text-center break-words">--</h3>
+              
+              <!-- Examples -->
+              <div id="back-examples" class="text-xs space-y-2 border-t pt-2 border-slate-200"></div>
+
+              <p id="back-tip" class="text-[11px] bg-amber-50 text-amber-800 p-2 rounded-lg border border-amber-200 italic hidden"></p>
+            </div>
+
+            <div class="text-center text-[10px] text-slate-400">좌우 버튼으로 다음/이전 카드로 이동합니다</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navigation Control Buttons -->
+      <div id="action-buttons" class="grid grid-cols-2 gap-3 mt-auto">
+        <button onclick="prevCard()" class="py-3 bg-white active:bg-slate-100 text-slate-700 font-bold rounded-xl shadow-sm border border-slate-200 transition active:scale-95 flex items-center justify-center gap-2 text-sm">
+          <i class="fa-solid fa-chevron-left text-xs"></i> 이전 카드
+        </button>
+        <button onclick="nextCard()" class="py-3 bg-indigo-600 active:bg-indigo-700 text-white font-bold rounded-xl shadow transition active:scale-95 flex items-center justify-center gap-2 text-sm">
+          다음 카드 <i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+      </div>
+
+      <!-- Empty State View -->
+      <div id="empty-state" class="hidden flex-1 flex flex-col items-center justify-center text-center p-6 bg-white rounded-2xl border border-slate-200 shadow-sm my-auto min-h-[280px]">
+        <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-2"></i>
+        <h3 class="text-base font-bold text-slate-800">카드가 없습니다</h3>
+        <p class="text-xs text-slate-500 mt-1">선택한 카테고리(또는 즐겨찾기)에 해당하는 카드가 없습니다.</p>
+        <button onclick="filterCategory('all')" class="mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-xl transition">전체 카드 보기</button>
+      </div>
+
+    </div>
+
+    <!-- Search/List View Tab -->
+    <div id="tab-list" class="hidden flex-1 flex flex-col gap-3">
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+        <input id="search-input" oninput="renderListView()" type="text" placeholder="프랑스어, 뜻, 예문 검색..." class="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-indigo-500">
+      </div>
+
+      <div id="card-list" class="flex-1 overflow-y-auto space-y-2 max-h-[65vh] pr-0.5">
+        <!-- List Items populated dynamically -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toast-msg">클립보드에 복사되었습니다!</span>
+  </div>
+
+  <script>
+    const initialFlashcards = [
+      // =========================================================================
+      // PART 1. 복합과거 (Passé Composé)
+      // =========================================================================
+      {
+        id: 1,
+        category: "pc",
+        target: "le garage",
+        pos: "명사 (m.)",
+        meaning: "차고",
+        examples: [
+          { target: "J'ai sorti ma voiture du garage.", kr: "나는 차고에서 내 차를 뺐다. (타동사/avoir)" }
+        ],
+        tip: "sortir가 타동사(직접목적어 ma voiture)로 쓰였으므로 avoir 조동사를 사용합니다."
+      },
+      {
+        id: 2,
+        category: "pc",
+        target: "un arbre",
+        pos: "명사 (m.)",
+        meaning: "나무",
+        examples: [
+          { target: "Elles sont montées sur un arbre.", kr: "그녀들은 나무 위에 올라갔다. (자동사/être)" }
+        ],
+        tip: "monter가 장소 전치사와 함께 자동사로 쓰여 être 조동사를 사용하고 성수일치(-es)가 이루어집니다."
+      },
+      {
+        id: 3,
+        category: "pc",
+        target: "le bureau",
+        pos: "명사 (m.)",
+        meaning: "사무실, 책상",
+        examples: [
+          { target: "J'ai quitté le bureau à 18h.", kr: "나는 18시에 사무실을 떠났다." }
+        ],
+        tip: "quitter는 직접목적어(장소/사람)를 받는 타동사입니다."
+      },
+      {
+        id: 4,
+        category: "pc",
+        target: "un étage",
+        pos: "명사 (m.)",
+        meaning: "층",
+        examples: [
+          { target: "Je suis monté(e) jusqu'au troisième étage.", kr: "나는 3층까지 올라갔다." }
+        ],
+        tip: "monter 자동사 용법입니다."
+      },
+      {
+        id: 5,
+        category: "pc",
+        target: "le store",
+        pos: "명사 (m.)",
+        meaning: "블라인드, 커튼",
+        examples: [
+          { target: "Tu as descendu les stores.", kr: "너는 블라인드를 내렸다. (타동사/avoir)" }
+        ],
+        tip: "descendre 뒤에 직접목적어(les stores)가 오므로 avoir 조동사를 사용합니다."
+      },
+      {
+        id: 6,
+        category: "pc",
+        target: "la fille / le fils",
+        pos: "명사 (f. / m.)",
+        meaning: "딸 / 아들",
+        examples: [
+          { target: "J'ai vu les filles.", kr: "나는 그 소녀들을 보았다." },
+          { target: "Ma fille s'est cassé le bras en faisant du ski.", kr: "내 딸은 스키를 타다가 팔이 부러졌다." }
+        ],
+        tip: "fils는 단수/복수 형태가 같으며 '스' 발음이 납니다 [fis]."
+      },
+      {
+        id: 7,
+        category: "pc",
+        target: "la sœur / le frère",
+        pos: "명사 (f. / m.)",
+        meaning: "자매 / 형제·남동생",
+        examples: [
+          { target: "J'ai remercié ma sœur.", kr: "나는 내 누나(여동생)에게 감사했다." },
+          { target: "Elle s'est demandé si son frère était à la maison.", kr: "그녀는 남동생이 집에 있는지 스스로 물었다." }
+        ],
+        tip: "복합과거 문장 참조."
+      },
+      {
+        id: 8,
+        category: "pc",
+        target: "le magasin",
+        pos: "명사 (m.)",
+        meaning: "상점, 가게",
+        examples: [
+          { target: "Ils sont passés devant le magasin.", kr: "그들은 상점 앞을 지나갔다." }
+        ],
+        tip: "passer가 '지나가다' 자동사로 쓰여 être 조동사를 사용합니다."
+      },
+      {
+        id: 9,
+        category: "pc",
+        target: "le marché",
+        pos: "명사 (m.)",
+        meaning: "시장",
+        examples: [
+          { target: "Nous sommes allés au marché.", kr: "우리는 시장에 갔다." }
+        ],
+        tip: "왕래발착 동사 aller는 être 조동사를 사용합니다."
+      },
+      {
+        id: 10,
+        category: "pc",
+        target: "partir, sortir, descendre, venir de VS quitter qc/qn",
+        pos: "동사 비교",
+        meaning: "출발·외출·하강·~에서 오다 (자동사) VS ~을 떠나다 (타동사)",
+        examples: [
+          { target: "Elle est partie en Italie.", kr: "그녀는 이탈리아로 떠났다. (être)" },
+          { target: "J'ai quitté le bureau.", kr: "나는 사무실을 떠났다. (avoir + 직목)" }
+        ],
+        tip: "왕래발착 자동사들은 être, quitter는 목적어를 취하는 타동사이므로 avoir를 씁니다."
+      },
+      {
+        id: 11,
+        category: "pc",
+        target: "retourner à sa place",
+        pos: "표현 (복합과거)",
+        meaning: "제자리로 돌아가다",
+        examples: [
+          { target: "Elle est retournée à sa place.", kr: "그녀는 제자리로 돌아갔다. (자동사)" },
+          { target: "Les filles sont retournées à leur place.", kr: "소녀들은 자신들의 자리로 돌아갔다." }
+        ],
+        tip: "장소로 돌아가는 자동사 용법에서는 être 조동사 및 주어 성수일치 필수!"
+      },
+      {
+        id: 12,
+        category: "pc",
+        target: "le plus vite possible",
+        pos: "부사구",
+        meaning: "가능한 한 가장 빠르게",
+        examples: [
+          { target: "Tu es retourné(e) à l'église le plus vite possible.", kr: "너는 가능한 한 빨리 교회로 돌아갔다." }
+        ],
+        tip: "복합과거 예문 참조."
+      },
+      {
+        id: 13,
+        category: "pc",
+        target: "remercier qn",
+        pos: "동사 (복합과거 선행 직목 일치)",
+        meaning: "~에게 감사하다 (직접목적어 취함)",
+        examples: [
+          { target: "J'ai remercié ma sœur. ➔ Je l'ai remerciée.", kr: "나는 누나에게 감사했다. ➔ 나는 그녀에게 감사했다." }
+        ],
+        tip: "remercier는 불어에서 직접목적보어를 취하므로 대명사 l'가 선행하면 p.p 일치(-e)가 일어납니다."
+      },
+      {
+        id: 14,
+        category: "pc",
+        target: "appeler qn",
+        pos: "동사 (복합과거 선행 직목 일치)",
+        meaning: "~를 부르다, ~에게 전화하다 (직접목적어)",
+        examples: [
+          { target: "Tu as appelé Julie ce soir ? ➔ Tu l'as appelée ce soir ?", kr: "너 오늘 저녁 줄리에게 전화했니? ➔ 너 오늘 저녁 그녀에게 전화했니?" }
+        ],
+        tip: "appeler 역시 직접목적어를 취하여 대명사 도치 시 p.p 일치(-e)가 이루어집니다."
+      },
+      {
+        id: 15,
+        category: "pc",
+        target: "inviter qn",
+        pos: "동사 (복합과거 선행 직목 일치)",
+        meaning: "~를 초대하다 (직접목적어)",
+        examples: [
+          { target: "Je vous ai invité(e)s à la fête.", kr: "나는 당신들을 파티에 초대했습니다." }
+        ],
+        tip: "Je vous invite ➔ 복합과거에서 vous가 직접목적어이면 p.p 일치!"
+      },
+      {
+        id: 16,
+        category: "pc",
+        target: "présenter qn à qn",
+        pos: "동사 (복합과거 선행 직목 일치)",
+        meaning: "~를 …에게 소개하다",
+        examples: [
+          { target: "Elle vous a présenté(e)s à eux.", kr: "그녀는 당신들을 그들에게 소개했습니다." }
+        ],
+        tip: "직접목적어 vous가 선행했으므로 présenté에 성수일치 합니다."
+      },
+      {
+        id: 17,
+        category: "pc",
+        target: "avant de + inf / avant + N",
+        pos: "전치사 표현",
+        meaning: "~하기 전에 / ~ 전에",
+        examples: [
+          { target: "Elle s'est lavée avant de dormir.", kr: "그녀는 자기 전에 씻었다." },
+          { target: "Elles se sont lavées avant le petit déjeuner.", kr: "그녀들은 아침 식사 전에 씻었다." }
+        ],
+        tip: "avant de 뒤에는 동사원형, avant 뒤에는 명사가 옵니다."
+      },
+      {
+        id: 18,
+        category: "pc",
+        target: "le bras",
+        pos: "명사 (m.)",
+        meaning: "팔",
+        examples: [
+          { target: "Elles se sont blessé le bras.", kr: "그녀들은 팔을 다쳤다." },
+          { target: "Ma fille s'est cassé le bras.", kr: "내 딸은 팔이 부러졌다." }
+        ],
+        tip: "신체 부위(직접목적어)가 뒤에 따라오므로 대명동사 p.p 성수일치를 하지 않습니다!"
+      },
+      {
+        id: 19,
+        category: "pc",
+        target: "le doigt",
+        pos: "명사 (m.)",
+        meaning: "손가락",
+        examples: [
+          { target: "Elle s'est coupé le doigt.", kr: "그녀는 손가락을 베였다." }
+        ],
+        tip: "le doigt가 직접목적어이므로 coupée가 아니라 coupé 그대로 씁니다."
+      },
+      {
+        id: 20,
+        category: "pc",
+        target: "se demander si S V",
+        pos: "대명동사 (복합과거)",
+        meaning: "~인지 아닌지 스스로 궁금해하다/묻다",
+        examples: [
+          { target: "Elle s'est demandé si son frère était à la maison.", kr: "그녀는 남동생이 집에 있는지 궁금해했다." }
+        ],
+        tip: "se가 간접목적어(~에게 묻다)로 쓰였으므로 p.p 성수일치를 하지 않습니다 (demandé)."
+      },
+      {
+        id: 21,
+        category: "pc",
+        target: "se casser",
+        pos: "대명동사 (복합과거 예문)",
+        meaning: "(신체 등이) 부러지다, 깨지다",
+        examples: [
+          { target: "Ma fille s'est cassé le bras en faisant du ski.", kr: "내 딸은 스키를 타다가 팔이 부러졌다." },
+          { target: "La bouteille s'est cassée.", kr: "병이 깨졌다. (수동적 용법 - 성수일치 O)" }
+        ],
+        tip: "신체부위 목적어가 있으면 성수일치 X, 주어가 파손되는 수동 용법이면 성수일치 O!"
+      },
+      {
+        id: 22,
+        category: "pc",
+        target: "s'écrire l'un à l'autre",
+        pos: "대명동사 (복합과거 상호적)",
+        meaning: "서로에게 편지/메시지를 쓰다",
+        examples: [
+          { target: "Ils se sont écrit une lettre tous les jours.", kr: "그들은 매일 서로에게 편지를 썼다." }
+        ],
+        tip: "écrire à qn 구조이므로 se는 간접목적어입니다. 따라서 p.p 일치 없음(écrit)."
+      },
+      {
+        id: 23,
+        category: "pc",
+        target: "mutuellement",
+        pos: "부사",
+        meaning: "서로, 상호 간에",
+        examples: [
+          { target: "Moi et mon frère, nous nous sommes aidés mutuellement.", kr: "나와 내 형제는 서로를 도왔다." }
+        ],
+        tip: "aider qn (직접목적어)이므로 상호적 용법에서 p.p 성수일치(-s)가 발생합니다."
+      },
+      {
+        id: 24,
+        category: "pc",
+        target: "influencer qn / s'influencer l'un l'autre",
+        pos: "동사 / 대명동사 (복합과거)",
+        meaning: "~에게 영향을 주다 / 서로 영향을 주고받다",
+        examples: [
+          { target: "Il a influencé ses amis.", kr: "그는 친구들에게 영향을 주었다." },
+          { target: "Ces deux artistes se sont influencés l'un l'autre.", kr: "이 두 예술가는 서로에게 영향을 주었다." }
+        ],
+        tip: "influencer는 직접목적어를 받으므로 대명동사 복합과거에서 성수일치(influencés)를 합니다."
+      },
+      {
+        id: 25,
+        category: "pc",
+        target: "se moquer de N / se moquer l'un de l'autre",
+        pos: "대명동사 (복합과거 본질/상호)",
+        meaning: "~를 놀리다, 조롱하다 / 서로 놀리다",
+        examples: [
+          { target: "Ils se sont moqués de lui toujours.", kr: "그들은 항상 그를 놀렸다." },
+          { target: "Ils se sont moqués l'un de l'autre.", kr: "그들은 서로를 놀렸다." }
+        ],
+        tip: "se moquer de는 본질적 대명동사로 간주되어 항상 주어에 성수일치(moqués)합니다."
+      },
+      {
+        id: 26,
+        category: "pc",
+        target: "s'ouvrir",
+        pos: "대명동사 (복합과거 수동적)",
+        meaning: "열리다",
+        examples: [
+          { target: "La porte s'est ouverte doucement.", kr: "문이 부드럽게 열렸다." }
+        ],
+        tip: "수동적 용법의 대명동사는 주어(La porte: 여성 단수)에 성수일치(-e)합니다."
+      },
+      {
+        id: 27,
+        category: "pc",
+        target: "s'en aller",
+        pos: "대명동사 (복합과거 본질적)",
+        meaning: "가버리다, 떠나다",
+        examples: [
+          { target: "Ils s'en sont allés.", kr: "그들은 가버렸다." }
+        ],
+        tip: "본질적 대명동사로 주어 Ils에 맞춰 allés로 성수일치 합니다."
+      },
+      {
+        id: 28,
+        category: "pc",
+        target: "se souvenir de",
+        pos: "대명동사 (복합과거 본질적)",
+        meaning: "~를 기억하다, 떠올리다",
+        examples: [
+          { target: "Elle ne s'est pas souvenue de son accident.", kr: "그녀는 자신의 사고를 기억하지 못했다." }
+        ],
+        tip: "본질적 대명동사이므로 주어 Elle에 맞춰 souvenue(-e)로 성수일치 합니다."
+      },
+      {
+        id: 29,
+        category: "pc",
+        target: "se mettre à + inf",
+        pos: "대명동사 (복합과거 본질적)",
+        meaning: "~하기 시작하다",
+        examples: [
+          { target: "Elle s'est mise à courir.", kr: "그녀는 뛰기 시작했다." }
+        ],
+        tip: "본질적 대명동사 mise(-e) 성수일치 완료."
+      },
+      {
+        id: 30,
+        category: "pc",
+        target: "s'asseoir (p.p. assis)",
+        pos: "대명동사 (복합과거)",
+        meaning: "앉다 (과거분사: assis)",
+        examples: [
+          { target: "Elle s'est assise près de la fenêtre.", kr: "그녀는 창가 근처에 앉았다." }
+        ],
+        tip: "s'asseoir의 과거분사는 assis이며 여성 주어 Elle에 맞춰 assise가 됩니다."
+      },
+      {
+        id: 31,
+        category: "pc",
+        target: "se tromper de",
+        pos: "대명동사 (복합과거)",
+        meaning: "~를 잘못 알다, 착각하다",
+        examples: [
+          { target: "Je me suis trompé(e) de numéro.", kr: "나는 번호를 잘못 눌렀다(잘못 알고 있었다)." }
+        ],
+        tip: "복합과거 예문 참조."
+      },
+      {
+        id: 32,
+        category: "pc",
+        target: "se servir de N",
+        pos: "대명동사 (복합과거)",
+        meaning: "~를 사용하다, 이용하다",
+        examples: [
+          { target: "Je me suis servi(e) beaucoup du dictionnaire français-coréen.", kr: "나는 불한사전을 많이 이용했다." }
+        ],
+        tip: "복합과거 변형 예문."
+      },
+      {
+        id: 33,
+        category: "pc",
+        target: "s'occuper de",
+        pos: "대명동사 (복합과거 본질적)",
+        meaning: "~를 맡다, 돌보다, 전념하다",
+        examples: [
+          { target: "Elle s'est occupée de ses affaires.", kr: "그녀는 자기 일을 처리했다/돌봤다." }
+        ],
+        tip: "본질적 대명동사 성수일치(occupée)."
+      },
+      {
+        id: 34,
+        category: "pc",
+        target: "l'année dernière",
+        pos: "명사/시간표현 (f.)",
+        meaning: "작년, 지난해",
+        examples: [
+          { target: "L'année dernière, je suis allé(e) en France.", kr: "작년에 나는 프랑스에 갔다." }
+        ],
+        tip: "과거 시제(복합과거/반과거)와 함께 자주 쓰이는 시간 표현입니다."
+      },
+
+      // =========================================================================
+      // PART 2. 반과거 (Imparfait)
+      // =========================================================================
+      {
+        id: 35,
+        category: "imparfait",
+        target: "faire ➔ faisant",
+        pos: "동사 현재분사 어간",
+        meaning: "하다 (Nous faisons ➔ 어간 fais-)",
+        examples: [
+          { target: "Il faisait du foot quand il était jeune.", kr: "그는 어렸을 때 축구를 하곤 했다." }
+        ],
+        tip: "faire의 nous 형태인 faisons에서 어간 fais-를 추출하여 반과거 어미를 붙입니다."
+      },
+      {
+        id: 36,
+        category: "imparfait",
+        target: "voir ➔ voyant",
+        pos: "동사 현재분사 어간",
+        meaning: "보다 (Nous voyons ➔ 어간 voy-)",
+        examples: [
+          { target: "Nous étions au cinéma en voyant le film.", kr: "우리는 영화를 보면서 극장에 있었다." }
+        ],
+        tip: "voir의 반과거 어간은 voy- 입니다 (Je voyais, nous voyions)."
+      },
+      {
+        id: 37,
+        category: "imparfait",
+        target: "commencer ➔ commençant",
+        pos: "동사 현재분사 어간",
+        meaning: "시작하다 (Nous commençons ➔ 어간 시작)",
+        examples: [
+          { target: "Je commençais à travailler à 8h.", kr: "나는 8시에 일을 시작하곤 했다." }
+        ],
+        tip: "-cer 동사는 a, o 앞에서 c가 'ç' (sedille)로 변경됩니다 (Je commençais)."
+      },
+      {
+        id: 38,
+        category: "imparfait",
+        target: "commencer à + inf",
+        pos: "동사구 (반과거)",
+        meaning: "~하기 시작하다",
+        examples: [
+          { target: "Je commençais à travailler.", kr: "나는 일을 시작하던 참이었다 / 시작하곤 했다." }
+        ],
+        tip: "연습문제 참조."
+      },
+      {
+        id: 39,
+        category: "imparfait",
+        target: "le pompier / la pompière",
+        pos: "명사 (m. / f.)",
+        meaning: "소방관",
+        examples: [
+          { target: "Je voulais être pompier quand j'étais petit.", kr: "나는 어렸을 때 소방관이 되고 싶었다." }
+        ],
+        tip: "직업 명사 예문."
+      },
+      {
+        id: 40,
+        category: "imparfait",
+        target: "le danseur / la danseuse",
+        pos: "명사 (m. / f.)",
+        meaning: "무용수, 댄서",
+        examples: [
+          { target: "Ma petite sœur voulait être danseuse.", kr: "내 여동생은 무용수가 되고 싶어 했다." }
+        ],
+        tip: "직업 명사 예문."
+      },
+      {
+        id: 41,
+        category: "imparfait",
+        target: "doucement",
+        pos: "부사",
+        meaning: "부드럽게, 조용히, 천천히",
+        examples: [
+          { target: "La porte s'ouvrait doucement.", kr: "문이 부드럽게 열리곤 했다." }
+        ],
+        tip: "반과거 표현."
+      },
+      {
+        id: 42,
+        category: "imparfait",
+        target: "tranquillement",
+        pos: "부사",
+        meaning: "조용히, 차분하게",
+        examples: [
+          { target: "Vous disiez tranquillement la vérité.", kr: "당신은 차분하게 진실을 말씀하시곤 했습니다." }
+        ],
+        tip: "부사 예문."
+      },
+      {
+        id: 43,
+        category: "imparfait",
+        target: "clairement",
+        pos: "부사",
+        meaning: "명확하게, 또렷하게",
+        examples: [
+          { target: "Les résultats se voyaient clairement.", kr: "결과가 명확히 보였다." }
+        ],
+        tip: "수동 표현의 반과거 변형."
+      },
+      {
+        id: 44,
+        category: "imparfait",
+        target: "être heureux(-euse) de + inf / N",
+        pos: "표현 (반과거)",
+        meaning: "~해서 / ~에 기쁘다",
+        examples: [
+          { target: "Nous étions heureuses de te voir.", kr: "우리는 너를 보게 되어 기뻤다." }
+        ],
+        tip: "형용사 반과거 문장."
+      },
+      {
+        id: 45,
+        category: "imparfait",
+        target: "suivre les cours de français",
+        pos: "표현 (반과거)",
+        meaning: "프랑스어 수업을 듣다",
+        examples: [
+          { target: "Je suivais les cours de français tous les jours.", kr: "나는 매일 프랑스어 수업을 들었다." }
+        ],
+        tip: "suivre 동사의 반과거 형태: je suivais, nous suivions."
+      },
+      {
+        id: 46,
+        category: "imparfait",
+        target: "mettre ses lunettes",
+        pos: "표현 (반과거)",
+        meaning: "안경을 쓰다",
+        examples: [
+          { target: "Ils mettaient leurs lunettes pour lire.", kr: "그들은 읽기 위해 안경을 쓰곤 했다." }
+        ],
+        tip: "mettre 반과거: mettais, mettait, mettions..."
+      },
+      {
+        id: 47,
+        category: "imparfait",
+        target: "faire du tennis / du football",
+        pos: "표현 (반과거)",
+        meaning: "테니스를 치다 / 축구를 하다",
+        examples: [
+          { target: "Ils faisaient du tennis le samedi.", kr: "그들은 토요일마다 테니스를 쳤다." },
+          { target: "Il faisait du foot.", kr: "그는 축구를 하곤 했다." }
+        ],
+        tip: "운동 관련 표현."
+      },
+      {
+        id: 48,
+        category: "imparfait",
+        target: "le paysage",
+        pos: "명사 (m.)",
+        meaning: "풍경, 경치",
+        examples: [
+          { target: "Tu voyais le paysage par la fenêtre ?", kr: "창밖으로 풍경이 보였니?" }
+        ],
+        tip: "반과거 예문."
+      },
+
+      // =========================================================================
+      // PART 3. 단순미래 (Futur Simple)
+      // =========================================================================
+      {
+        id: 49,
+        category: "futur",
+        target: "l'agriculteur / l'agricultrice",
+        pos: "명사 (m. / f.)",
+        meaning: "농부, 농업인",
+        examples: [
+          { target: "Il sera agriculteur.", kr: "그는 농부가 될 것이다." }
+        ],
+        tip: "단순미래 예시 문장."
+      },
+      {
+        id: 50,
+        category: "futur",
+        target: "le chanteur / la chanteuse",
+        pos: "명사 (m. / f.)",
+        meaning: "가수",
+        examples: [
+          { target: "Plus tard, je deviendrai une chanteuse connue.", kr: "나중에 나는 유명한 가수가 될 것이다." }
+        ],
+        tip: "단순미래 예시 문장."
+      },
+      {
+        id: 51,
+        category: "futur",
+        target: "en ligne",
+        pos: "부사구",
+        meaning: "온라인으로",
+        examples: [
+          { target: "Les billets de concert se vendront en ligne.", kr: "콘서트 티켓은 온라인으로 판매될 것이다." }
+        ],
+        tip: "상호/수동 표현의 단순미래 활용."
+      },
+      {
+        id: 52,
+        category: "futur",
+        target: "10 heures par jour",
+        pos: "시간 표현",
+        meaning: "하루에 10시간씩",
+        examples: [
+          { target: "Nous travaillerons 10 heures par jour.", kr: "우리는 하루에 10시간씩 일할 것이다." }
+        ],
+        tip: "단순미래 예시 참조."
+      },
+      {
+        id: 53,
+        category: "futur",
+        target: "plus tard",
+        pos: "부사구",
+        meaning: "나중에, 훗날",
+        examples: [
+          { target: "Plus tard, je visiterai la France.", kr: "나중에 나는 프랑스를 방문할 것이다." }
+        ],
+        tip: "단순미래를 이끄는 대표 부사구."
+      },
+      {
+        id: 54,
+        category: "futur",
+        target: "nager",
+        pos: "동사 (단순미래)",
+        meaning: "수영하다",
+        examples: [
+          { target: "Mes amis sauront nager.", kr: "내 친구들은 수영할 줄 알게 될 것이다." }
+        ],
+        tip: "savoir의 미래 어간 saur- + nager."
+      },
+      {
+        id: 55,
+        category: "futur",
+        target: "aller à l'étranger",
+        pos: "표현 (단순미래)",
+        meaning: "외국에 가다, 해외로 나가다",
+        examples: [
+          { target: "Vous pourrez aller à l'étranger pendant les vacances.", kr: "당신은 휴가 동안 해외에 갈 수 있을 것입니다." }
+        ],
+        tip: "pouvoir의 미래 어간 pourr-."
+      },
+      {
+        id: 56,
+        category: "futur",
+        target: "tenir la pose",
+        pos: "표현 (단순미래)",
+        meaning: "포즈를 취하다, 자세를 유지하다",
+        examples: [
+          { target: "Nous tiendrons la pose pour la photo.", kr: "우리는 사진을 위해 포즈를 취할 것이다." }
+        ],
+        tip: "tenir의 미래 어간 tiendr-."
+      },
+      {
+        id: 57,
+        category: "futur",
+        target: "la compétition",
+        pos: "명사 (f.)",
+        meaning: "경쟁, 대회, 경기",
+        examples: [
+          { target: "Ils courront dans une compétition.", kr: "그들은 대회에서 달릴 것이다." }
+        ],
+        tip: "courir의 미래 어간 courr-."
+      },
+      {
+        id: 58,
+        category: "futur",
+        target: "l'année prochaine",
+        pos: "명사/시간표현 (f.)",
+        meaning: "내년, 다음 해",
+        examples: [
+          { target: "Je serai lycéenne l'année prochaine.", kr: "나는 내년에 고등학생이 될 것이다." }
+        ],
+        tip: "미래 시제 표현."
+      },
+
+      // =========================================================================
+      // PART 4. Falloir 및 Payer 시제별 활용 카드
+      // =========================================================================
+      {
+        id: 59,
+        category: "pc",
+        target: "Il a fallu du temps",
+        pos: "비인칭 동사 (복합과거)",
+        meaning: "시간이 걸렸다 / 필요했다",
+        examples: [
+          { target: "Il a fallu du temps pour comprendre.", kr: "이해하는 데 시간이 걸렸다." }
+        ],
+        tip: "falloir의 복합과거 형태: Il a fallu."
+      },
+      {
+        id: 60,
+        category: "imparfait",
+        target: "Il fallait du temps",
+        pos: "비인칭 동사 (반과거)",
+        meaning: "시간이 걸리곤 했다 / 필요했었다",
+        examples: [
+          { target: "Il fallait du temps chaque fois.", kr: "매번 시간이 걸리곤 했다." }
+        ],
+        tip: "falloir의 반과거 형태: Il fallait."
+      },
+      {
+        id: 61,
+        category: "futur",
+        target: "Il faudra du temps",
+        pos: "비인칭 동사 (단순미래)",
+        meaning: "시간이 걸릴 것이다 / 필요할 것이다",
+        examples: [
+          { target: "Il faudra du temps.", kr: "시간이 걸릴 것이다." }
+        ],
+        tip: "falloir의 미래 어간 faudr-."
+      },
+      {
+        id: 62,
+        category: "pc",
+        target: "payer [현재 시제 1형태: -ie-]",
+        pos: "동사 (현재 1형태)",
+        meaning: "지불하다 (Je paie)",
+        examples: [
+          { target: "Je paie par carte bancaire.", kr: "나는 신용카드로 결제한다." }
+        ],
+        tip: "payer는 y가 i로 바뀌는 paie, paies, paie, payons, payez, paient 형태가 있습니다."
+      },
+      {
+        id: 63,
+        category: "pc",
+        target: "payer [현재 시제 2형태: -ye-]",
+        pos: "동사 (현재 2형태)",
+        meaning: "지불하다 (Je paye)",
+        examples: [
+          { target: "Je paye 36 euros.", kr: "나는 36유로를 지불한다." }
+        ],
+        tip: "payer는 y를 그대로 유지하는 paye, payes, paye, payons, payez, payent 형태로도 활용 가능합니다."
+      },
+      {
+        id: 64,
+        category: "imparfait",
+        target: "payer [반과거 시제]",
+        pos: "동사 (반과거)",
+        meaning: "지불하곤 했다 (Je payais)",
+        examples: [
+          { target: "Je payais toujours en espèces avant.", kr: "전에는 항상 현금으로 지불하곤 했다." }
+        ],
+        tip: "payer의 반과거: je payais, tu payais, il payait, nous payions, vous payiez, ils payaient."
+      },
+      {
+        id: 65,
+        category: "futur",
+        target: "payer [단순미래 1형태: paier-]",
+        pos: "동사 (미래 1형태)",
+        meaning: "지불할 것이다 (Je paierai)",
+        examples: [
+          { target: "Tu paieras 36 euros.", kr: "너는 36유로를 지불하게 될 것이다." }
+        ],
+        tip: "단순미래 어간 paier- (i 사용)."
+      },
+      {
+        id: 66,
+        category: "futur",
+        target: "payer [단순미래 2형태: payer-]",
+        pos: "동사 (미래 2형태)",
+        meaning: "지불할 것이다 (Je payerai)",
+        examples: [
+          { target: "Tu payeras 36 euros.", kr: "너는 36유로를 지불하게 될 것이다." }
+        ],
+        tip: "payer의 단순미래 어간으로 payer- (y 유지) 역시 정답으로 인정됩니다."
+      },
+
+      // =========================================================================
+      // PART 5. PDF 핵심 난이도 높음 30문장
+      // =========================================================================
+      {
+        id: 101,
+        category: "pdf30",
+        target: "J'ai sorti ma voiture du garage.",
+        pos: "복합과거 (타동사/avoir)",
+        meaning: "나는 차고에서 내 차를 빼냈다.",
+        examples: [
+          { target: "J'ai sorti ma voiture du garage.", kr: "나는 차고에서 내 차를 빼냈다." }
+        ],
+        tip: "sortir 뒤에 직목(ma voiture)이 오므로 avoir 사용."
+      },
+      {
+        id: 102,
+        category: "pdf30",
+        target: "Elles sont montées sur un arbre.",
+        pos: "복합과거 (자동사/성수일치)",
+        meaning: "그녀들은 나무 위로 올라갔다.",
+        examples: [
+          { target: "Elles sont montées sur un arbre.", kr: "그녀들은 나무 위로 올라갔다." }
+        ],
+        tip: "monter 자동사 ➔ être 사용, 주어 Elles에 맞춰 montées."
+      },
+      {
+        id: 103,
+        category: "pdf30",
+        target: "Tu as descendu les stores.",
+        pos: "복합과거 (타동사/avoir)",
+        meaning: "너는 커튼(블라인드)을 내렸다.",
+        examples: [
+          { target: "Tu as descendu les stores.", kr: "너는 커튼(블라인드)을 내렸다." }
+        ],
+        tip: "descendre + 직접목적어(les stores) ➔ avoir 사용."
+      },
+      {
+        id: 104,
+        category: "pdf30",
+        target: "Ils sont passés devant le magasin.",
+        pos: "복합과거 (자동사/être)",
+        meaning: "그들은 상점 앞을 지나갔다.",
+        examples: [
+          { target: "Ils sont passés devant le magasin.", kr: "그들은 상점 앞을 지나갔다." }
+        ],
+        tip: "passer 장소 이동 자동사 ➔ être 사용 및 성수일치(-s)."
+      },
+      {
+        id: 105,
+        category: "pdf30",
+        target: "Tu es retourné(e) à l'église le plus vite possible.",
+        pos: "복합과거 (자동사)",
+        meaning: "너는 가능한 한 빨리 교회로 돌아갔다.",
+        examples: [
+          { target: "Tu es retourné(e) à l'église le plus vite possible.", kr: "너는 가능한 한 빨리 교회로 돌아갔다." }
+        ],
+        tip: "retourner 자동사 용법 ➔ être."
+      },
+      {
+        id: 106,
+        category: "pdf30",
+        target: "J'ai remercié ma sœur. ➔ Je l'ai remerciée.",
+        pos: "복합과거 (선행 직목 일치)",
+        meaning: "나는 누나에게 감사했다. ➔ 나는 그녀에게 감사했다.",
+        examples: [
+          { target: "Je l'ai remerciée.", kr: "나는 그녀에게 감사했다." }
+        ],
+        tip: "직목 대명사 l'(ma sœur)가 선행하여 p.p에 -e 추가."
+      },
+      {
+        id: 107,
+        category: "pdf30",
+        target: "Tu as appelé Julie ce soir ? ➔ Tu l'as appelée ce soir ?",
+        pos: "복합과거 (선행 직목 일치)",
+        meaning: "너 오늘 저녁 줄리에게 전화했니? ➔ 너 오늘 저녁 그녀에게 전화했니?",
+        examples: [
+          { target: "Tu l'as appelée ce soir ?", kr: "너 오늘 저녁 그녀에게 전화했니?" }
+        ],
+        tip: "Julie가 직목 대명사 l'로 선행 ➔ appelée."
+      },
+      {
+        id: 108,
+        category: "pdf30",
+        target: "Elle vous a présenté(e)s à eux.",
+        pos: "복합과거 (선행 직목 일치)",
+        meaning: "그녀는 당신들을 그들에게 소개했습니다.",
+        examples: [
+          { target: "Elle vous a présenté(e)s à eux.", kr: "그녀는 당신들을 그들에게 소개했습니다." }
+        ],
+        tip: "직목 vous가 조동사 앞에 위치하여 présenté에 성수일치."
+      },
+      {
+        id: 109,
+        category: "pdf30",
+        target: "Elles se sont lavées avant de prendre le petit déjeuner.",
+        pos: "대명동사 복합과거 (재귀/성수일치)",
+        meaning: "그녀들은 아침을 먹기 전에 씻었다.",
+        examples: [
+          { target: "Elles se sont lavées avant de prendre le petit déjeuner.", kr: "그녀들은 아침을 먹기 전에 씻었다." }
+        ],
+        tip: "se가 직목으로 쓰였으므로 주어 Elles에 성수일치(-es)."
+      },
+      {
+        id: 110,
+        category: "pdf30",
+        target: "Elle s'est lavé les mains quand elle est rentrée.",
+        pos: "대명동사 복합과거 (목적어 유무 예외)",
+        meaning: "그녀는 집에 돌아왔을 때 손을 씻었다.",
+        examples: [
+          { target: "Elle s'est lavé les mains...", kr: "그녀는 손을 씻었다..." }
+        ],
+        tip: "직접목적어 les mains가 동사 뒤에 나오므로 p.p 일치 없음(lavé)."
+      },
+      {
+        id: 111,
+        category: "pdf30",
+        target: "Ma fille s'est cassé le bras en faisant du ski.",
+        pos: "대명동사 복합과거 (신체부위 예외)",
+        meaning: "내 딸은 스키를 타다가 팔이 부러졌다.",
+        examples: [
+          { target: "Ma fille s'est cassé le bras en faisant du ski.", kr: "내 딸은 스키를 타다가 팔이 부러졌다." }
+        ],
+        tip: "직접목적어 le bras가 뒤에 위치하므로 cassé 성수일치 X."
+      },
+      {
+        id: 112,
+        category: "pdf30",
+        target: "Ils se sont écrit une lettre tous les jours.",
+        pos: "대명동사 복합과거 (상호/간목)",
+        meaning: "그들은 매일 서로에게 편지를 썼다.",
+        examples: [
+          { target: "Ils se sont écrit une lettre tous les jours.", kr: "그들은 매일 서로에게 편지를 썼다." }
+        ],
+        tip: "쓰다(écrire à)의 se는 간접목적어이므로 p.p 성수일치 X (écrit)."
+      },
+      {
+        id: 113,
+        category: "pdf30",
+        target: "Ces deux artistes se sont influencés l'un l'autre.",
+        pos: "대명동사 복합과거 (상호/직목)",
+        meaning: "이 두 예술가는 서로에게 영향을 주었다.",
+        examples: [
+          { target: "Ces deux artistes se sont influencés l'un l'autre.", kr: "이 두 예술가는 서로에게 영향을 주었다." }
+        ],
+        tip: "influencer qn ➔ se가 직목이므로 주어에 성수일치(influencés)."
+      },
+      {
+        id: 114,
+        category: "pdf30",
+        target: "La porte s'est ouverte doucement.",
+        pos: "대명동사 복합과거 (수동적)",
+        meaning: "문이 부드럽게 열렸다.",
+        examples: [
+          { target: "La porte s'est ouverte doucement.", kr: "문이 부드럽게 열렸다." }
+        ],
+        tip: "수동 용법 대명동사는 주어 La porte에 맞춰 성수일치(ouverte)."
+      },
+      {
+        id: 115,
+        category: "pdf30",
+        target: "Elle ne s'est pas souvenue de son accident.",
+        pos: "대명동사 복합과거 (본질적)",
+        meaning: "그녀는 자신의 사고를 기억하지 못했다.",
+        examples: [
+          { target: "Elle ne s me s'est pas souvenue de son accident.", kr: "그녀는 자신의 사고를 기억하지 못했다." }
+        ],
+        tip: "본질적 대명동사는 주어에 항상 성수일치(souvenue)."
+      },
+      {
+        id: 116,
+        category: "pdf30",
+        target: "Elle s'est assise près de la fenêtre.",
+        pos: "대명동사 복합과거 (불규칙 p.p)",
+        meaning: "그녀는 창가 근처에 앉았다.",
+        examples: [
+          { target: "Elle s'est assise près de la fenêtre.", kr: "그녀는 창가 근처에 앉았다." }
+        ],
+        tip: "s'asseoir 과거분사 assis ➔ 여성 주어 Elle에 맞춰 assise."
+      },
+      {
+        id: 117,
+        category: "pdf30",
+        target: "Je voulais être pompier, ma petite sœur voulait être danseuse.",
+        pos: "반과거 (소망/상태)",
+        meaning: "나는 소방관이 되고 싶었고, 내 여동생은 무용수가 되고 싶어 했다.",
+        examples: [
+          { target: "Je voulais être pompier, ma petite sœur voulait être danseuse.", kr: "나는 소방관이 되고 싶었고, 내 여동생은 무용수가 되고 싶어 했다." }
+        ],
+        tip: "vouloir 반과거 (voulais, voulait)."
+      },
+      {
+        id: 118,
+        category: "pdf30",
+        target: "Nous étions heureuses de te voir.",
+        pos: "반과거 (상태/형용사)",
+        meaning: "우리는 너를 보게 되어 기뻤다.",
+        examples: [
+          { target: "Nous étions heureuses de te voir.", kr: "우리는 너를 보게 되어 기뻤다." }
+        ],
+        tip: "être 반과거 étions."
+      },
+      {
+        id: 119,
+        category: "pdf30",
+        target: "Quand elle était lycéenne, elle allait chez ses grands-parents.",
+        pos: "반과거 (과거의 습관)",
+        meaning: "그녀가 고등학생이었을 때, 주말마다 조부모님 댁에 가곤 했다.",
+        examples: [
+          { target: "Quand elle était lycéenne, elle allait chez ses grands-parents le week-end.", kr: "그녀가 고등학생이었을 때, 주말마다 조부모님 댁에 가곤 했다." }
+        ],
+        tip: "과거 지속적 상태 및 반복 습관."
+      },
+      {
+        id: 120,
+        category: "pdf30",
+        target: "Quand j'étais jeune, je faisais du sport le samedi.",
+        pos: "반과거 (과거의 습관)",
+        meaning: "내가 어렸을 때, 토요일마다 운동을 하곤 했다.",
+        examples: [
+          { target: "Quand j'étais jeune, je faisais du sport le samedi.", kr: "내가 어렸을 때, 토요일마다 운동을 하곤 했다." }
+        ],
+        tip: "faire ➔ faisais."
+      },
+      {
+        id: 121,
+        category: "pdf30",
+        target: "Ils s'écrivaient le dimanche.",
+        pos: "반과거 (상호/반복)",
+        meaning: "그들은 일요일마다 서로 편지를 쓰곤 했다.",
+        examples: [
+          { target: "Ils s'écrivaient le dimanche.", kr: "그들은 일요일마다 서로 편지를 쓰곤 했다." }
+        ],
+        tip: "s'écrire 반과거 (s'écrivaient)."
+      },
+      {
+        id: 122,
+        category: "pdf30",
+        target: "Ma mère me disait de rentrer à la maison avant 19h.",
+        pos: "반과거 (지속적 명령/상태)",
+        meaning: "엄마는 나에게 19시 전에 집에 들어오라고 말씀하시곤 했다.",
+        examples: [
+          { target: "Ma mère me disait de rentrer à la maison avant 19h.", kr: "엄마는 나에게 19시 전에 집에 들어오라고 말씀하시곤 했다." }
+        ],
+        tip: "dire 반과거 disait + de + inf."
+      },
+      {
+        id: 123,
+        category: "pdf30",
+        target: "Plus tard, je deviendrai une chanteuse connue.",
+        pos: "단순미래 (불규칙 어간)",
+        meaning: "나중에 나는 유명한 가수가 될 것이다.",
+        examples: [
+          { target: "Plus tard, je deviendrai une chanteuse connue.", kr: "나중에 나는 유명한 가수가 될 것이다." }
+        ],
+        tip: "devenir의 미래 어간 deviendr-."
+      },
+      {
+        id: 124,
+        category: "pdf30",
+        target: "Vous m'enverrez le message ?",
+        pos: "단순미래 (불규칙 어간)",
+        meaning: "당신은 저에게 메시지를 보내주실 건가요?",
+        examples: [
+          { target: "Vous m'enverrez le message ?", kr: "당신은 저에게 메시지를 보내주실 건가요?" }
+        ],
+        tip: "envoyer의 미래 어간 enverr-."
+      },
+      {
+        id: 125,
+        category: "pdf30",
+        target: "Il y aura beaucoup de fleurs dans le jardin ce printemps.",
+        pos: "단순미래 (비인칭 avoir)",
+        meaning: "이번 봄에 정원에 많은 꽃들이 있을 것입니다.",
+        examples: [
+          { target: "Il y aura beaucoup de fleurs dans le jardin ce printemps.", kr: "이번 봄에 정원에 많은 꽃들이 있을 것입니다." }
+        ],
+        tip: "il y a ➔ il y aura."
+      },
+      {
+        id: 126,
+        category: "pdf30",
+        target: "Vous pourrez aller à l'étranger pendant les vacances.",
+        pos: "단순미래 (불규칙 어간)",
+        meaning: "당신은 휴가 동안 해외로 갈 수 있을 것입니다.",
+        examples: [
+          { target: "Vous pourrez aller à l'étranger pendant les vacances.", kr: "당신은 휴가 동안 해외로 갈 수 있을 것입니다." }
+        ],
+        tip: "pouvoir 미래 어간 pourr-."
+      },
+      {
+        id: 127,
+        category: "pdf30",
+        target: "Ils courront dans une compétition.",
+        pos: "단순미래 (불규칙 어간)",
+        meaning: "그들은 대회에서 달릴 것이다.",
+        examples: [
+          { target: "Ils courront dans une compétition.", kr: "그들은 대회에서 달릴 것이다." }
+        ],
+        tip: "courir 미래 어간 courr-."
+      },
+      {
+        id: 128,
+        category: "pdf30",
+        target: "Je serai lycéenne l'année prochaine.",
+        pos: "단순미래 (être 미래어간)",
+        meaning: "나는 내년에 고등학생이 될 것이다.",
+        examples: [
+          { target: "Je serai lycéenne l'année prochaine.", kr: "나는 내년에 고등학생이 될 것이다." }
+        ],
+        tip: "être 미래 어간 ser-."
+      },
+      {
+        id: 129,
+        category: "pdf30",
+        target: "Il faudra du temps.",
+        pos: "단순미래 (비인칭 falloir)",
+        meaning: "시간이 걸릴 것이다.",
+        examples: [
+          { target: "Il faudra du temps.", kr: "시간이 걸릴 것이다." }
+        ],
+        tip: "falloir 미래 어간 faudr-."
+      },
+      {
+        id: 130,
+        category: "pdf30",
+        target: "Tu paieras / payeras 36 euros.",
+        pos: "단순미래 (payer 활용)",
+        meaning: "너는 36유로를 지불하게 될 것이다.",
+        examples: [
+          { target: "Tu paieras 36 euros.", kr: "너는 36유로를 지불하게 될 것이다." }
+        ],
+        tip: "paieras 또는 payeras 모두 가능."
+      }
+    ];
+
+    let currentDeck = [];
+    let currentCardIndex = 0;
+    let isFlipped = false;
+    let isForeignToKr = true;
+    let activeCategory = 'all';
+    let starredCardIds = new Set();
+    let frenchVoice = null;
+
+    function loadVoices() {
+      if (!('speechSynthesis' in window)) return;
+      const voices = window.speechSynthesis.getVoices();
+      frenchVoice = voices.find(v => v.lang === 'fr-FR' || v.lang === 'fr_FR') || 
+                    voices.find(v => v.lang.startsWith('fr')) || null;
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+      loadVoices();
+    }
+
+    function playTTS(text, isFrench = true) {
+      if (!('speechSynthesis' in window) || !text) return;
+      let cleanText = text.replace(/➔.*/g, '').replace(/\[.*?\]/g, '').trim();
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+
+      if (isFrench) {
+        utterance.lang = 'fr-FR';
+        if (frenchVoice) utterance.voice = frenchVoice;
+        utterance.rate = 0.85;
+      } else {
+        utterance.lang = 'ko-KR';
+        utterance.rate = 0.95;
+      }
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadFavorites();
+      buildDeck();
+      renderCurrentCard();
+      renderListView();
+    });
+
+    function loadFavorites() {
+      const stored = localStorage.getItem('french_flashcard_stars');
+      if (stored) {
+        try {
+          starredCardIds = new Set(JSON.parse(stored));
+        } catch(e) {
+          starredCardIds = new Set();
+        }
+      }
+    }
+
+    function saveFavorites() {
+      localStorage.setItem('french_flashcard_stars', JSON.stringify([...starredCardIds]));
+    }
+
+    function buildDeck() {
+      currentDeck = initialFlashcards.filter(card => {
+        if (activeCategory === 'starred') return starredCardIds.has(card.id);
+        if (activeCategory === 'all') return true;
+        return card.category === activeCategory;
+      });
+      currentCardIndex = 0;
+      isFlipped = false;
+    }
+
+    function filterCategory(category) {
+      activeCategory = category;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'bg-amber-500');
+        btn.classList.add('bg-white', 'text-slate-600');
+      });
+      const activeBtn = document.getElementById(`cat-${category}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-slate-600');
+        activeBtn.classList.add(category === 'pdf30' ? 'bg-amber-500' : 'bg-indigo-600', 'text-white');
+      }
+      buildDeck();
+      renderCurrentCard();
+    }
+
+    function shuffleDeck() {
+      if (currentDeck.length <= 1) return;
+      for (let i = currentDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [currentDeck[i], currentDeck[j]] = [currentDeck[j], currentDeck[i]];
+      }
+      currentCardIndex = 0;
+      isFlipped = false;
+      renderCurrentCard();
+    }
+
+    function renderCurrentCard() {
+      const container = document.getElementById('card-container');
+      const actionBtns = document.getElementById('action-buttons');
+      const emptyState = document.getElementById('empty-state');
+      const cardElem = document.getElementById('flashcard');
+
+      cardElem.classList.remove('flipped');
+      isFlipped = false;
+
+      if (currentDeck.length === 0) {
+        container.classList.add('hidden');
+        actionBtns.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        document.getElementById('card-progress-text').innerText = `0 / 0`;
+        updateStarButtonUI(false);
+        return;
+      }
+
+      container.classList.remove('hidden');
+      actionBtns.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+
+      const card = currentDeck[currentCardIndex];
+      const isStarred = starredCardIds.has(card.id);
+
+      document.getElementById('card-progress-text').innerText = `${currentCardIndex + 1} / ${currentDeck.length}`;
+      updateStarButtonUI(isStarred);
+
+      const catLabels = { 
+        pc: "복합과거 (P.C.)", 
+        imparfait: "반과거 (Imparfait)", 
+        futur: "단순미래 (Futur)",
+        pdf30: "PDF 핵심 30문장"
+      };
+      
+      document.getElementById('front-category').innerText = catLabels[card.category] || "일반";
+      document.getElementById('front-starred-icon').classList.toggle('hidden', !isStarred);
+
+      const exContainer = document.getElementById('back-examples');
+      exContainer.innerHTML = '';
+
+      if (isForeignToKr) {
+        document.getElementById('front-main').innerText = card.target;
+        document.getElementById('front-sub').innerText = card.pos ? `[${card.pos}]` : '';
+        document.getElementById('back-main').innerText = card.meaning;
+
+        if (card.examples && card.examples.length > 0) {
+          card.examples.forEach((ex, idx) => {
+            const item = document.createElement('div');
+            item.className = 'bg-white p-2 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-center';
+            item.innerHTML = `
+              <div>
+                <p class="font-semibold text-slate-800 text-xs">${idx + 1}. ${ex.target}</p>
+                <p class="text-slate-500 text-[11px] mt-0.5">${ex.kr}</p>
+              </div>
+              <button onclick="speakTextCustom(event, '${escapeQuotes(ex.target)}', true)" class="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg transition" title="발음 듣기">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            `;
+            exContainer.appendChild(item);
+          });
+        }
+      } else {
+        document.getElementById('front-main').innerText = card.meaning;
+        document.getElementById('front-sub').innerText = card.pos ? `[구분: ${card.pos}]` : '';
+        document.getElementById('back-main').innerText = card.target;
+
+        if (card.examples && card.examples.length > 0) {
+          card.examples.forEach((ex, idx) => {
+            const item = document.createElement('div');
+            item.className = 'bg-white p-2 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-center';
+            item.innerHTML = `
+              <div>
+                <p class="font-semibold text-slate-800 text-xs">${idx + 1}. ${ex.kr}</p>
+                <p class="text-indigo-600 font-medium text-[11px] mt-0.5">➔ ${ex.target}</p>
+              </div>
+              <button onclick="speakTextCustom(event, '${escapeQuotes(ex.target)}', true)" class="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg transition" title="발음 듣기">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            `;
+            exContainer.appendChild(item);
+          });
+        }
+      }
+
+      const tipElem = document.getElementById('back-tip');
+      if (card.tip) {
+        tipElem.innerText = `💡 문법 Tip: ${card.tip}`;
+        tipElem.classList.remove('hidden');
+      } else {
+        tipElem.classList.add('hidden');
+      }
+    }
+
+    function escapeQuotes(str) {
+      return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    function flipCard() {
+      const cardElem = document.getElementById('flashcard');
+      isFlipped = !isFlipped;
+      cardElem.classList.toggle('flipped', isFlipped);
+    }
+
+    function nextCard() {
+      if (currentDeck.length === 0) return;
+      currentCardIndex = (currentCardIndex + 1) % currentDeck.length;
+      renderCurrentCard();
+    }
+
+    function prevCard() {
+      if (currentDeck.length === 0) return;
+      currentCardIndex = (currentCardIndex - 1 + currentDeck.length) % currentDeck.length;
+      renderCurrentCard();
+    }
+
+    function toggleStarCurrentCard() {
+      if (currentDeck.length === 0) return;
+      const card = currentDeck[currentCardIndex];
+      if (starredCardIds.has(card.id)) {
+        starredCardIds.delete(card.id);
+      } else {
+        starredCardIds.add(card.id);
+      }
+      saveFavorites();
+      renderCurrentCard();
+      renderListView();
+    }
+
+    function updateStarButtonUI(isStarred) {
+      const btn = document.getElementById('btn-star');
+      const label = document.getElementById('star-btn-label');
+      if (isStarred) {
+        btn.className = "px-2.5 py-1 rounded-lg bg-amber-500 text-white font-medium text-xs flex items-center gap-1 shadow-xs transition";
+        label.innerText = "즐겨찾기됨";
+      } else {
+        btn.className = "px-2.5 py-1 rounded-lg border border-slate-200 text-slate-500 hover:text-amber-500 transition flex items-center gap-1 font-medium text-xs";
+        label.innerText = "즐겨찾기";
+      }
+    }
+
+    function toggleDirection() {
+      isForeignToKr = !isForeignToKr;
+      document.getElementById('direction-label').innerText = isForeignToKr ? "프랑스어 ➔ 한국어" : "한국어 ➔ 프랑스어";
+      renderCurrentCard();
+    }
+
+    function speakCurrentCard(event, face) {
+      event.stopPropagation();
+      if (currentDeck.length === 0) return;
+      const card = currentDeck[currentCardIndex];
+
+      let text = "";
+      let isFrench = true;
+
+      if (isForeignToKr) {
+        text = (face === 'front') ? card.target : card.meaning;
+        isFrench = (face === 'front');
+      } else {
+        text = (face === 'front') ? card.meaning : card.target;
+        isFrench = (face === 'back');
+      }
+
+      playTTS(text, isFrench);
+    }
+
+    function speakTextCustom(event, text, isFrench) {
+      event.stopPropagation();
+      playTTS(text, isFrench);
+    }
+
+    function switchTab(tab) {
+      const studyTab = document.getElementById('tab-study');
+      const listTab = document.getElementById('tab-list');
+      const studyBtn = document.getElementById('btn-tab-study');
+      const listBtn = document.getElementById('btn-tab-list');
+
+      if (tab === 'study') {
+        studyTab.classList.remove('hidden');
+        listTab.classList.add('hidden');
+        studyBtn.className = "px-3 py-1.5 bg-indigo-900 text-white rounded-lg text-xs font-semibold transition shadow-sm";
+        listBtn.className = "px-3 py-1.5 bg-indigo-500 text-white rounded-lg text-xs font-semibold transition shadow-sm";
+      } else {
+        studyTab.classList.add('hidden');
+        listTab.classList.remove('hidden');
+        listBtn.className = "px-3 py-1.5 bg-indigo-900 text-white rounded-lg text-xs font-semibold transition shadow-sm";
+        studyBtn.className = "px-3 py-1.5 bg-indigo-500 text-white rounded-lg text-xs font-semibold transition shadow-sm";
+      }
+    }
+
+    function renderListView() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const listContainer = document.getElementById('card-list');
+      listContainer.innerHTML = '';
+
+      const filtered = initialFlashcards.filter(c => 
+        c.target.toLowerCase().includes(query) || 
+        c.meaning.toLowerCase().includes(query) ||
+        (c.tip && c.tip.toLowerCase().includes(query))
+      );
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `<div class="text-center py-8 text-slate-400 text-xs">검색 결과가 없습니다.</div>`;
+        return;
+      }
+
+      filtered.forEach(c => {
+        const isStarred = starredCardIds.has(c.id);
+        const item = document.createElement('div');
+        item.className = 'bg-white p-3 rounded-xl border border-slate-200 shadow-2xs flex justify-between items-center gap-2';
+        item.innerHTML = `
+          <div class="flex-1 pr-1">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="font-bold text-slate-800 text-xs">${c.target}</span>
+              <span class="text-[10px] text-slate-400">[${c.pos || '단어'}]</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-0.5">${c.meaning}</p>
+          </div>
+          <div class="flex items-center gap-1">
+            <button onclick="speakTextCustom(event, '${escapeQuotes(c.target)}', true)" class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition text-xs" title="발음 듣기">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button onclick="toggleStarList(${c.id})" class="p-2 ${isStarred ? 'text-amber-500' : 'text-slate-300'} hover:text-amber-500 transition text-xs">
+              <i class="fa-solid fa-star"></i>
+            </button>
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+    }
+
+    function toggleStarList(id) {
+      if (starredCardIds.has(id)) {
+        starredCardIds.delete(id);
+      } else {
+        starredCardIds.add(id);
+      }
+      saveFavorites();
+      renderListView();
+      if (activeCategory === 'starred') {
+        buildDeck();
+        renderCurrentCard();
+      }
+    }
+
+    function shareCurrentCard() {
+      if (currentDeck.length === 0) return;
+      const card = currentDeck[currentCardIndex];
+      
+      let textToShare = `🇫🇷 [프랑스어 플래시카드]\n• 단어/문장: ${card.target}\n• 뜻: ${card.meaning}`;
+      if (card.pos) textToShare += ` (${card.pos})`;
+      if (card.examples && card.examples.length > 0) {
+        textToShare += `\n• 예문: ${card.examples[0].target} (${card.examples[0].kr})`;
+      }
+      if (card.tip) {
+        textToShare += `\n• 💡 문법 Tip: ${card.tip}`;
+      }
+
+      if (navigator.share) {
+        navigator.share({
+          title: '프랑스어 플래시카드',
+          text: textToShare
+        }).catch(() => copyToClipboard(textToShare));
+      } else {
+        copyToClipboard(textToShare);
+      }
+    }
+
+    function copyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      
+      try {
+        document.execCommand('copy');
+        showToast('카드 내용이 클립보드에 복사되었습니다!');
+      } catch (err) {
+        showToast('복사에 실패했습니다.');
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      if (!toast || !toastMsg) return;
+      
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
