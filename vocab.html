@@ -94,7 +94,7 @@
       </div>
 
       <!-- Flashcard Interactive Container -->
-      <div id="card-container" class="relative w-full h-80 perspective-1000 my-auto">
+      <div id="card-container" class="relative w-full h-[28rem] perspective-1000 my-auto">
         <div id="flashcard" class="w-full h-full transform-style-3d transition-transform duration-500 relative cursor-pointer rounded-2xl shadow-sm border border-slate-200 bg-white" onclick="flipCard()">
 
           <!-- Front Face -->
@@ -124,11 +124,11 @@
               </button>
             </div>
 
-            <div class="my-auto space-y-3 overflow-y-auto max-h-[200px] pr-1">
-              <h3 id="back-main" class="text-lg font-bold text-slate-900 text-center break-words">--</h3>
+            <div class="my-auto space-y-3 overflow-y-auto max-h-[300px] pr-1">
+              <h3 id="back-main" class="text-xl font-bold text-slate-900 text-center break-words">--</h3>
 
               <!-- Examples -->
-              <div id="back-examples" class="text-xs space-y-2 border-t pt-2 border-slate-200"></div>
+              <div id="back-examples" class="space-y-3 border-t pt-3 border-slate-200"></div>
             </div>
 
             <div class="text-center text-[10px] text-slate-400">좌우 버튼으로 다음/이전 카드로 이동합니다</div>
@@ -452,13 +452,13 @@
 
         examples.forEach((ex, idx) => {
           const item = document.createElement('div');
-          item.className = 'bg-white p-2 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-center';
+          item.className = 'bg-white p-3 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-start gap-2';
           item.innerHTML = `
-            <div>
-              <p class="font-semibold text-slate-800 text-xs">${idx + 1}. ${escapeHtml(ex.foreign)}</p>
-              <p class="text-slate-500 text-[11px] mt-0.5">${escapeHtml(ex.korean)}</p>
+            <div class="flex-1 min-w-0">
+              <p class="font-semibold text-slate-800 text-xl leading-snug break-words">${idx + 1}. ${escapeHtml(ex.foreign)}</p>
+              <p class="text-slate-600 text-sm mt-1 break-words">${escapeHtml(ex.korean)}</p>
             </div>
-            <button onclick="speakTextCustom(event, '${escapeQuotes(ex.foreign)}', true)" class="p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="발음 듣기">
+            <button onclick="speakTextCustom(event, '${escapeQuotes(ex.foreign)}', true)" class="shrink-0 p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="발음 듣기">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           `;
@@ -470,13 +470,13 @@
 
         examples.forEach((ex, idx) => {
           const item = document.createElement('div');
-          item.className = 'bg-white p-2 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-center';
+          item.className = 'bg-white p-3 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-start gap-2';
           item.innerHTML = `
-            <div>
-              <p class="font-semibold text-slate-800 text-xs">${idx + 1}. ${escapeHtml(ex.korean)}</p>
-              <p class="text-emerald-600 font-medium text-[11px] mt-0.5">➔ ${escapeHtml(ex.foreign)}</p>
+            <div class="flex-1 min-w-0">
+              <p class="text-slate-600 text-sm">${idx + 1}. ${escapeHtml(ex.korean)}</p>
+              <p class="text-emerald-700 font-semibold text-xl leading-snug mt-1 break-words">➔ ${escapeHtml(ex.foreign)}</p>
             </div>
-            <button onclick="speakTextCustom(event, '${escapeQuotes(ex.foreign)}', true)" class="p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="발음 듣기">
+            <button onclick="speakTextCustom(event, '${escapeQuotes(ex.foreign)}', true)" class="shrink-0 p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="발음 듣기">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           `;
