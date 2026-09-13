@@ -62,12 +62,16 @@
       
       <!-- Category Filter Pills -->
       <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
-        <button onclick="filterCategory('all')" id="cat-all" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-indigo-600 text-white shadow-xs whitespace-nowrap">전체 (130)</button>
+        <button onclick="filterCategory('all')" id="cat-all" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-indigo-600 text-white shadow-xs whitespace-nowrap">전체 (247)</button>
         <button onclick="filterCategory('starred')" id="cat-starred" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">⭐ 즐겨찾기</button>
         <button onclick="filterCategory('pc')" id="cat-pc" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">복합과거</button>
         <button onclick="filterCategory('imparfait')" id="cat-imparfait" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">반과거</button>
         <button onclick="filterCategory('futur')" id="cat-futur" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">단순미래</button>
         <button onclick="filterCategory('pdf30')" id="cat-pdf30" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-amber-50 text-amber-700 border border-amber-200 whitespace-nowrap">PDF 핵심 30문장</button>
+        <button onclick="filterCategory('comparatif')" id="cat-comparatif" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">비교급</button>
+        <button onclick="filterCategory('relatif')" id="cat-relatif" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">관계대명사</button>
+        <button onclick="filterCategory('participe')" id="cat-participe" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">현재분사·제롱디프</button>
+        <button onclick="filterCategory('inclusive')" id="cat-inclusive" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">écriture inclusive</button>
       </div>
 
       <!-- Direction Toggle Switcher -->
@@ -1255,7 +1259,181 @@
           { target: "Tu paieras 36 euros.", kr: "너는 36유로를 지불하게 될 것이다." }
         ],
         tip: "paieras 또는 payeras 모두 가능."
-      }
+      },
+
+      // =========================================================================
+      // PART 6. 비교급 (Comparatif) - Parlons en français 02
+      // =========================================================================
+      { id: 131, category: "comparatif", target: "rapide", pos: "형용사", meaning: "빠른", examples: [{ target: "Pierre est plus rapide que Paul.", kr: "Pierre는 Paul보다 빠르다." }] },
+      { id: 132, category: "comparatif", target: "vite", pos: "부사", meaning: "빠르게", examples: [{ target: "Lucie court plus vite que Marie.", kr: "Lucie는 Marie보다 빠르게 달린다." }] },
+      { id: 133, category: "comparatif", target: "actif / active", pos: "형용사", meaning: "활동적인", examples: [{ target: "Mon fils est aussi actif que Pierre.", kr: "나의 아들은 Pierre만큼 활동적이다." }] },
+      { id: 134, category: "comparatif", target: "sauvage", pos: "형용사", meaning: "거친, 야만적인", examples: [{ target: "La nature est moins sauvage qu'avant.", kr: "자연은 이전보다 덜 야만적이다." }], tip: "que + avant는 모음 축약되어 qu'avant가 됩니다." },
+      { id: 135, category: "comparatif", target: "indépendant(e)", pos: "형용사", meaning: "독립적인", examples: [{ target: "Les femmes sont plus indépendantes qu'avant.", kr: "여성은 이전보다 더 독립적이다." }] },
+      { id: 136, category: "comparatif", target: "avant", pos: "부사", meaning: "이전에, 예전에", examples: [{ target: "Les femmes sont plus indépendantes qu'avant.", kr: "여성은 이전보다 더 독립적이다." }] },
+      { id: 137, category: "comparatif", target: "l'argent (m.)", pos: "명사", meaning: "돈", examples: [{ target: "Paul a plus d'argent que Luc.", kr: "Paul은 Luc보다 더 많은 돈을 가지고 있다." }] },
+      { id: 138, category: "comparatif", target: "le café", pos: "명사 (m.)", meaning: "커피", examples: [{ target: "Mon père boit moins de café que ma mère.", kr: "나의 아빠는 나의 엄마보다 커피를 덜 마신다." }] },
+      { id: 139, category: "comparatif", target: "le temps", pos: "명사 (m.)", meaning: "시간", examples: [{ target: "Paul a autant de temps que Marie.", kr: "Paul은 Marie만큼 시간을 가지고 있다." }] },
+      { id: 140, category: "comparatif", target: "l'importance (f.)", pos: "명사", meaning: "중요성", examples: [{ target: "Dans une phrase, le féminin a autant d'importance que le masculin.", kr: "문장에서 여성형은 남성형과 동일한 중요성을 가진다." }] },
+      { id: 141, category: "comparatif", target: "voyager", pos: "동사", meaning: "여행하다", examples: [{ target: "Elle voyage plus que moi.", kr: "그녀는 나보다 더 많이 여행한다." }] },
+      { id: 142, category: "comparatif", target: "étudier", pos: "동사", meaning: "공부하다", examples: [{ target: "Mes amis étudient plus que moi.", kr: "나의 친구들은 나보다 더 많이 공부한다." }] },
+      { id: 143, category: "comparatif", target: "meilleur(e)", pos: "형용사 (bon의 우등비교)", meaning: "더 좋은, 더 나은", examples: [{ target: "Le café noir est meilleur que le café crème.", kr: "블랙커피가 크림 커피보다 맛있다." }], tip: "bon(좋은)의 우등 비교급은 plus bon이 아니라 meilleur입니다." },
+      { id: 144, category: "comparatif", target: "mieux", pos: "부사 (bien의 우등비교)", meaning: "더 잘", examples: [{ target: "Marie parle aussi bien que Jean.", kr: "Marie는 Jean만큼 말을 잘한다." }], tip: "bien(잘)의 우등 비교급은 plus bien이 아니라 mieux입니다." },
+
+      { id: 145, category: "comparatif", target: "Pierre est plus rapide que Paul.", pos: "형용사 비교급 (우등)", meaning: "Pierre는 Paul보다 빠르다.", examples: [{ target: "Pierre est plus rapide que Paul.", kr: "Pierre는 Paul보다 빠르다." }], tip: "plus + 형용사 + que: ~보다 더 …하다" },
+      { id: 146, category: "comparatif", target: "Pierre est moins rapide que Paul.", pos: "형용사 비교급 (열등)", meaning: "Pierre는 Paul보다 느리다.", examples: [{ target: "Pierre est moins rapide que Paul.", kr: "Pierre는 Paul보다 느리다." }], tip: "moins + 형용사 + que: ~보다 덜 …하다" },
+      { id: 147, category: "comparatif", target: "Pierre est aussi rapide que Paul.", pos: "형용사 비교급 (동등)", meaning: "Pierre는 Paul만큼 빠르다.", examples: [{ target: "Pierre est aussi rapide que Paul.", kr: "Pierre는 Paul만큼 빠르다." }], tip: "aussi + 형용사 + que: ~만큼 …하다" },
+      { id: 148, category: "comparatif", target: "Lucie court plus vite que Marie.", pos: "부사 비교급 (우등)", meaning: "Lucie는 Marie보다 빠르게 달린다.", examples: [{ target: "Lucie court plus vite que Marie.", kr: "Lucie는 Marie보다 빠르게 달린다." }] },
+      { id: 149, category: "comparatif", target: "Lucie court moins vite que Marie.", pos: "부사 비교급 (열등)", meaning: "Lucie는 Marie보다 느리게 달린다.", examples: [{ target: "Lucie court moins vite que Marie.", kr: "Lucie는 Marie보다 느리게 달린다." }] },
+      { id: 150, category: "comparatif", target: "Lucie court aussi vite que Marie.", pos: "부사 비교급 (동등)", meaning: "Lucie는 Marie만큼 빠르게 달린다.", examples: [{ target: "Lucie court aussi vite que Marie.", kr: "Lucie는 Marie만큼 빠르게 달린다." }] },
+      { id: 151, category: "comparatif", target: "Ma mère est plus grande que moi.", pos: "형용사 비교급 (우등)", meaning: "나의 엄마는 나보다 크다.", examples: [{ target: "Ma mère est plus grande que moi.", kr: "나의 엄마는 나보다 크다." }] },
+      { id: 152, category: "comparatif", target: "Mon fils est aussi actif que Pierre.", pos: "형용사 비교급 (동등)", meaning: "나의 아들은 Pierre만큼 활동적이다.", examples: [{ target: "Mon fils est aussi actif que Pierre.", kr: "나의 아들은 Pierre만큼 활동적이다." }] },
+      { id: 153, category: "comparatif", target: "La nature est moins sauvage qu'avant.", pos: "형용사 비교급 (열등)", meaning: "자연은 이전보다 덜 야만적이다.", examples: [{ target: "La nature est moins sauvage qu'avant.", kr: "자연은 이전보다 덜 야만적이다." }] },
+      { id: 154, category: "comparatif", target: "Les femmes sont plus indépendantes qu'avant.", pos: "형용사 비교급 (우등)", meaning: "여성은 이전보다 더 독립적이다.", examples: [{ target: "Les femmes sont plus indépendantes qu'avant.", kr: "여성은 이전보다 더 독립적이다." }] },
+      { id: 155, category: "comparatif", target: "Paul a plus d'argent que Luc.", pos: "명사 비교급 (우등)", meaning: "Paul은 Luc보다 더 많은 돈을 가지고 있다.", examples: [{ target: "Paul a plus d'argent que Luc.", kr: "Paul은 Luc보다 더 많은 돈을 가지고 있다." }], tip: "plus de + 명사 + que: ~보다 더 많은 …" },
+      { id: 156, category: "comparatif", target: "Paul a moins d'argent que Luc.", pos: "명사 비교급 (열등)", meaning: "Paul은 Luc보다 더 적은 돈을 가지고 있다.", examples: [{ target: "Paul a moins d'argent que Luc.", kr: "Paul은 Luc보다 더 적은 돈을 가지고 있다." }] },
+      { id: 157, category: "comparatif", target: "Paul a autant d'argent que Luc.", pos: "명사 비교급 (동등)", meaning: "Paul은 Luc만큼 돈을 가지고 있다.", examples: [{ target: "Paul a autant d'argent que Luc.", kr: "Paul은 Luc만큼 돈을 가지고 있다." }] },
+      { id: 158, category: "comparatif", target: "J'ai plus de livres que toi.", pos: "명사 비교급 (우등)", meaning: "나는 너보다 많은 책을 가지고 있다.", examples: [{ target: "J'ai plus de livres que toi.", kr: "나는 너보다 많은 책을 가지고 있다." }] },
+      { id: 159, category: "comparatif", target: "Mon père boit moins de café que ma mère.", pos: "명사 비교급 (열등)", meaning: "나의 아빠는 나의 엄마보다 커피를 덜 마신다.", examples: [{ target: "Mon père boit moins de café que ma mère.", kr: "나의 아빠는 나의 엄마보다 커피를 덜 마신다." }] },
+      { id: 160, category: "comparatif", target: "Paul a autant de temps que Marie.", pos: "명사 비교급 (동등)", meaning: "Paul은 Marie만큼 시간을 가지고 있다.", examples: [{ target: "Paul a autant de temps que Marie.", kr: "Paul은 Marie만큼 시간을 가지고 있다." }] },
+      { id: 161, category: "comparatif", target: "Dans une phrase, le féminin a autant d'importance que le masculin.", pos: "명사 비교급 (동등)", meaning: "문장에서 여성형은 남성형과 동일한 중요성을 가진다.", examples: [{ target: "Dans une phrase, le féminin a autant d'importance que le masculin.", kr: "문장에서 여성형은 남성형과 동일한 중요성을 가진다." }] },
+      { id: 162, category: "comparatif", target: "Je travaille plus que toi.", pos: "동사 비교급 (우등)", meaning: "나는 너보다 많이 일한다.", examples: [{ target: "Je travaille plus que toi.", kr: "나는 너보다 많이 일한다." }], tip: "동사 + plus/autant/moins + que: 동사 자체를 비교" },
+      { id: 163, category: "comparatif", target: "Je travaille autant que toi.", pos: "동사 비교급 (동등)", meaning: "나는 너만큼 일한다.", examples: [{ target: "Je travaille autant que toi.", kr: "나는 너만큼 일한다." }] },
+      { id: 164, category: "comparatif", target: "Je travaille moins que toi.", pos: "동사 비교급 (열등)", meaning: "나는 너보다 적게 일한다.", examples: [{ target: "Je travaille moins que toi.", kr: "나는 너보다 적게 일한다." }] },
+      { id: 165, category: "comparatif", target: "Elle voyage plus que moi.", pos: "동사 비교급 (우등)", meaning: "그녀는 나보다 더 많이 여행한다.", examples: [{ target: "Elle voyage plus que moi.", kr: "그녀는 나보다 더 많이 여행한다." }] },
+      { id: 166, category: "comparatif", target: "Ma sœur mange moins que moi.", pos: "동사 비교급 (열등)", meaning: "나의 언니는 나보다 덜 먹는다.", examples: [{ target: "Ma sœur mange moins que moi.", kr: "나의 언니는 나보다 덜 먹는다." }] },
+      { id: 167, category: "comparatif", target: "Mes amis étudient plus que moi.", pos: "동사 비교급 (우등)", meaning: "나의 친구들은 나보다 더 많이 공부한다.", examples: [{ target: "Mes amis étudient plus que moi.", kr: "나의 친구들은 나보다 더 많이 공부한다." }] },
+      { id: 168, category: "comparatif", target: "Mes parents lisent autant que moi.", pos: "동사 비교급 (동등)", meaning: "나의 부모님은 나만큼 독서한다.", examples: [{ target: "Mes parents lisent autant que moi.", kr: "나의 부모님은 나만큼 독서한다." }] },
+      { id: 169, category: "comparatif", target: "Le café noir est meilleur que le café crème.", pos: "특수 비교급 (bon → meilleur)", meaning: "블랙커피가 크림 커피보다 맛있다.", examples: [{ target: "Le café noir est meilleur que le café crème.", kr: "블랙커피가 크림 커피보다 맛있다." }], tip: "bon(좋은)의 우등비교는 plus bon이 아니라 meilleur." },
+      { id: 170, category: "comparatif", target: "Marie parle aussi bien que Jean.", pos: "특수 비교급 (bien → mieux)", meaning: "Marie는 Jean만큼 말을 잘한다.", examples: [{ target: "Marie parle aussi bien que Jean.", kr: "Marie는 Jean만큼 말을 잘한다." }], tip: "bien(잘)의 동등비교는 aussi bien que, 우등비교는 mieux." },
+
+      // =========================================================================
+      // PART 7. 관계대명사 (Qui / Que / Dont / Où) - Parlons en français 02
+      // =========================================================================
+      { id: 171, category: "relatif", target: "la loi", pos: "명사 (f.)", meaning: "법", examples: [{ target: "La loi protège les droits des enfants.", kr: "그 법은 아이들의 권리를 보호한다." }] },
+      { id: 172, category: "relatif", target: "protéger", pos: "동사", meaning: "보호하다", examples: [{ target: "La loi protège les droits des enfants.", kr: "그 법은 아이들의 권리를 보호한다." }] },
+      { id: 173, category: "relatif", target: "les droits (m.pl)", pos: "명사", meaning: "권리", examples: [{ target: "La loi protège les droits des enfants.", kr: "그 법은 아이들의 권리를 보호한다." }] },
+      { id: 174, category: "relatif", target: "la manière", pos: "명사 (f.)", meaning: "방식, 방법", examples: [{ target: "L'écriture inclusive est une manière d'écrire.", kr: "포괄적 글쓰기는 하나의 글쓰기 방식이다." }] },
+      { id: 175, category: "relatif", target: "la vitrine", pos: "명사 (f.)", meaning: "진열창, 쇼윈도", examples: [{ target: "Je voudrais essayer la jupe qui est en vitrine.", kr: "나는 진열창에 있는 치마를 입어보고 싶다." }] },
+      { id: 176, category: "relatif", target: "la flûte", pos: "명사 (f.)", meaning: "플루트", examples: [{ target: "Nous avons un fils qui sait jouer de la flûte.", kr: "우리는 플루트를 연주할 줄 아는 아들이 있다." }] },
+      { id: 177, category: "relatif", target: "emprunter", pos: "동사", meaning: "빌리다, 대출하다", examples: [{ target: "Les livres qui vous plaisent sont déjà empruntés.", kr: "너희 마음에 드는 책들은 이미 대출되었다." }] },
+      { id: 178, category: "relatif", target: "plaire à qn", pos: "동사", meaning: "~의 마음에 들다", examples: [{ target: "Les livres qui vous plaisent sont déjà empruntés.", kr: "너희 마음에 드는 책들은 이미 대출되었다." }] },
+      { id: 179, category: "relatif", target: "cher / chère", pos: "형용사", meaning: "비싼", examples: [{ target: "La voiture que nous avons achetée est chère.", kr: "우리가 산 그 차는 비싸다." }] },
+      { id: 180, category: "relatif", target: "enseigner", pos: "동사", meaning: "가르치다", examples: [{ target: "La règle que le professeur nous enseigne est vieille.", kr: "선생님이 우리에게 가르치는 그 규칙은 오래되었다." }] },
+      { id: 181, category: "relatif", target: "le manifeste", pos: "명사 (m.)", meaning: "선언문", examples: [{ target: "Je suis contre le manifeste que les élèves signent.", kr: "나는 학생들이 서명하는 그 선언문에 반대한다." }] },
+      { id: 182, category: "relatif", target: "signer", pos: "동사", meaning: "서명하다", examples: [{ target: "Je suis contre le manifeste que les élèves signent.", kr: "나는 학생들이 서명하는 그 선언문에 반대한다." }] },
+      { id: 183, category: "relatif", target: "recommander", pos: "동사", meaning: "추천하다", examples: [{ target: "Les films que tu m'as recommandés m'intéressent.", kr: "네가 나에게 추천한 영화들이 나에게 흥미롭다." }] },
+      { id: 184, category: "relatif", target: "juger", pos: "동사", meaning: "평가하다, 판단하다", examples: [{ target: "L'élève que ses collègues jugent intelligent est français.", kr: "동료들이 똑똑하다고 평가하는 그 학생은 프랑스인이다." }] },
+      { id: 185, category: "relatif", target: "le parfum", pos: "명사 (m.)", meaning: "향수", examples: [{ target: "Le parfum qu'il m'a offert, c'est du Chanel n°5.", kr: "그가 나에게 선물한 그 향수는 샤넬 5번이다." }] },
+      { id: 186, category: "relatif", target: "offrir", pos: "동사", meaning: "선물하다", examples: [{ target: "Le parfum qu'il m'a offert, c'est du Chanel n°5.", kr: "그가 나에게 선물한 그 향수는 샤넬 5번이다." }] },
+      { id: 187, category: "relatif", target: "envoyer", pos: "동사", meaning: "보내다", examples: [{ target: "Je conserve les lettres qu'il m'a envoyées.", kr: "나는 그가 나에게 보낸 편지들을 보관한다." }] },
+      { id: 188, category: "relatif", target: "se servir de", pos: "동사 (대명동사)", meaning: "~을 이용하다", examples: [{ target: "Le dictionnaire dont je me suis beaucoup servie est très utile.", kr: "내가 많이 이용한 그 사전은 매우 유용하다." }] },
+      { id: 189, category: "relatif", target: "avoir peur de", pos: "동사구", meaning: "~을 무서워하다", examples: [{ target: "Le serpent est un animal dont elle a peur.", kr: "뱀은 그녀가 무서워하는 동물이다." }] },
+      { id: 190, category: "relatif", target: "se souvenir de", pos: "동사 (대명동사)", meaning: "~을 기억하다", examples: [{ target: "Je me souviens du jour où nous nous sommes rencontrées.", kr: "나는 우리가 만난 그날을 기억한다." }] },
+      { id: 191, category: "relatif", target: "dépasser", pos: "동사", meaning: "넘어서다, 극복하다", examples: [{ target: "Certains pays francophones où on parle français ont déjà dépassé ce débat.", kr: "프랑스어가 사용되는 일부 프랑스어권 국가들은 이미 이 논쟁을 넘어섰다." }] },
+      { id: 192, category: "relatif", target: "francophone", pos: "형용사", meaning: "프랑스어권의", examples: [{ target: "Certains pays francophones où on parle français ont déjà dépassé ce débat.", kr: "프랑스어가 사용되는 일부 프랑스어권 국가들은 이미 이 논쟁을 넘어섰다." }] },
+
+      { id: 193, category: "relatif", target: "J'ai un ami qui parle quatre langues.", pos: "관계대명사 qui (주어 역할)", meaning: "나는 4개 언어를 말하는 친구가 있다.", examples: [{ target: "J'ai un ami qui parle quatre langues.", kr: "나는 4개 언어를 말하는 친구가 있다." }], tip: "qui는 선행사가 관계절 안에서 주어 역할을 할 때 사용합니다." },
+      { id: 194, category: "relatif", target: "La loi qui protège les droits des enfants est très importante.", pos: "관계대명사 qui", meaning: "아이들의 권리를 보호하는 법은 매우 중요하다.", examples: [{ target: "La loi qui protège les droits des enfants est très importante.", kr: "아이들의 권리를 보호하는 법은 매우 중요하다." }] },
+      { id: 195, category: "relatif", target: "C'est un sport qui m'a bien aidé.", pos: "관계대명사 qui", meaning: "그것은 나를 많이 도와준 스포츠이다.", examples: [{ target: "C'est un sport qui m'a bien aidé.", kr: "그것은 나를 많이 도와준 스포츠이다." }] },
+      { id: 196, category: "relatif", target: "J'ai retourné un livre qui m'ennuie.", pos: "관계대명사 qui", meaning: "나는 나를 지루하게 하는 책을 반납했다.", examples: [{ target: "J'ai retourné un livre qui m'ennuie.", kr: "나는 나를 지루하게 하는 책을 반납했다." }] },
+      { id: 197, category: "relatif", target: "L'écriture inclusive est une manière d'écrire qui donne autant d'importance au féminin qu'au masculin.", pos: "관계대명사 qui", meaning: "포괄적 글쓰기는 여성형에 남성형만큼 동일한 중요성을 부여하는 글쓰기 방식이다.", examples: [{ target: "L'écriture inclusive est une manière d'écrire qui donne autant d'importance au féminin qu'au masculin.", kr: "포괄적 글쓰기는 여성형에 남성형만큼 동일한 중요성을 부여하는 글쓰기 방식이다." }] },
+      { id: 198, category: "relatif", target: "Tu connais la règle de grammaire qui dit que « le masculin l'emporte sur le féminin ».", pos: "관계대명사 qui", meaning: "너는 '남성형이 여성형을 이긴다'고 말하는 문법 규칙을 알고 있다.", examples: [{ target: "Tu connais la règle de grammaire qui dit que « le masculin l'emporte sur le féminin ».", kr: "너는 '남성형이 여성형을 이긴다'고 말하는 문법 규칙을 알고 있다." }] },
+      { id: 199, category: "relatif", target: "Paul est un garçon qui écoute bien ses parents.", pos: "관계대명사 qui", meaning: "Paul은 부모님 말을 잘 듣는 소년이다.", examples: [{ target: "Paul est un garçon qui écoute bien ses parents.", kr: "Paul은 부모님 말을 잘 듣는 소년이다." }] },
+      { id: 200, category: "relatif", target: "Je voudrais essayer la jupe qui est en vitrine.", pos: "관계대명사 qui", meaning: "나는 진열창에 있는 치마를 입어보고 싶다.", examples: [{ target: "Je voudrais essayer la jupe qui est en vitrine.", kr: "나는 진열창에 있는 치마를 입어보고 싶다." }] },
+      { id: 201, category: "relatif", target: "Nous avons un fils qui sait jouer de la flûte.", pos: "관계대명사 qui", meaning: "우리는 플루트를 연주할 줄 아는 아들이 있다.", examples: [{ target: "Nous avons un fils qui sait jouer de la flûte.", kr: "우리는 플루트를 연주할 줄 아는 아들이 있다." }] },
+      { id: 202, category: "relatif", target: "Les livres qui vous plaisent sont déjà empruntés.", pos: "관계대명사 qui", meaning: "너희 마음에 드는 책들은 이미 대출되었다.", examples: [{ target: "Les livres qui vous plaisent sont déjà empruntés.", kr: "너희 마음에 드는 책들은 이미 대출되었다." }] },
+
+      { id: 203, category: "relatif", target: "J'ai vu un film que j'aime beaucoup.", pos: "관계대명사 que (목적어 역할)", meaning: "나는 내가 아주 좋아하는 영화를 봤다.", examples: [{ target: "J'ai vu un film que j'aime beaucoup.", kr: "나는 내가 아주 좋아하는 영화를 봤다." }], tip: "que는 선행사가 관계절 안에서 직접목적어 역할을 할 때 사용합니다." },
+      { id: 204, category: "relatif", target: "La voiture que nous avons achetée est chère.", pos: "관계대명사 que", meaning: "우리가 산 그 차는 비싸다.", examples: [{ target: "La voiture que nous avons achetée est chère.", kr: "우리가 산 그 차는 비싸다." }], tip: "직접목적어 que(la voiture)가 조동사 앞에 선행하므로 과거분사 achetée가 성수일치(여성단수)합니다." },
+      { id: 205, category: "relatif", target: "La règle que le professeur nous enseigne est vieille.", pos: "관계대명사 que", meaning: "선생님이 우리에게 가르치는 그 규칙은 오래되었다.", examples: [{ target: "La règle que le professeur nous enseigne est vieille.", kr: "선생님이 우리에게 가르치는 그 규칙은 오래되었다." }] },
+      { id: 206, category: "relatif", target: "Je suis contre le manifeste que les élèves signent.", pos: "관계대명사 que", meaning: "나는 학생들이 서명하는 그 선언문에 반대한다.", examples: [{ target: "Je suis contre le manifeste que les élèves signent.", kr: "나는 학생들이 서명하는 그 선언문에 반대한다." }] },
+      { id: 207, category: "relatif", target: "Les chaussures qu'elle s'est achetées sont jolies.", pos: "관계대명사 que", meaning: "그녀가 산 그 신발은 예쁘다.", examples: [{ target: "Les chaussures qu'elle s'est achetées sont jolies.", kr: "그녀가 산 그 신발은 예쁘다." }], tip: "직접목적어 que(les chaussures) 선행 → achetées 성수일치(여성복수)." },
+      { id: 208, category: "relatif", target: "Les films que tu m'as recommandés m'intéressent.", pos: "관계대명사 que", meaning: "네가 나에게 추천한 영화들이 나에게 흥미롭다.", examples: [{ target: "Les films que tu m'as recommandés m'intéressent.", kr: "네가 나에게 추천한 영화들이 나에게 흥미롭다." }], tip: "직접목적어 que(les films) 선행 → recommandés 성수일치(남성복수)." },
+      { id: 209, category: "relatif", target: "L'élève que ses collègues jugent intelligent est français.", pos: "관계대명사 que", meaning: "동료들이 똑똑하다고 평가하는 그 학생은 프랑스인이다.", examples: [{ target: "L'élève que ses collègues jugent intelligent est français.", kr: "동료들이 똑똑하다고 평가하는 그 학생은 프랑스인이다." }] },
+      { id: 210, category: "relatif", target: "Le parfum qu'il m'a offert, c'est du Chanel n°5.", pos: "관계대명사 que", meaning: "그가 나에게 선물한 그 향수는 샤넬 5번이다.", examples: [{ target: "Le parfum qu'il m'a offert, c'est du Chanel n°5.", kr: "그가 나에게 선물한 그 향수는 샤넬 5번이다." }] },
+      { id: 211, category: "relatif", target: "Je conserve les lettres qu'il m'a envoyées.", pos: "관계대명사 que", meaning: "나는 그가 나에게 보낸 편지들을 보관한다.", examples: [{ target: "Je conserve les lettres qu'il m'a envoyées.", kr: "나는 그가 나에게 보낸 편지들을 보관한다." }], tip: "직접목적어 que(les lettres) 선행 → envoyées 성수일치(여성복수)." },
+
+      { id: 212, category: "relatif", target: "Le projet dont il me parle ne me plaît pas.", pos: "관계대명사 dont (de+명사 대체)", meaning: "그가 나에게 말하는 그 프로젝트는 내 마음에 들지 않는다.", examples: [{ target: "Le projet dont il me parle ne me plaît pas.", kr: "그가 나에게 말하는 그 프로젝트는 내 마음에 들지 않는다." }], tip: "dont은 parler de, avoir besoin de 처럼 de를 동반하는 표현의 선행사를 대체합니다." },
+      { id: 213, category: "relatif", target: "J'ai rencontré un garçon dont le père est très connu.", pos: "관계대명사 dont", meaning: "나는 아버지가 매우 유명한 한 소년을 만났다.", examples: [{ target: "J'ai rencontré un garçon dont le père est très connu.", kr: "나는 아버지가 매우 유명한 한 소년을 만났다." }] },
+      { id: 214, category: "relatif", target: "La fille dont je te parle est française.", pos: "관계대명사 dont", meaning: "내가 너에게 말하는 그 소녀는 프랑스인이다.", examples: [{ target: "La fille dont je te parle est française.", kr: "내가 너에게 말하는 그 소녀는 프랑스인이다." }] },
+      { id: 215, category: "relatif", target: "Le Monde est un quotidien dont les articles sont intéressants.", pos: "관계대명사 dont", meaning: "르몽드는 기사가 흥미로운 일간지이다.", examples: [{ target: "Le Monde est un quotidien dont les articles sont intéressants.", kr: "르몽드는 기사가 흥미로운 일간지이다." }] },
+      { id: 216, category: "relatif", target: "Tu as le livre dont j'ai besoin.", pos: "관계대명사 dont", meaning: "너는 내가 필요로 하는 그 책을 가지고 있다.", examples: [{ target: "Tu as le livre dont j'ai besoin.", kr: "너는 내가 필요로 하는 그 책을 가지고 있다." }], tip: "avoir besoin de qc → dont" },
+      { id: 217, category: "relatif", target: "Le dictionnaire dont je me suis beaucoup servie est très utile.", pos: "관계대명사 dont", meaning: "내가 많이 이용한 그 사전은 매우 유용하다.", examples: [{ target: "Le dictionnaire dont je me suis beaucoup servie est très utile.", kr: "내가 많이 이용한 그 사전은 매우 유용하다." }], tip: "se servir de qc → dont" },
+      { id: 218, category: "relatif", target: "Le serpent est un animal dont elle a peur.", pos: "관계대명사 dont", meaning: "뱀은 그녀가 무서워하는 동물이다.", examples: [{ target: "Le serpent est un animal dont elle a peur.", kr: "뱀은 그녀가 무서워하는 동물이다." }], tip: "avoir peur de qc → dont" },
+
+      { id: 219, category: "relatif", target: "La rue où j'habite est très agréable.", pos: "관계대명사 où (장소/시간)", meaning: "내가 사는 그 거리는 매우 쾌적하다.", examples: [{ target: "La rue où j'habite est très agréable.", kr: "내가 사는 그 거리는 매우 쾌적하다." }], tip: "où는 장소나 시간을 나타내는 선행사를 대체합니다." },
+      { id: 220, category: "relatif", target: "La semaine où j'ai passé un examen était très stressante.", pos: "관계대명사 où", meaning: "내가 시험을 본 그 주는 매우 스트레스가 많았다.", examples: [{ target: "La semaine où j'ai passé un examen était très stressante.", kr: "내가 시험을 본 그 주는 매우 스트레스가 많았다." }] },
+      { id: 221, category: "relatif", target: "La Suisse est un pays où on parle quatre langues.", pos: "관계대명사 où", meaning: "스위스는 4개 언어가 사용되는 나라이다.", examples: [{ target: "La Suisse est un pays où on parle quatre langues.", kr: "스위스는 4개 언어가 사용되는 나라이다." }] },
+      { id: 222, category: "relatif", target: "Paris est une ville où il y a beaucoup d'espaces verts.", pos: "관계대명사 où", meaning: "파리는 녹지 공간이 많은 도시이다.", examples: [{ target: "Paris est une ville où il y a beaucoup d'espaces verts.", kr: "파리는 녹지 공간이 많은 도시이다." }] },
+      { id: 223, category: "relatif", target: "Le jour où nous avons planté des arbres était ensoleillé.", pos: "관계대명사 où", meaning: "우리가 나무를 심은 그날은 화창했다.", examples: [{ target: "Le jour où nous avons planté des arbres était ensoleillé.", kr: "우리가 나무를 심은 그날은 화창했다." }] },
+      { id: 224, category: "relatif", target: "Le mois où on est partis en vacances était chaud.", pos: "관계대명사 où", meaning: "우리가 휴가를 떠난 그달은 더웠다.", examples: [{ target: "Le mois où on est partis en vacances était chaud.", kr: "우리가 휴가를 떠난 그달은 더웠다." }] },
+      { id: 225, category: "relatif", target: "Je me souviens du jour où nous nous sommes rencontrées.", pos: "관계대명사 où", meaning: "나는 우리가 만난 그날을 기억한다.", examples: [{ target: "Je me souviens du jour où nous nous sommes rencontrées.", kr: "나는 우리가 만난 그날을 기억한다." }] },
+      { id: 226, category: "relatif", target: "Certains pays francophones où on parle français ont déjà dépassé ce débat.", pos: "관계대명사 où", meaning: "프랑스어가 사용되는 일부 프랑스어권 국가들은 이미 이 논쟁을 넘어섰다.", examples: [{ target: "Certains pays francophones où on parle français ont déjà dépassé ce débat.", kr: "프랑스어가 사용되는 일부 프랑스어권 국가들은 이미 이 논쟁을 넘어섰다." }] },
+
+      // =========================================================================
+      // PART 8. 현재분사와 제롱디프 (Participe présent / Gérondif) - Parlons en français 02
+      // =========================================================================
+      { id: 227, category: "participe", target: "signer", pos: "동사 (현재분사: signant)", meaning: "서명하다", examples: [{ target: "Plus de 300 professeurs se sont engagés en signant un manifeste.", kr: "300명이 넘는 교사들이 선언문에 서명하며 약속했다." }] },
+      { id: 228, category: "participe", target: "commencer", pos: "동사 (현재분사: commençant)", meaning: "시작하다", examples: [{ target: "Le cours commence à 9 heures.", kr: "수업은 9시에 시작한다." }], tip: "-cer 동사는 a 앞에서 c가 ç로 바뀝니다 (commençant)." },
+      { id: 229, category: "participe", target: "voyager", pos: "동사 (현재분사: voyageant)", meaning: "여행하다", examples: [{ target: "Elle aime voyager seule.", kr: "그녀는 혼자 여행하는 것을 좋아한다." }], tip: "-ger 동사는 a 앞에서 e가 추가됩니다 (voyageant)." },
+      { id: 230, category: "participe", target: "écrire", pos: "동사 (현재분사: écrivant)", meaning: "쓰다", examples: [{ target: "Il écrit une lettre à son ami.", kr: "그는 친구에게 편지를 쓴다." }] },
+      { id: 231, category: "participe", target: "prendre", pos: "동사 (현재분사: prenant)", meaning: "잡다, 타다", examples: [{ target: "Je prends le bus tous les matins.", kr: "나는 매일 아침 버스를 탄다." }] },
+      { id: 232, category: "participe", target: "être", pos: "동사 (현재분사: étant, 불규칙)", meaning: "~이다", examples: [{ target: "Elle est étudiante.", kr: "그녀는 학생이다." }] },
+      { id: 233, category: "participe", target: "avoir", pos: "동사 (현재분사: ayant, 불규칙)", meaning: "가지다", examples: [{ target: "J'ai deux frères.", kr: "나는 형제가 두 명 있다." }] },
+      { id: 234, category: "participe", target: "savoir", pos: "동사 (현재분사: sachant, 불규칙)", meaning: "알다", examples: [{ target: "Il sait nager.", kr: "그는 수영할 줄 안다." }] },
+      { id: 235, category: "participe", target: "sortir", pos: "동사", meaning: "나가다", examples: [{ target: "Je vois une fille sortant de l'école.", kr: "나는 학교에서 나오는 한 소녀를 본다." }] },
+      { id: 236, category: "participe", target: "voter", pos: "동사", meaning: "투표하다", examples: [{ target: "Les personnes ayant plus de 18 ans peuvent voter.", kr: "18세 이상인 사람들은 투표할 수 있다." }] },
+      { id: 237, category: "participe", target: "quitter", pos: "동사", meaning: "떠나다", examples: [{ target: "J'ai vu l'homme quittant la pièce.", kr: "나는 방을 떠나는 한 남자를 보았다." }] },
+      { id: 238, category: "participe", target: "la pièce", pos: "명사 (f.)", meaning: "방", examples: [{ target: "J'ai vu l'homme quittant la pièce.", kr: "나는 방을 떠나는 한 남자를 보았다." }] },
+      { id: 239, category: "participe", target: "grandir", pos: "동사", meaning: "성장하다", examples: [{ target: "On grandit en tombant.", kr: "우리는 넘어지면서 성장한다." }] },
+      { id: 240, category: "participe", target: "tomber", pos: "동사", meaning: "넘어지다, 떨어지다", examples: [{ target: "Il est tombé en courant trop vite.", kr: "그는 너무 빨리 달리다가 넘어졌다." }] },
+      { id: 241, category: "participe", target: "courir", pos: "동사", meaning: "달리다", examples: [{ target: "Il est tombé en courant trop vite.", kr: "그는 너무 빨리 달리다가 넘어졌다." }] },
+      { id: 242, category: "participe", target: "réussir", pos: "동사", meaning: "성공하다", examples: [{ target: "En travaillant dur, tu réussiras.", kr: "열심히 노력하면, 너는 성공할 것이다." }] },
+      { id: 243, category: "participe", target: "s'engager à", pos: "동사 (대명동사)", meaning: "~할 것을 약속하다, 다짐하다", examples: [{ target: "Plus de 300 professeurs se sont engagés à ne plus enseigner cette règle en signant un manifeste.", kr: "300명이 넘는 교사들은 선언문에 서명하며 이 규칙을 더 이상 가르치지 않겠다고 약속했다." }] },
+
+      { id: 244, category: "participe", target: "Je vois une fille sortant de l'école.", pos: "현재분사 (qui+V 대체, 수식)", meaning: "나는 학교에서 나오는 한 소녀를 본다.", examples: [{ target: "Je vois une fille sortant de l'école.", kr: "나는 학교에서 나오는 한 소녀를 본다." }], tip: "현재분사는 관계대명사절(qui+동사)을 대체하여 명사를 수식할 수 있습니다." },
+      { id: 245, category: "participe", target: "Les personnes ayant plus de 18 ans peuvent voter.", pos: "현재분사 (avoir → ayant, 불규칙)", meaning: "18세 이상인 사람들은 투표할 수 있다.", examples: [{ target: "Les personnes ayant plus de 18 ans peuvent voter.", kr: "18세 이상인 사람들은 투표할 수 있다." }] },
+      { id: 246, category: "participe", target: "J'ai vu l'homme quittant la pièce.", pos: "현재분사 (수식)", meaning: "나는 방을 떠나는 한 남자를 보았다.", examples: [{ target: "J'ai vu l'homme quittant la pièce.", kr: "나는 방을 떠나는 한 남자를 보았다." }] },
+      { id: 247, category: "participe", target: "Je travaille en écoutant de la musique.", pos: "제롱디프 (동시성)", meaning: "나는 음악을 들으면서 일한다.", examples: [{ target: "Je travaille en écoutant de la musique.", kr: "나는 음악을 들으면서 일한다." }], tip: "제롱디프의 형태는 en + 현재분사입니다." },
+      { id: 248, category: "participe", target: "On grandit en tombant.", pos: "제롱디프 (조건/원인)", meaning: "우리는 넘어지면서 성장한다.", examples: [{ target: "On grandit en tombant.", kr: "우리는 넘어지면서 성장한다." }] },
+      { id: 249, category: "participe", target: "Il est tombé en courant trop vite.", pos: "제롱디프 (원인)", meaning: "그는 너무 빨리 달리다가 넘어졌다.", examples: [{ target: "Il est tombé en courant trop vite.", kr: "그는 너무 빨리 달리다가 넘어졌다." }] },
+      { id: 250, category: "participe", target: "En travaillant dur, tu réussiras.", pos: "제롱디프 (조건)", meaning: "열심히 노력하면, 너는 성공할 것이다.", examples: [{ target: "En travaillant dur, tu réussiras.", kr: "열심히 노력하면, 너는 성공할 것이다." }] },
+      { id: 251, category: "participe", target: "Tu l'as compris en regardant la vidéo.", pos: "제롱디프 (동시성)", meaning: "너는 영상을 보면서 그것을 이해했다.", examples: [{ target: "Tu l'as compris en regardant la vidéo.", kr: "너는 영상을 보면서 그것을 이해했다." }] },
+      { id: 252, category: "participe", target: "Plus de 300 professeurs se sont même engagés à ne plus enseigner cette règle en signant un manifeste.", pos: "제롱디프 (수단)", meaning: "300명이 넘는 교사들은 선언문에 서명하며 이 규칙을 더 이상 가르치지 않겠다고 약속했다.", examples: [{ target: "Plus de 300 professeurs se sont même engagés à ne plus enseigner cette règle en signant un manifeste.", kr: "300명이 넘는 교사들은 선언문에 서명하며 이 규칙을 더 이상 가르치지 않겠다고 약속했다." }], tip: "Attention! 'Je vois Paul chantant'(현재분사, Paul을 수식) vs 'Je vois Paul en chantant'(제롱디프, 주어인 내가 노래하며 Paul을 봄) — 의미상 주어가 다름에 유의하세요." },
+
+      // =========================================================================
+      // PART 9. C'est quoi, l'écriture inclusive ? (읽기 지문) - Parlons en français 02
+      // =========================================================================
+      { id: 253, category: "inclusive", target: "l'écriture inclusive (f.)", pos: "명사", meaning: "포괄적 글쓰기 (성 중립적 글쓰기)", examples: [{ target: "De plus en plus de personnes veulent utiliser l'écriture inclusive.", kr: "점점 더 많은 사람들이 포괄적 글쓰기를 사용하고 싶어 한다." }] },
+      { id: 254, category: "inclusive", target: "l'emporter sur", pos: "동사구", meaning: "~을 이기다, 압도하다", examples: [{ target: "Le masculin l'emporte sur le féminin.", kr: "남성형이 여성형을 이긴다." }] },
+      { id: 255, category: "inclusive", target: "étrange", pos: "형용사", meaning: "이상한", examples: [{ target: "Un peu étrange et même injuste.", kr: "조금 이상하고 심지어 불공평하다." }] },
+      { id: 256, category: "inclusive", target: "injuste", pos: "형용사", meaning: "불공평한", examples: [{ target: "Un peu étrange et même injuste.", kr: "조금 이상하고 심지어 불공평하다." }] },
+      { id: 257, category: "inclusive", target: "appliquer", pos: "동사", meaning: "적용하다", examples: [{ target: "Tout le monde l'applique, comme de nombreuses règles de français.", kr: "프랑스어의 많은 규칙들처럼, 모두가 그것을 적용한다." }] },
+      { id: 258, category: "inclusive", target: "égal(e)", pos: "형용사", meaning: "평등한, 동등한", examples: [{ target: "Les hommes et les femmes sont égaux.", kr: "남자와 여자는 평등하다." }] },
+      { id: 259, category: "inclusive", target: "sexiste", pos: "형용사", meaning: "성차별적인", examples: [{ target: "Certains jugent cette règle sexiste.", kr: "어떤 사람들은 이 규칙을 성차별적이라고 평가한다." }] },
+      { id: 260, category: "inclusive", target: "considérer", pos: "동사", meaning: "~로 여기다, 간주하다", examples: [{ target: "Les filles seront plus facilement considérées égales aux garçons.", kr: "여자아이들이 남자아이들과 동등하게 여겨지기 더 쉬워질 것이다." }] },
+      { id: 261, category: "inclusive", target: "compliquer", pos: "동사", meaning: "복잡하게 만들다", examples: [{ target: "Ces nouvelles règles pourraient compliquer l'apprentissage de notre langue.", kr: "이 새로운 규칙들은 우리 언어 학습을 복잡하게 만들 수 있다." }] },
+      { id: 262, category: "inclusive", target: "l'apprentissage (m.)", pos: "명사", meaning: "학습", examples: [{ target: "Ces nouvelles règles pourraient compliquer l'apprentissage de notre langue pour les plus jeunes.", kr: "이 새로운 규칙들은 더 어린 사람들에게 우리 언어 학습을 복잡하게 만들 수 있다." }] },
+      { id: 263, category: "inclusive", target: "le Premier ministre", pos: "명사 (m.)", meaning: "총리", examples: [{ target: "Le Premier ministre français a demandé à tous les ministres de ne pas utiliser cette forme d'écriture.", kr: "프랑스 총리는 모든 장관들에게 이 글쓰기 형태를 사용하지 말 것을 요청했다." }] },
+      { id: 264, category: "inclusive", target: "officiel(le)", pos: "형용사", meaning: "공식적인", examples: [{ target: "Ne pas utiliser cette forme d'écriture dans les textes officiels.", kr: "공식 문서에서 이 글쓰기 형태를 사용하지 말 것." }] },
+      { id: 265, category: "inclusive", target: "le maire / la mairesse", pos: "명사", meaning: "시장 (남/여)", examples: [{ target: "On ne dit pas « madame le maire », mais « madame la mairesse ».", kr: "'madame le maire'라고 하지 않고 'madame la mairesse'라고 한다." }] },
+      { id: 266, category: "inclusive", target: "le journal (pl. journaux)", pos: "명사 (m.)", meaning: "신문", examples: [{ target: "« Madame la mairesse » dans la rue, les journaux et les documents officiels.", kr: "거리, 신문, 공식 문서에서 'madame la mairesse'." }] },
+
+      { id: 267, category: "inclusive", target: "Tu connais la règle de grammaire qui dit que « le masculin l'emporte sur le féminin ».", pos: "읽기 지문", meaning: "너는 '남성형이 여성형을 이긴다'고 말하는 문법 규칙을 알고 있다.", examples: [{ target: "Tu connais la règle de grammaire qui dit que « le masculin l'emporte sur le féminin ».", kr: "너는 '남성형이 여성형을 이긴다'고 말하는 문법 규칙을 알고 있다." }] },
+      { id: 268, category: "inclusive", target: "Un peu étrange et même injuste.", pos: "읽기 지문", meaning: "조금 이상하고 심지어 불공평하다.", examples: [{ target: "Un peu étrange et même injuste.", kr: "조금 이상하고 심지어 불공평하다." }] },
+      { id: 269, category: "inclusive", target: "Mais tout le monde l'applique, comme de nombreuses règles de français…", pos: "읽기 지문", meaning: "하지만 프랑스어의 많은 규칙들처럼, 모두가 그것을 적용한다.", examples: [{ target: "Mais tout le monde l'applique, comme de nombreuses règles de français…", kr: "하지만 프랑스어의 많은 규칙들처럼, 모두가 그것을 적용한다." }] },
+      { id: 270, category: "inclusive", target: "Tout le monde ? Non !", pos: "읽기 지문", meaning: "모두가? 아니다!", examples: [{ target: "Tout le monde ? Non !", kr: "모두가? 아니다!" }] },
+      { id: 271, category: "inclusive", target: "De plus en plus de personnes veulent utiliser l'écriture inclusive.", pos: "읽기 지문", meaning: "점점 더 많은 사람들이 포괄적 글쓰기를 사용하고 싶어 한다.", examples: [{ target: "De plus en plus de personnes veulent utiliser l'écriture inclusive.", kr: "점점 더 많은 사람들이 포괄적 글쓰기를 사용하고 싶어 한다." }] },
+      { id: 272, category: "inclusive", target: "L'écriture inclusive est une manière d'écrire qui donne autant d'importance au féminin qu'au masculin.", pos: "읽기 지문", meaning: "포괄적 글쓰기는 여성형에 남성형만큼 동일한 중요성을 부여하는 글쓰기 방식이다.", examples: [{ target: "L'écriture inclusive est une manière d'écrire qui donne autant d'importance au féminin qu'au masculin.", kr: "포괄적 글쓰기는 여성형에 남성형만큼 동일한 중요성을 부여하는 글쓰기 방식이다." }] },
+      { id: 273, category: "inclusive", target: "On dit et on écrit : « Les hommes et les femmes sont égaux. »", pos: "읽기 지문", meaning: "사람들은 '남자와 여자는 평등하다(남성형)'라고 말하고 쓴다.", examples: [{ target: "On dit et on écrit : « Les hommes et les femmes sont égaux. »", kr: "사람들은 '남자와 여자는 평등하다(남성형)'라고 말하고 쓴다." }] },
+      { id: 274, category: "inclusive", target: "On ne dit pas « Les hommes et les femmes sont égales », même s'il n'y a qu'un homme et 100 femmes dans la pièce !", pos: "읽기 지문", meaning: "'남자와 여자는 평등하다(여성형)'라고는 말하지 않는다, 방 안에 남자가 한 명뿐이고 여자가 100명이어도 말이다!", examples: [{ target: "On ne dit pas « Les hommes et les femmes sont égales », même s'il n'y a qu'un homme et 100 femmes dans la pièce !", kr: "'남자와 여자는 평등하다(여성형)'라고는 말하지 않는다, 방 안에 남자가 한 명뿐이고 여자가 100명이어도 말이다!" }] },
+      { id: 275, category: "inclusive", target: "Certains jugent cette règle sexiste.", pos: "읽기 지문", meaning: "어떤 사람들은 이 규칙을 성차별적이라고 평가한다.", examples: [{ target: "Certains jugent cette règle sexiste.", kr: "어떤 사람들은 이 규칙을 성차별적이라고 평가한다." }] },
+      { id: 276, category: "inclusive", target: "Si le féminin a autant d'importance que le masculin dans une phrase, les filles seront plus facilement considérées égales aux garçons.", pos: "읽기 지문", meaning: "문장에서 여성형이 남성형만큼 중요성을 가진다면, 여자아이들이 남자아이들과 동등하게 여겨지기 더 쉬워질 것이다.", examples: [{ target: "Si le féminin a autant d'importance que le masculin dans une phrase, les filles seront plus facilement considérées égales aux garçons.", kr: "문장에서 여성형이 남성형만큼 중요성을 가진다면, 여자아이들이 남자아이들과 동등하게 여겨지기 더 쉬워질 것이다." }] },
+      { id: 277, category: "inclusive", target: "Plus de 300 professeurs se sont même engagés à ne plus enseigner cette règle en signant un manifeste.", pos: "읽기 지문", meaning: "300명이 넘는 교사들은 선언문에 서명하며 이 규칙을 더 이상 가르치지 않겠다고 약속했다.", examples: [{ target: "Plus de 300 professeurs se sont même engagés à ne plus enseigner cette règle en signant un manifeste.", kr: "300명이 넘는 교사들은 선언문에 서명하며 이 규칙을 더 이상 가르치지 않겠다고 약속했다." }] },
+      { id: 278, category: "inclusive", target: "Tout le monde n'est pas d'accord pour utiliser cette nouvelle écriture.", pos: "읽기 지문", meaning: "모두가 이 새로운 글쓰기를 사용하는 것에 동의하는 것은 아니다.", examples: [{ target: "Tout le monde n'est pas d'accord pour utiliser cette nouvelle écriture.", kr: "모두가 이 새로운 글쓰기를 사용하는 것에 동의하는 것은 아니다." }] },
+      { id: 279, category: "inclusive", target: "Ces nouvelles règles pourraient compliquer l'apprentissage de notre langue pour les plus jeunes.", pos: "읽기 지문", meaning: "이 새로운 규칙들은 더 어린 사람들에게 우리 언어 학습을 복잡하게 만들 수 있다.", examples: [{ target: "Ces nouvelles règles pourraient compliquer l'apprentissage de notre langue pour les plus jeunes.", kr: "이 새로운 규칙들은 더 어린 사람들에게 우리 언어 학습을 복잡하게 만들 수 있다." }] },
+      { id: 280, category: "inclusive", target: "Le Premier ministre français a demandé à tous les ministres de ne pas utiliser cette forme d'écriture dans les textes officiels.", pos: "읽기 지문", meaning: "프랑스 총리는 모든 장관들에게 공식 문서에서 이 글쓰기 형태를 사용하지 말 것을 요청했다.", examples: [{ target: "Le Premier ministre français a demandé à tous les ministres de ne pas utiliser cette forme d'écriture dans les textes officiels.", kr: "프랑스 총리는 모든 장관들에게 공식 문서에서 이 글쓰기 형태를 사용하지 말 것을 요청했다." }] },
+      { id: 281, category: "inclusive", target: "Certains pays francophones où l'on parle français, comme la province du Québec, ont déjà dépassé ce débat : là-bas, on ne dit pas « madame le maire », mais « madame la mairesse ».", pos: "읽기 지문", meaning: "프랑스어가 사용되는 일부 프랑스어권 국가들(예: 캐나다 퀘벡주)은 이미 이 논쟁을 넘어섰다: 그곳에서는 'madame le maire'라고 하지 않고 'madame la mairesse'라고 한다.", examples: [{ target: "Certains pays francophones où l'on parle français, comme la province du Québec, ont déjà dépassé ce débat : là-bas, on ne dit pas « madame le maire », mais « madame la mairesse ».", kr: "프랑스어가 사용되는 일부 프랑스어권 국가들(예: 캐나다 퀘벡주)은 이미 이 논쟁을 넘어섰다: 그곳에서는 'madame le maire'라고 하지 않고 'madame la mairesse'라고 한다." }] }
     ];
 
     let currentDeck = [];
@@ -1383,11 +1561,15 @@
       document.getElementById('card-progress-text').innerText = `${currentCardIndex + 1} / ${currentDeck.length}`;
       updateStarButtonUI(isStarred);
 
-      const catLabels = { 
-        pc: "복합과거 (P.C.)", 
-        imparfait: "반과거 (Imparfait)", 
+      const catLabels = {
+        pc: "복합과거 (P.C.)",
+        imparfait: "반과거 (Imparfait)",
         futur: "단순미래 (Futur)",
-        pdf30: "PDF 핵심 30문장"
+        pdf30: "PDF 핵심 30문장",
+        comparatif: "비교급",
+        relatif: "관계대명사",
+        participe: "현재분사·제롱디프",
+        inclusive: "écriture inclusive"
       };
       
       document.getElementById('front-category').innerText = catLabels[card.category] || "일반";
