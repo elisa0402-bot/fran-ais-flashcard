@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>내 단어장 (개인 학습용)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .perspective-1000 { perspective: 1000px; }
+    .transform-style-3d { transform-style: preserve-3d; }
+    .backface-hidden { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+    .flipped { transform: rotateY(180deg); }
+    body { -webkit-tap-highlight-color: transparent; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    textarea { -webkit-tap-highlight-color: transparent; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col items-center select-none pb-8">
+
+  <!-- Header -->
+  <header class="w-full max-w-md bg-emerald-600 text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="flex justify-between items-center">
+      <h1 class="text-base font-bold flex items-center gap-2">
+        <span>📚</span> 내 단어장
+      </h1>
+      <div class="flex gap-1.5">
+        <button id="btn-tab-study" onclick="switchTab('study')" class="px-3 py-1.5 bg-emerald-900 text-white rounded-lg text-xs font-semibold transition shadow-sm">카드 학습</button>
+        <button id="btn-tab-add" onclick="switchTab('add')" class="px-3 py-1.5 bg-emerald-500 text-white rounded-lg text-xs font-semibold transition shadow-sm">단어 추가</button>
+        <button id="btn-tab-list" onclick="switchTab('list')" class="px-3 py-1.5 bg-emerald-500 text-white rounded-lg text-xs font-semibold transition shadow-sm">전체 목록</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w-full max-w-md p-4 flex-1 flex flex-col gap-3">
+
+    <!-- Progress Bar & Top Tools -->
+    <section class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200 flex justify-between items-center text-xs">
+      <div>
+        <span class="text-slate-400 font-medium">학습 카드: </span>
+        <span id="card-progress-text" class="font-bold text-emerald-600">0 / 0</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleStarCurrentCard()" id="btn-star" class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-400 hover:text-amber-500 transition flex items-center gap-1 font-medium text-xs">
+          <i class="fa-solid fa-star"></i> <span id="star-btn-label">즐겨찾기</span>
+        </button>
+        <button onclick="shuffleDeck()" class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition font-medium text-xs flex items-center gap-1" title="카드 무작위 섞기">
+          <i class="fa-solid fa-shuffle"></i> 섞기
+        </button>
+      </div>
+    </section>
+
+    <!-- Study View -->
+    <div id="tab-study" class="flex-1 flex flex-col justify-between gap-3">
+
+      <!-- Filter Pills -->
+      <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+        <button onclick="filterSet('all')" id="cat-all" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-emerald-600 text-white shadow-xs whitespace-nowrap">전체</button>
+        <button onclick="filterSet('starred')" id="cat-starred" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">⭐ 즐겨찾기</button>
+      </div>
+
+      <!-- Direction Toggle + Language -->
+      <div class="flex justify-between items-center bg-white px-3 py-2 rounded-xl border border-slate-200 text-xs shadow-2xs gap-2">
+        <button onclick="toggleDirection()" class="px-3 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold rounded-lg transition border border-emerald-200 flex items-center gap-1.5">
+          <i class="fa-solid fa-arrows-rotate text-xs"></i>
+          <span id="direction-label">외국어 ➔ 한국어</span>
+        </button>
+        <select id="lang-select" onchange="onLangChange()" class="text-xs border border-slate-200 rounded-lg px-2 py-1.5 bg-white text-slate-600 font-medium">
+          <option value="fr-FR">🇫🇷 프랑스어</option>
+          <option value="en-US">🇺🇸 영어</option>
+          <option value="ja-JP">🇯🇵 일본어</option>
+          <option value="es-ES">🇪🇸 스페인어</option>
+          <option value="de-DE">🇩🇪 독일어</option>
+          <option value="it-IT">🇮🇹 이탈리아어</option>
+          <option value="zh-CN">🇨🇳 중국어</option>
+        </select>
+      </div>
+
+      <!-- Flashcard Interactive Container -->
+      <div id="card-container" class="relative w-full h-80 perspective-1000 my-auto">
+        <div id="flashcard" class="w-full h-full transform-style-3d transition-transform duration-500 relative cursor-pointer rounded-2xl shadow-sm border border-slate-200 bg-white" onclick="flipCard()">
+
+          <!-- Front Face -->
+          <div id="card-front" class="absolute w-full h-full backface-hidden flex flex-col justify-between p-5 rounded-2xl bg-white">
+            <div class="flex justify-between items-center text-xs text-slate-400">
+              <span id="front-starred-icon" class="text-amber-400 hidden"><i class="fa-solid fa-star"></i></span>
+              <span class="text-[11px]"><i class="fa-solid fa-rotate-right mr-1"></i>터치하여 뒤집기</span>
+            </div>
+
+            <div class="text-center my-auto px-2">
+              <h2 id="front-main" class="text-2xl font-bold text-slate-800 break-words mb-1">--</h2>
+            </div>
+
+            <div class="flex justify-end">
+              <button onclick="speakCurrentCard(event, 'front')" class="p-3 text-emerald-600 bg-emerald-50 hover:bg-emerald-100 rounded-full transition active:scale-95 shadow-2xs" title="발음 듣기">
+                <i class="fa-solid fa-volume-high text-lg"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Back Face -->
+          <div id="card-back" class="absolute w-full h-full backface-hidden rotate-y-180 flex flex-col justify-between p-5 rounded-2xl bg-slate-50 border-2 border-emerald-100">
+            <div class="flex justify-between items-center text-xs text-slate-400">
+              <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-semibold text-[10px]">답안</span>
+              <button onclick="speakCurrentCard(event, 'back')" class="p-2 text-emerald-600 bg-white rounded-full shadow-2xs transition active:scale-95" title="발음 듣기">
+                <i class="fa-solid fa-volume-high text-base"></i>
+              </button>
+            </div>
+
+            <div class="my-auto space-y-3 overflow-y-auto max-h-[200px] pr-1">
+              <h3 id="back-main" class="text-lg font-bold text-slate-900 text-center break-words">--</h3>
+
+              <!-- Examples -->
+              <div id="back-examples" class="text-xs space-y-2 border-t pt-2 border-slate-200"></div>
+            </div>
+
+            <div class="text-center text-[10px] text-slate-400">좌우 버튼으로 다음/이전 카드로 이동합니다</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navigation Control Buttons -->
+      <div id="action-buttons" class="grid grid-cols-2 gap-3 mt-auto">
+        <button onclick="prevCard()" class="py-3 bg-white active:bg-slate-100 text-slate-700 font-bold rounded-xl shadow-sm border border-slate-200 transition active:scale-95 flex items-center justify-center gap-2 text-sm">
+          <i class="fa-solid fa-chevron-left text-xs"></i> 이전 카드
+        </button>
+        <button onclick="nextCard()" class="py-3 bg-emerald-600 active:bg-emerald-700 text-white font-bold rounded-xl shadow transition active:scale-95 flex items-center justify-center gap-2 text-sm">
+          다음 카드 <i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+      </div>
+
+      <!-- Empty State View -->
+      <div id="empty-state" class="hidden flex-1 flex flex-col items-center justify-center text-center p-6 bg-white rounded-2xl border border-slate-200 shadow-sm my-auto min-h-[280px]">
+        <i class="fa-solid fa-book-open text-4xl text-slate-300 mb-2"></i>
+        <h3 class="text-base font-bold text-slate-800">단어가 없습니다</h3>
+        <p class="text-xs text-slate-500 mt-1">"단어 추가" 탭에서 단어를 등록해보세요.</p>
+        <button onclick="switchTab('add')" class="mt-4 px-4 py-2 bg-emerald-600 text-white text-xs font-semibold rounded-xl transition">단어 추가하러 가기</button>
+      </div>
+
+    </div>
+
+    <!-- Add Words Tab -->
+    <div id="tab-add" class="hidden flex-1 flex flex-col gap-3">
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 text-xs space-y-2">
+        <h3 class="font-bold text-sm text-slate-800">단어 추가하기</h3>
+        <p class="text-slate-500">한 줄에 단어 하나씩, 아래 형식으로 입력하세요. 예문은 선택사항입니다.</p>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-[11px] text-slate-600 font-mono leading-relaxed">
+          외국어 | 한국어 뜻 | 예문(외국어) | 예문(한국어)<br>
+          pomme | 사과 | J'ai mangé une pomme rouge. | 나는 빨간 사과를 먹었다.
+        </div>
+        <p class="text-slate-400 text-[11px]">예문이 여러 개면 <code class="bg-slate-100 px-1 rounded">//</code>로 구분하세요 (외국어/한국어 예문 순서를 맞춰주세요).</p>
+        <textarea id="add-textarea" rows="6" placeholder="pomme | 사과 | J'ai mangé une pomme rouge. | 나는 빨간 사과를 먹었다." class="w-full border border-slate-200 rounded-xl p-2.5 text-xs focus:outline-none focus:border-emerald-500"></textarea>
+        <button onclick="addWordsFromTextarea()" class="w-full py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-xs transition active:scale-95">단어장에 추가</button>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 text-xs space-y-2">
+        <h3 class="font-bold text-sm text-slate-800">백업 / 복원</h3>
+        <p class="text-slate-500">단어는 이 기기의 브라우저에만 저장됩니다. 기기를 바꾸거나 데이터가 사라질 수 있으니 가끔 백업해두세요.</p>
+        <div class="flex gap-2">
+          <button onclick="exportWords()" class="flex-1 py-2 bg-slate-100 text-slate-700 font-semibold rounded-xl text-xs transition active:scale-95">내보내기 (복사)</button>
+          <button onclick="toggleImportBox()" class="flex-1 py-2 bg-slate-100 text-slate-700 font-semibold rounded-xl text-xs transition active:scale-95">가져오기</button>
+        </div>
+        <textarea id="import-textarea" rows="4" placeholder="여기에 백업했던 JSON을 붙여넣으세요." class="hidden w-full border border-slate-200 rounded-xl p-2.5 text-xs focus:outline-none focus:border-emerald-500"></textarea>
+        <button id="import-btn" onclick="importWords()" class="hidden w-full py-2 bg-emerald-600 text-white font-bold rounded-xl text-xs transition active:scale-95">가져오기 실행 (기존 단어에 합치기)</button>
+      </div>
+    </div>
+
+    <!-- Search/List View Tab -->
+    <div id="tab-list" class="hidden flex-1 flex flex-col gap-3">
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+        <input id="search-input" oninput="renderListView()" type="text" placeholder="단어, 뜻, 예문 검색..." class="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-emerald-500">
+      </div>
+
+      <div id="card-list" class="flex-1 overflow-y-auto space-y-2 max-h-[65vh] pr-0.5">
+        <!-- List Items populated dynamically -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toast-msg">완료되었습니다!</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'personal_vocab_words';
+    const STAR_KEY = 'personal_vocab_stars';
+    const LANG_KEY = 'personal_vocab_lang';
+
+    let words = [];
+    let currentDeck = [];
+    let currentCardIndex = 0;
+    let isFlipped = false;
+    let isForeignToKr = true;
+    let activeFilter = 'all';
+    let starredIds = new Set();
+    let targetLang = 'fr-FR';
+    let targetVoice = null;
+
+    function loadVoices() {
+      if (!('speechSynthesis' in window)) return;
+      const voices = window.speechSynthesis.getVoices();
+      targetVoice = voices.find(v => v.lang === targetLang) ||
+                    voices.find(v => v.lang.startsWith(targetLang.split('-')[0])) || null;
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    function playTTS(text, isForeign) {
+      if (!('speechSynthesis' in window) || !text) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      if (isForeign) {
+        utterance.lang = targetLang;
+        if (targetVoice) utterance.voice = targetVoice;
+        utterance.rate = 0.85;
+      } else {
+        utterance.lang = 'ko-KR';
+        utterance.rate = 0.95;
+      }
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLang();
+      loadWords();
+      loadStars();
+      buildDeck();
+      renderCurrentCard();
+      renderListView();
+    });
+
+    function loadLang() {
+      const stored = localStorage.getItem(LANG_KEY);
+      if (stored) targetLang = stored;
+      document.getElementById('lang-select').value = targetLang;
+      loadVoices();
+    }
+
+    function onLangChange() {
+      targetLang = document.getElementById('lang-select').value;
+      localStorage.setItem(LANG_KEY, targetLang);
+      loadVoices();
+    }
+
+    function loadWords() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          words = JSON.parse(stored);
+        } catch (e) {
+          words = [];
+        }
+      }
+    }
+
+    function saveWords() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+    }
+
+    function loadStars() {
+      const stored = localStorage.getItem(STAR_KEY);
+      if (stored) {
+        try {
+          starredIds = new Set(JSON.parse(stored));
+        } catch (e) {
+          starredIds = new Set();
+        }
+      }
+    }
+
+    function saveStars() {
+      localStorage.setItem(STAR_KEY, JSON.stringify([...starredIds]));
+    }
+
+    function buildDeck() {
+      currentDeck = words.filter(w => {
+        if (activeFilter === 'starred') return starredIds.has(w.id);
+        return true;
+      });
+      currentCardIndex = 0;
+      isFlipped = false;
+    }
+
+    function filterSet(filter) {
+      activeFilter = filter;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-600');
+      });
+      const activeBtn = document.getElementById(`cat-${filter}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-slate-600');
+        activeBtn.classList.add('bg-emerald-600', 'text-white');
+      }
+      buildDeck();
+      renderCurrentCard();
+    }
+
+    function shuffleDeck() {
+      if (currentDeck.length <= 1) return;
+      for (let i = currentDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [currentDeck[i], currentDeck[j]] = [currentDeck[j], currentDeck[i]];
+      }
+      currentCardIndex = 0;
+      isFlipped = false;
+      renderCurrentCard();
+    }
+
+    function renderCurrentCard() {
+      const container = document.getElementById('card-container');
+      const actionBtns = document.getElementById('action-buttons');
+      const emptyState = document.getElementById('empty-state');
+      const cardElem = document.getElementById('flashcard');
+
+      cardElem.classList.remove('flipped');
+      isFlipped = false;
+
+      if (currentDeck.length === 0) {
+        container.classList.add('hidden');
+        actionBtns.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        document.getElementById('card-progress-text').innerText = `0 / 0`;
+        updateStarButtonUI(false);
+        return;
+      }
+
+      container.classList.remove('hidden');
+      actionBtns.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+
+      const card = currentDeck[currentCardIndex];
+      const isStarred = starredIds.has(card.id);
+
+      document.getElementById('card-progress-text').innerText = `${currentCardIndex + 1} / ${currentDeck.length}`;
+      updateStarButtonUI(isStarred);
+      document.getElementById('front-starred-icon').classList.toggle('hidden', !isStarred);
+
+      const exContainer = document.getElementById('back-examples');
+      exContainer.innerHTML = '';
+
+      const examples = card.examples || [];
+
+      if (isForeignToKr) {
+        document.getElementById('front-main').innerText = card.foreign;
+        document.getElementById('back-main').innerText = card.korean;
+
+        examples.forEach((ex, idx) => {
+          const item = document.createElement('div');
+          item.className = 'bg-white p-2 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-center';
+          item.innerHTML = `
+            <div>
+              <p class="font-semibold text-slate-800 text-xs">${idx + 1}. ${escapeHtml(ex.foreign)}</p>
+              <p class="text-slate-500 text-[11px] mt-0.5">${escapeHtml(ex.korean)}</p>
+            </div>
+            <button onclick="speakTextCustom(event, '${escapeQuotes(ex.foreign)}', true)" class="p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="발음 듣기">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          `;
+          exContainer.appendChild(item);
+        });
+      } else {
+        document.getElementById('front-main').innerText = card.korean;
+        document.getElementById('back-main').innerText = card.foreign;
+
+        examples.forEach((ex, idx) => {
+          const item = document.createElement('div');
+          item.className = 'bg-white p-2 rounded-lg border border-slate-100 shadow-2xs flex justify-between items-center';
+          item.innerHTML = `
+            <div>
+              <p class="font-semibold text-slate-800 text-xs">${idx + 1}. ${escapeHtml(ex.korean)}</p>
+              <p class="text-emerald-600 font-medium text-[11px] mt-0.5">➔ ${escapeHtml(ex.foreign)}</p>
+            </div>
+            <button onclick="speakTextCustom(event, '${escapeQuotes(ex.foreign)}', true)" class="p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="발음 듣기">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          `;
+          exContainer.appendChild(item);
+        });
+      }
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.innerText = str == null ? '' : str;
+      return div.innerHTML;
+    }
+
+    function escapeQuotes(str) {
+      return (str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    function flipCard() {
+      const cardElem = document.getElementById('flashcard');
+      isFlipped = !isFlipped;
+      cardElem.classList.toggle('flipped', isFlipped);
+    }
+
+    function nextCard() {
+      if (currentDeck.length === 0) return;
+      currentCardIndex = (currentCardIndex + 1) % currentDeck.length;
+      renderCurrentCard();
+    }
+
+    function prevCard() {
+      if (currentDeck.length === 0) return;
+      currentCardIndex = (currentCardIndex - 1 + currentDeck.length) % currentDeck.length;
+      renderCurrentCard();
+    }
+
+    function toggleStarCurrentCard() {
+      if (currentDeck.length === 0) return;
+      const card = currentDeck[currentCardIndex];
+      if (starredIds.has(card.id)) {
+        starredIds.delete(card.id);
+      } else {
+        starredIds.add(card.id);
+      }
+      saveStars();
+      renderCurrentCard();
+      renderListView();
+    }
+
+    function updateStarButtonUI(isStarred) {
+      const btn = document.getElementById('btn-star');
+      const label = document.getElementById('star-btn-label');
+      if (isStarred) {
+        btn.className = "px-2.5 py-1 rounded-lg bg-amber-500 text-white font-medium text-xs flex items-center gap-1 shadow-xs transition";
+        label.innerText = "즐겨찾기됨";
+      } else {
+        btn.className = "px-2.5 py-1 rounded-lg border border-slate-200 text-slate-500 hover:text-amber-500 transition flex items-center gap-1 font-medium text-xs";
+        label.innerText = "즐겨찾기";
+      }
+    }
+
+    function toggleDirection() {
+      isForeignToKr = !isForeignToKr;
+      document.getElementById('direction-label').innerText = isForeignToKr ? "외국어 ➔ 한국어" : "한국어 ➔ 외국어";
+      renderCurrentCard();
+    }
+
+    function speakCurrentCard(event, face) {
+      event.stopPropagation();
+      if (currentDeck.length === 0) return;
+      const card = currentDeck[currentCardIndex];
+
+      let text = "";
+      let isForeign = true;
+
+      if (isForeignToKr) {
+        text = (face === 'front') ? card.foreign : card.korean;
+        isForeign = (face === 'front');
+      } else {
+        text = (face === 'front') ? card.korean : card.foreign;
+        isForeign = (face === 'back');
+      }
+
+      playTTS(text, isForeign);
+    }
+
+    function speakTextCustom(event, text, isForeign) {
+      event.stopPropagation();
+      playTTS(text, isForeign);
+    }
+
+    function switchTab(tab) {
+      const tabs = { study: 'tab-study', add: 'tab-add', list: 'tab-list' };
+      const btns = { study: 'btn-tab-study', add: 'btn-tab-add', list: 'btn-tab-list' };
+
+      Object.keys(tabs).forEach(key => {
+        const isActive = key === tab;
+        document.getElementById(tabs[key]).classList.toggle('hidden', !isActive);
+        document.getElementById(btns[key]).className = isActive
+          ? "px-3 py-1.5 bg-emerald-900 text-white rounded-lg text-xs font-semibold transition shadow-sm"
+          : "px-3 py-1.5 bg-emerald-500 text-white rounded-lg text-xs font-semibold transition shadow-sm";
+      });
+
+      if (tab === 'list') renderListView();
+    }
+
+    function nextId() {
+      return words.reduce((max, w) => Math.max(max, w.id), 0) + 1;
+    }
+
+    function parseWordLine(line) {
+      const parts = line.split('|').map(p => p.trim());
+      if (parts.length < 2 || !parts[0] || !parts[1]) return null;
+
+      const [foreign, korean, exForeignRaw, exKoreanRaw] = parts;
+      const examples = [];
+
+      if (exForeignRaw) {
+        const exForeignList = exForeignRaw.split('//').map(s => s.trim()).filter(Boolean);
+        const exKoreanList = (exKoreanRaw || '').split('//').map(s => s.trim());
+        exForeignList.forEach((ef, idx) => {
+          examples.push({ foreign: ef, korean: exKoreanList[idx] || '' });
+        });
+      }
+
+      return { foreign, korean, examples };
+    }
+
+    function addWordsFromTextarea() {
+      const textarea = document.getElementById('add-textarea');
+      const lines = textarea.value.split('\n').map(l => l.trim()).filter(Boolean);
+
+      if (lines.length === 0) {
+        showToast('추가할 단어를 입력해주세요.');
+        return;
+      }
+
+      let addedCount = 0;
+      lines.forEach(line => {
+        const parsed = parseWordLine(line);
+        if (!parsed) return;
+        words.push({ id: nextId(), foreign: parsed.foreign, korean: parsed.korean, examples: parsed.examples });
+        addedCount++;
+      });
+
+      if (addedCount === 0) {
+        showToast('형식이 올바르지 않습니다. "외국어 | 한국어" 형식을 확인해주세요.');
+        return;
+      }
+
+      saveWords();
+      textarea.value = '';
+      buildDeck();
+      renderCurrentCard();
+      renderListView();
+      showToast(`${addedCount}개의 단어가 추가되었습니다!`);
+    }
+
+    function deleteWord(id) {
+      words = words.filter(w => w.id !== id);
+      starredIds.delete(id);
+      saveWords();
+      saveStars();
+      buildDeck();
+      renderCurrentCard();
+      renderListView();
+      showToast('단어가 삭제되었습니다.');
+    }
+
+    function exportWords() {
+      const json = JSON.stringify(words);
+      const textarea = document.createElement('textarea');
+      textarea.value = json;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast('단어장 데이터가 클립보드에 복사되었습니다!');
+      } catch (err) {
+        showToast('복사에 실패했습니다.');
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function toggleImportBox() {
+      document.getElementById('import-textarea').classList.toggle('hidden');
+      document.getElementById('import-btn').classList.toggle('hidden');
+    }
+
+    function importWords() {
+      const raw = document.getElementById('import-textarea').value.trim();
+      if (!raw) {
+        showToast('가져올 데이터를 붙여넣어주세요.');
+        return;
+      }
+      let incoming;
+      try {
+        incoming = JSON.parse(raw);
+        if (!Array.isArray(incoming)) throw new Error('not array');
+      } catch (e) {
+        showToast('JSON 형식이 올바르지 않습니다.');
+        return;
+      }
+
+      let addedCount = 0;
+      incoming.forEach(w => {
+        if (!w || !w.foreign || !w.korean) return;
+        const exists = words.some(existing => existing.foreign === w.foreign && existing.korean === w.korean);
+        if (exists) return;
+        words.push({ id: nextId(), foreign: w.foreign, korean: w.korean, examples: Array.isArray(w.examples) ? w.examples : [] });
+        addedCount++;
+      });
+
+      saveWords();
+      document.getElementById('import-textarea').value = '';
+      buildDeck();
+      renderCurrentCard();
+      renderListView();
+      showToast(`${addedCount}개의 단어를 가져왔습니다.`);
+    }
+
+    function renderListView() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const listContainer = document.getElementById('card-list');
+      listContainer.innerHTML = '';
+
+      const filtered = words.filter(w =>
+        w.foreign.toLowerCase().includes(query) ||
+        w.korean.toLowerCase().includes(query) ||
+        (w.examples || []).some(ex => (ex.foreign || '').toLowerCase().includes(query) || (ex.korean || '').toLowerCase().includes(query))
+      );
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `<div class="text-center py-8 text-slate-400 text-xs">${words.length === 0 ? '등록된 단어가 없습니다.' : '검색 결과가 없습니다.'}</div>`;
+        return;
+      }
+
+      filtered.forEach(w => {
+        const isStarred = starredIds.has(w.id);
+        const item = document.createElement('div');
+        item.className = 'bg-white p-3 rounded-xl border border-slate-200 shadow-2xs flex justify-between items-center gap-2';
+        item.innerHTML = `
+          <div class="flex-1 pr-1">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="font-bold text-slate-800 text-xs">${escapeHtml(w.foreign)}</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-0.5">${escapeHtml(w.korean)}</p>
+          </div>
+          <div class="flex items-center gap-1">
+            <button onclick="speakTextCustom(event, '${escapeQuotes(w.foreign)}', true)" class="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition text-xs" title="발음 듣기">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button onclick="toggleStarList(${w.id})" class="p-2 ${isStarred ? 'text-amber-500' : 'text-slate-300'} hover:text-amber-500 transition text-xs">
+              <i class="fa-solid fa-star"></i>
+            </button>
+            <button onclick="deleteWord(${w.id})" class="p-2 text-slate-300 hover:text-red-500 transition text-xs">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+    }
+
+    function toggleStarList(id) {
+      if (starredIds.has(id)) {
+        starredIds.delete(id);
+      } else {
+        starredIds.add(id);
+      }
+      saveStars();
+      renderListView();
+      if (activeFilter === 'starred') {
+        buildDeck();
+        renderCurrentCard();
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
