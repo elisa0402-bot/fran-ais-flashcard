@@ -62,7 +62,7 @@
       
       <!-- Category Filter Pills -->
       <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
-        <button onclick="filterCategory('all')" id="cat-all" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-indigo-600 text-white shadow-xs whitespace-nowrap">전체 (247)</button>
+        <button onclick="filterCategory('all')" id="cat-all" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-indigo-600 text-white shadow-xs whitespace-nowrap">전체 (249)</button>
         <button onclick="filterCategory('starred')" id="cat-starred" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">⭐ 즐겨찾기</button>
         <button onclick="filterCategory('pc')" id="cat-pc" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">복합과거</button>
         <button onclick="filterCategory('imparfait')" id="cat-imparfait" class="cat-btn px-3 py-1.5 rounded-full font-semibold bg-white text-slate-600 border border-slate-200 whitespace-nowrap">반과거</button>
@@ -1309,10 +1309,10 @@
       // =========================================================================
       // PART 7. 관계대명사 (Qui / Que / Dont / Où) - Parlons en français 02
       // =========================================================================
-      { id: 171, category: "relatif", target: "la loi", pos: "명사 (f.)", meaning: "법", examples: [{ target: "La loi protège les droits des enfants.", kr: "그 법은 아이들의 권리를 보호한다." }] },
-      { id: 172, category: "relatif", target: "protéger", pos: "동사", meaning: "보호하다", examples: [{ target: "La loi protège les droits des enfants.", kr: "그 법은 아이들의 권리를 보호한다." }] },
-      { id: 173, category: "relatif", target: "les droits (m.pl)", pos: "명사", meaning: "권리", examples: [{ target: "La loi protège les droits des enfants.", kr: "그 법은 아이들의 권리를 보호한다." }] },
-      { id: 174, category: "relatif", target: "la manière", pos: "명사 (f.)", meaning: "방식, 방법", examples: [{ target: "L'écriture inclusive est une manière d'écrire.", kr: "포괄적 글쓰기는 하나의 글쓰기 방식이다." }] },
+      { id: 171, category: "relatif", target: "la loi", pos: "명사 (f.)", meaning: "법", examples: [{ target: "La loi qui protège les droits des enfants est très importante.", kr: "아이들의 권리를 보호하는 법은 매우 중요하다." }] },
+      { id: 172, category: "relatif", target: "protéger", pos: "동사", meaning: "보호하다", examples: [{ target: "La loi qui protège les droits des enfants est très importante.", kr: "아이들의 권리를 보호하는 법은 매우 중요하다." }] },
+      { id: 173, category: "relatif", target: "les droits (m.pl)", pos: "명사", meaning: "권리", examples: [{ target: "La loi qui protège les droits des enfants est très importante.", kr: "아이들의 권리를 보호하는 법은 매우 중요하다." }] },
+      { id: 174, category: "relatif", target: "la manière", pos: "명사 (f.)", meaning: "방식, 방법", examples: [{ target: "L'écriture inclusive est une manière d'écrire qui donne autant d'importance au féminin qu'au masculin.", kr: "포괄적 글쓰기는 여성형에 남성형만큼 동일한 중요성을 부여하는 글쓰기 방식이다." }] },
       { id: 175, category: "relatif", target: "la vitrine", pos: "명사 (f.)", meaning: "진열창, 쇼윈도", examples: [{ target: "Je voudrais essayer la jupe qui est en vitrine.", kr: "나는 진열창에 있는 치마를 입어보고 싶다." }] },
       { id: 176, category: "relatif", target: "la flûte", pos: "명사 (f.)", meaning: "플루트", examples: [{ target: "Nous avons un fils qui sait jouer de la flûte.", kr: "우리는 플루트를 연주할 줄 아는 아들이 있다." }] },
       { id: 177, category: "relatif", target: "emprunter", pos: "동사", meaning: "빌리다, 대출하다", examples: [{ target: "Les livres qui vous plaisent sont déjà empruntés.", kr: "너희 마음에 드는 책들은 이미 대출되었다." }] },
@@ -1392,7 +1392,9 @@
       { id: 243, category: "participe", target: "s'engager à", pos: "동사 (대명동사)", meaning: "~할 것을 약속하다, 다짐하다", examples: [{ target: "Plus de 300 professeurs se sont engagés à ne plus enseigner cette règle en signant un manifeste.", kr: "300명이 넘는 교사들은 선언문에 서명하며 이 규칙을 더 이상 가르치지 않겠다고 약속했다." }] },
 
       { id: 244, category: "participe", target: "Je vois une fille sortant de l'école.", pos: "현재분사 (qui+V 대체, 수식)", meaning: "나는 학교에서 나오는 한 소녀를 본다.", examples: [{ target: "Je vois une fille sortant de l'école.", kr: "나는 학교에서 나오는 한 소녀를 본다." }], tip: "현재분사는 관계대명사절(qui+동사)을 대체하여 명사를 수식할 수 있습니다." },
+      { id: 282, category: "participe", target: "Les personnes qui ont plus de 18 ans peuvent voter.", pos: "관계대명사 qui (현재분사로 축약되기 전)", meaning: "18세 이상인 사람들은 투표할 수 있다.", examples: [{ target: "Les personnes qui ont plus de 18 ans peuvent voter.", kr: "18세 이상인 사람들은 투표할 수 있다." }], tip: "이 qui절이 현재분사 ayant로 축약됩니다 (다음 카드 참고)." },
       { id: 245, category: "participe", target: "Les personnes ayant plus de 18 ans peuvent voter.", pos: "현재분사 (avoir → ayant, 불규칙)", meaning: "18세 이상인 사람들은 투표할 수 있다.", examples: [{ target: "Les personnes ayant plus de 18 ans peuvent voter.", kr: "18세 이상인 사람들은 투표할 수 있다." }] },
+      { id: 283, category: "participe", target: "J'ai vu l'homme qui quittait la pièce.", pos: "관계대명사 qui (현재분사로 축약되기 전)", meaning: "나는 방을 떠나고 있는 한 남자를 보았다.", examples: [{ target: "J'ai vu l'homme qui quittait la pièce.", kr: "나는 방을 떠나고 있는 한 남자를 보았다." }], tip: "이 qui절이 현재분사 quittant로 축약됩니다 (다음 카드 참고)." },
       { id: 246, category: "participe", target: "J'ai vu l'homme quittant la pièce.", pos: "현재분사 (수식)", meaning: "나는 방을 떠나는 한 남자를 보았다.", examples: [{ target: "J'ai vu l'homme quittant la pièce.", kr: "나는 방을 떠나는 한 남자를 보았다." }] },
       { id: 247, category: "participe", target: "Je travaille en écoutant de la musique.", pos: "제롱디프 (동시성)", meaning: "나는 음악을 들으면서 일한다.", examples: [{ target: "Je travaille en écoutant de la musique.", kr: "나는 음악을 들으면서 일한다." }], tip: "제롱디프의 형태는 en + 현재분사입니다." },
       { id: 248, category: "participe", target: "On grandit en tombant.", pos: "제롱디프 (조건/원인)", meaning: "우리는 넘어지면서 성장한다.", examples: [{ target: "On grandit en tombant.", kr: "우리는 넘어지면서 성장한다." }] },
