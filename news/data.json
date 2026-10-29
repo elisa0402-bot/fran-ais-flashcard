@@ -1,0 +1,1430 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-29",
+  "title": "On y va · 뉴스 프랑스어",
+  "cards": [
+    {
+      "id": "news-9f07d94d4c96f9e5",
+      "fr": "désamorcer une crise",
+      "ko": "위기를 진정시키다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Un appel calme peut désamorcer une crise dans une équipe.",
+          "ko": "차분한 전화 한 통이 팀의 위기를 진정시킬 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-4e5cfcebed29c7bb",
+      "fr": "durcir le ton",
+      "ko": "강경한 태도를 취하다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Mon propriétaire a durci le ton après plusieurs retards de paiement.",
+          "ko": "집주인은 월세가 여러 번 늦어지자 말투가 강경해졌어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-a7b9c5f296f1c5ef",
+      "fr": "le coût de la dette",
+      "ko": "부채에 따른 이자 부담",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Avant de demander un prêt, je calcule le coût de la dette.",
+          "ko": "대출을 신청하기 전에 이자 부담을 계산해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-ade342bb77c43a4f",
+      "fr": "creuser le déficit public",
+      "ko": "재정적자를 확대하다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Des dépenses mal maîtrisées peuvent creuser le déficit public.",
+          "ko": "제대로 관리되지 않는 지출은 재정적자를 키울 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-3995e852fe28d8cc",
+      "fr": "enregistrer une hausse spectaculaire",
+      "ko": "급격한 증가세를 기록하다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Notre petite boutique a enregistré une hausse spectaculaire des commandes.",
+          "ko": "우리 작은 가게의 주문이 눈에 띄게 늘었어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-918b0ad6e716689d",
+      "fr": "tirer la croissance",
+      "ko": "성장을 견인하다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Les commandes en ligne tirent la croissance de notre entreprise.",
+          "ko": "온라인 주문이 우리 회사의 성장을 이끌어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-0f270fb0d485c090",
+      "fr": "reprendre les négociations",
+      "ko": "협상을 재개하다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Nous allons reprendre les négociations sur le prix du loyer.",
+          "ko": "임대료에 관한 협상을 다시 시작할 거예요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-833f2b56338b6216",
+      "fr": "parvenir à un accord",
+      "ko": "합의에 도달하다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Après une longue discussion, nous sommes parvenus à un accord.",
+          "ko": "오래 의논한 끝에 우리는 합의에 도달했어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-dc9ddc1511d79c7a",
+      "fr": "nuire au développement cognitif",
+      "ko": "인지 발달에 해를 끼치다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Le manque de sommeil peut nuire au développement cognitif des enfants.",
+          "ko": "수면 부족은 아이들의 인지 발달에 해를 줄 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-7bdaddf000e2bcef",
+      "fr": "développer l'autonomie des apprenants",
+      "ko": "학습자의 자율성을 기르다",
+      "dates": [
+        "2026-10-22"
+      ],
+      "added": "2026-10-22",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je laisse mes élèves choisir un sujet pour développer leur autonomie.",
+          "ko": "학생들의 자율성을 기르려고 주제를 직접 고르게 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-fec79d4785fb9ce9",
+      "fr": "lever une interdiction",
+      "ko": "금지 조치를 해제하다",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Le directeur a levé l'interdiction d'utiliser la salle après les cours.",
+          "ko": "교장 선생님이 방과 후 교실 사용 금지를 해제했어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-9b2e0a3d3f6ae802",
+      "fr": "porter atteinte à",
+      "ko": "권리·자유 등을 침해하다",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Publier cette photo sans son accord porte atteinte à sa vie privée.",
+          "ko": "동의 없이 이 사진을 올리는 것은 그 사람의 사생활을 침해해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-564e44f4bb04671f",
+      "fr": "la prime de risque",
+      "ko": "위험 프리미엄",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "La conseillère m'a expliqué ce que signifie la prime de risque.",
+          "ko": "상담사가 위험 프리미엄의 뜻을 설명해 줬어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-3ec5a118c6d048ea",
+      "fr": "la défiance des investisseurs",
+      "ko": "투자자들의 불신",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Un manque de transparence peut renforcer la défiance des investisseurs.",
+          "ko": "투명성이 부족하면 투자자들의 불신이 커질 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-cce80348bb6c413d",
+      "fr": "maintenir son taux directeur inchangé",
+      "ko": "기준금리를 동결하다",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans cet exercice, la banque centrale maintient son taux directeur inchangé.",
+          "ko": "이 연습문제에서는 중앙은행이 기준금리를 동결해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-42a401ae8efd2b44",
+      "fr": "un resserrement monétaire",
+      "ko": "통화긴축",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Nous avons étudié les effets d'un resserrement monétaire en cours.",
+          "ko": "수업에서 통화긴축이 미치는 영향을 공부했어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-78b839623efa3cae",
+      "fr": "creuser le fossé entre A et B",
+      "ko": "A와 B 사이의 격차를 확대하다",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce malentendu risque de creuser le fossé entre les deux amis.",
+          "ko": "이 오해가 두 친구 사이의 골을 더 깊게 만들 수도 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-717b7db75b3bf137",
+      "fr": "être exposé à l'automatisation",
+      "ko": "자동화의 영향에 노출되다",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je me demande si mon métier est exposé à l'automatisation.",
+          "ko": "내 직업도 자동화의 영향을 받을지 궁금해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-731c58df24f3a151",
+      "fr": "déployer progressivement",
+      "ko": "단계적으로 출시·배포하다",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Nous allons déployer progressivement la nouvelle application.",
+          "ko": "새 앱을 단계적으로 배포할 예정이에요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-f67cea8e4119786f",
+      "fr": "apporter une modification à",
+      "ko": "~을 변경하다",
+      "dates": [
+        "2026-10-23"
+      ],
+      "added": "2026-10-23",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Puis-je apporter une modification à ma réservation ?",
+          "ko": "제 예약을 조금 변경할 수 있을까요?",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-be42091ad0fef2df",
+      "fr": "maintenir la note souveraine",
+      "ko": "국가신용등급을 유지하다",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Le professeur nous demande pourquoi une agence peut maintenir la note souveraine d'un pays.",
+          "ko": "선생님은 평가사가 한 나라의 신용등급을 유지하는 이유를 물으세요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-c2ef74e13ca0adf3",
+      "fr": "une perspective négative",
+      "ko": "부정적 신용등급 전망",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Une perspective négative ne signifie pas une baisse immédiate de la note.",
+          "ko": "부정적 전망이 곧바로 신용등급 하락을 뜻하지는 않아요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-63af860ed1bc05ba",
+      "fr": "prévenir les affrontements",
+      "ko": "충돌을 예방하다",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Les organisateurs ont séparé les groupes pour prévenir les affrontements.",
+          "ko": "주최 측은 충돌을 막기 위해 두 집단을 떨어뜨려 놓았어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-a0d3b32628775da3",
+      "fr": "rétablir le dialogue",
+      "ko": "대화를 복원하다",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Un dîner ensemble nous a permis de rétablir le dialogue.",
+          "ko": "함께 저녁을 먹으면서 다시 대화를 나눌 수 있었어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-4fc88af2fb3036fb",
+      "fr": "conclure un cessez-le-feu",
+      "ko": "휴전협정을 체결하다",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans le débat, nous discutons des conditions pour conclure un cessez-le-feu.",
+          "ko": "토론에서 휴전협정을 맺기 위한 조건을 이야기해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-ce3a761c2aa79cb3",
+      "fr": "un couloir humanitaire",
+      "ko": "인도주의적 통로",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Cette association demande l'ouverture d'un couloir humanitaire.",
+          "ko": "이 단체는 인도주의적 통로를 열어 달라고 요구해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-a9772c40812598c4",
+      "fr": "une approche plurilingue",
+      "ko": "다언어적 접근법",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "J'utilise une approche plurilingue pour comparer le français et le coréen.",
+          "ko": "프랑스어와 한국어를 비교할 때 다언어적 접근법을 사용해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-21482bf60802ea40",
+      "fr": "favoriser l'interaction orale",
+      "ko": "구두 상호작용을 촉진하다",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Les jeux de rôle favorisent l'interaction orale en classe.",
+          "ko": "역할극은 교실에서 말로 상호작용하는 데 도움이 돼요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-97f1071dae4058a3",
+      "fr": "fournir un effort cognitif",
+      "ko": "인지적 노력을 기울이다",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Il faut fournir un effort cognitif pour expliquer une idée avec ses propres mots.",
+          "ko": "생각을 자기 말로 설명하려면 인지적 노력이 필요해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-e676e76923fb1c56",
+      "fr": "se substituer à l'apprenant",
+      "ko": "학습자를 대신하다",
+      "dates": [
+        "2026-10-24"
+      ],
+      "added": "2026-10-24",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Un outil doit aider l'apprenant sans se substituer à lui.",
+          "ko": "도구는 학습자를 대신하기보다 도와야 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-8463cbc2bec881c5",
+      "fr": "la mobilisation sociale",
+      "ko": "사회적 집단행동",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce documentaire explique les différentes formes de mobilisation sociale.",
+          "ko": "이 다큐멘터리는 사회적 집단행동의 여러 형태를 설명해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-95cf302c78004cd0",
+      "fr": "dégénérer en affrontements",
+      "ko": "충돌 사태로 번지다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Une simple dispute peut dégénérer en affrontements si personne n'intervient.",
+          "ko": "아무도 말리지 않으면 작은 말다툼이 충돌로 번질 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-7f2e57bc2c194417",
+      "fr": "rétablir l'ordre public",
+      "ko": "공공질서를 회복하다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans ce roman, le maire cherche à rétablir l'ordre public.",
+          "ko": "이 소설에서 시장은 공공질서를 회복하려고 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-e0c5fc23c5ac64c7",
+      "fr": "tirer profit d'une crise",
+      "ko": "위기를 이용해 이익을 얻다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Il est injuste de tirer profit d'une crise en augmentant les prix.",
+          "ko": "위기를 이용해 가격을 올려 이익을 얻는 것은 부당해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-f7084157876fdd6d",
+      "fr": "renforcer les liens économiques",
+      "ko": "경제적 관계를 강화하다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce partenariat pourrait renforcer les liens économiques entre les deux villes.",
+          "ko": "이 협력이 두 도시의 경제적 관계를 강화할 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-70d43ff12031f481",
+      "fr": "faciliter les échanges commerciaux",
+      "ko": "무역을 원활하게 하다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Un formulaire plus simple faciliterait les échanges commerciaux.",
+          "ko": "서류 양식을 간소화하면 무역이 더 수월해질 거예요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-9e22221acbd2d0c6",
+      "fr": "durcir les restrictions",
+      "ko": "규제를 강화하다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "La bibliothèque a durci les restrictions sur le nombre de livres empruntés.",
+          "ko": "도서관이 빌릴 수 있는 책의 수를 더 엄격히 제한했어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-3cf0cb44b00e6c24",
+      "fr": "prendre des mesures de rétorsion",
+      "ko": "보복 조치를 취하다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Les deux voisins ont fini par discuter au lieu de prendre des mesures de rétorsion.",
+          "ko": "두 이웃은 보복 조치를 취하는 대신 결국 대화를 했어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-05f581b782472a42",
+      "fr": "mettre en place un projet pilote",
+      "ko": "시범사업을 시행하다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Notre école va mettre en place un projet pilote de lecture en français.",
+          "ko": "우리 학교는 프랑스어 독서 시범사업을 시작할 거예요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-a270fc94ba6001d9",
+      "fr": "évaluer l'efficacité d'une méthode pédagogique",
+      "ko": "교수법의 효과를 평가하다",
+      "dates": [
+        "2026-10-25"
+      ],
+      "added": "2026-10-25",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je compare les résultats pour évaluer l'efficacité de cette méthode pédagogique.",
+          "ko": "이 교수법의 효과를 평가하려고 결과를 비교해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-5fa0198463f9e741",
+      "fr": "rétablir l'autorité de l'État",
+      "ko": "국가의 권위를 회복하다",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Le candidat promet de rétablir l'autorité de l'État dans ce récit fictif.",
+          "ko": "이 가상의 이야기에서 후보자는 국가의 권위를 회복하겠다고 약속해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-63a8f51a800c3543",
+      "fr": "prôner la souveraineté nationale",
+      "ko": "국가주권을 옹호하다",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce texte analyse un discours qui prône la souveraineté nationale.",
+          "ko": "이 글은 국가주권을 옹호하는 연설을 분석해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-665b7c785e0001d3",
+      "fr": "un excédent de la balance courante",
+      "ko": "경상수지 흑자",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je cherche une explication simple de l'excédent de la balance courante.",
+          "ko": "경상수지 흑자에 대한 쉬운 설명을 찾고 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-3b7357211dc6b2a2",
+      "fr": "être porté par les exportations",
+      "ko": "수출에 힘입다",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans notre étude de cas, le secteur est porté par les exportations.",
+          "ko": "우리 사례 연구에서는 이 산업이 수출에 힘입어 성장해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-01f08d81702d332f",
+      "fr": "reconnaître sa défaite électorale",
+      "ko": "선거 패배를 인정하다",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans le film, la candidate reconnaît sa défaite électorale avec calme.",
+          "ko": "영화에서 그 후보는 차분하게 선거 패배를 인정해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-ede9c536c2aee3e0",
+      "fr": "réclamer des comptes aux autorités",
+      "ko": "당국에 책임을 요구하다",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Les habitants réclament des comptes aux autorités après la fermeture du centre.",
+          "ko": "주민들은 시설 폐쇄 후 당국에 해명을 요구해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-299a39dadc05f948",
+      "fr": "renouveler ses pratiques pédagogiques",
+      "ko": "교수법을 개선하다",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Cette formation m'aide à renouveler mes pratiques pédagogiques.",
+          "ko": "이 연수는 제 수업 방식을 개선하는 데 도움이 돼요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-3a1657806baa17d7",
+      "fr": "une évaluation formative",
+      "ko": "형성평가",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce petit quiz est une évaluation formative, pas un examen final.",
+          "ko": "이 짧은 퀴즈는 기말시험이 아니라 형성평가예요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-b6df9d7dd69f8e69",
+      "fr": "personnaliser les recommandations",
+      "ko": "추천 콘텐츠를 개인화하다",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je peux personnaliser les recommandations dans les réglages.",
+          "ko": "설정에서 추천 항목을 나에게 맞게 바꿀 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-54befc63e0b874df",
+      "fr": "en fonction de",
+      "ko": "~에 따라, ~을 기준으로",
+      "dates": [
+        "2026-10-26"
+      ],
+      "added": "2026-10-26",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je choisis mes vêtements en fonction de la météo.",
+          "ko": "날씨에 따라 옷을 골라요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-63b775bff8505a45",
+      "fr": "céder aux revendications",
+      "ko": "요구에 양보하다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Après plusieurs discussions, la direction a cédé aux revendications des salariés.",
+          "ko": "여러 차례 논의한 뒤 경영진이 직원들의 요구에 양보했어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-b6a4dd2cfc221026",
+      "fr": "revoir en profondeur un système",
+      "ko": "제도를 근본적으로 재검토하다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Il faut revoir en profondeur notre système de réservation.",
+          "ko": "우리 예약 시스템을 근본적으로 재검토해야 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-2905501cefbf5491",
+      "fr": "adhérer à un accord commercial",
+      "ko": "무역협정에 가입하다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Nous débattons des raisons d'adhérer à un accord commercial.",
+          "ko": "무역협정에 가입하는 이유를 토론하고 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-e4f96ce905fede9e",
+      "fr": "protéger les secteurs vulnérables",
+      "ko": "취약한 산업 분야를 보호하다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Cette proposition vise à protéger les secteurs vulnérables.",
+          "ko": "이 제안은 취약한 산업 분야를 보호하려는 것이에요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-25d65cb6546813e6",
+      "fr": "menacer l'approvisionnement en pétrole",
+      "ko": "석유 공급을 위협하다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans ce scénario, une crise menace l'approvisionnement en pétrole.",
+          "ko": "이 시나리오에서는 위기가 석유 공급을 위협해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-5bfbaa40e39a3e3e",
+      "fr": "faire grimper les prix de l'énergie",
+      "ko": "에너지 가격을 급등시키다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Une hausse de la demande peut faire grimper les prix de l'énergie.",
+          "ko": "수요가 늘면 에너지 가격이 급등할 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-2c23999310854cd0",
+      "fr": "réduire la fracture numérique",
+      "ko": "디지털 격차를 줄이다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Des ateliers gratuits peuvent aider à réduire la fracture numérique.",
+          "ko": "무료 교육이 디지털 격차를 줄이는 데 도움이 될 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-ce3e6f316d18cd2f",
+      "fr": "garantir l'équité linguistique",
+      "ko": "언어적 형평성을 보장하다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Nous proposons plusieurs langues pour garantir l'équité linguistique.",
+          "ko": "언어적 형평성을 위해 여러 언어를 제공해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-aa9c5a48c15d12b2",
+      "fr": "développer l'esprit critique",
+      "ko": "비판적 사고력을 기르다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Comparer plusieurs sources permet de développer l'esprit critique.",
+          "ko": "여러 자료를 비교하면 비판적 사고력을 기를 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-9a35c059eaa80588",
+      "fr": "exercer un contrôle humain",
+      "ko": "인간이 감독·통제하다",
+      "dates": [
+        "2026-10-27"
+      ],
+      "added": "2026-10-27",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Une personne doit exercer un contrôle humain sur les décisions de l'outil.",
+          "ko": "도구가 내리는 결정은 사람이 감독해야 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-2655db41b56807b7",
+      "fr": "la confiance des ménages",
+      "ko": "소비자신뢰, 가계의 경제적 신뢰",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Le professeur utilise un graphique pour expliquer la confiance des ménages.",
+          "ko": "선생님은 소비자신뢰를 설명하려고 그래프를 사용하세요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-3f6cb6ee1f1ea289",
+      "fr": "peser sur la consommation",
+      "ko": "소비에 부담을 주다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "La hausse du loyer pèse sur notre consommation quotidienne.",
+          "ko": "집세가 오르면서 일상적인 소비에 부담이 돼요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-8c2c02f59c4cbaa1",
+      "fr": "être fortement tributaire de",
+      "ko": "~에 크게 의존하다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Mon emploi du temps est fortement tributaire de celui de mes élèves.",
+          "ko": "제 일정은 학생들의 일정에 크게 좌우돼요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-f57cc6f229d027c1",
+      "fr": "revoir les prévisions à la baisse",
+      "ko": "전망치를 하향 조정하다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "À cause de la pluie, nous devons revoir nos prévisions de fréquentation à la baisse.",
+          "ko": "비 때문에 방문객 수 전망을 낮춰야 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-0def31c7a3422a8c",
+      "fr": "former une coalition gouvernementale",
+      "ko": "연립정부를 구성하다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans ce jeu, les partis doivent former une coalition gouvernementale.",
+          "ko": "이 게임에서 정당들은 연립정부를 구성해야 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-cc7e9f24653216e4",
+      "fr": "obtenir la majorité absolue",
+      "ko": "절대다수를 확보하다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Il faut obtenir la majorité absolue pour faire adopter cette proposition.",
+          "ko": "이 제안을 통과시키려면 절대다수를 확보해야 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-775fabf00a5826a0",
+      "fr": "favoriser la prise de parole",
+      "ko": "발언과 말하기 참여를 촉진하다",
+      "dates": [
+        "2026-10-28",
+        "2026-10-29"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je pose des questions ouvertes pour favoriser la prise de parole.",
+          "ko": "말하기 참여를 이끌려고 열린 질문을 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-46edf985494acf36",
+      "fr": "analyser ses pratiques pédagogiques",
+      "ko": "자신의 교수법을 분석하다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Après chaque cours, je prends le temps d'analyser mes pratiques pédagogiques.",
+          "ko": "수업이 끝날 때마다 제 교수법을 돌아볼 시간을 가져요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-068a7b9fea17c484",
+      "fr": "fidéliser son audience",
+      "ko": "시청자층을 지속적으로 유지하다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je publie régulièrement pour fidéliser mon audience.",
+          "ko": "시청자들이 계속 찾아오도록 꾸준히 콘텐츠를 올려요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-58908db99a68801c",
+      "fr": "susciter l'intérêt des spectateurs",
+      "ko": "시청자의 관심을 불러일으키다",
+      "dates": [
+        "2026-10-28"
+      ],
+      "added": "2026-10-28",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Une bonne question peut susciter l'intérêt des spectateurs.",
+          "ko": "좋은 질문은 시청자의 관심을 끌 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-7ad133f027c3f408",
+      "fr": "contester un arrêté préfectoral",
+      "ko": "지방 행정명령에 이의를 제기하다",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Les habitants souhaitent contester un arrêté préfectoral qui limite l'accès au parc.",
+          "ko": "주민들은 공원 출입을 제한하는 지방 행정명령에 이의를 제기하려고 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-1f24e1b42e02ad8f",
+      "fr": "une mesure proportionnée",
+      "ko": "비례성에 부합하는 조치",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Fermer toute la salle pour un petit incident ne semble pas être une mesure proportionnée.",
+          "ko": "작은 일 때문에 공간 전체를 닫는 것은 비례성에 맞는 조치 같지 않아요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-3fd617993227cb0d",
+      "fr": "imposer un mode de paiement",
+      "ko": "특정 결제방식을 강제하다",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce magasin ne devrait pas imposer un seul mode de paiement.",
+          "ko": "이 가게는 결제방식을 하나만 강요하면 안 될 것 같아요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-61b02a54d6f11328",
+      "fr": "infliger une amende à",
+      "ko": "~에게 벌금을 부과하다",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "La ville peut infliger une amende aux personnes qui jettent leurs déchets par terre.",
+          "ko": "시에서는 쓰레기를 바닥에 버리는 사람에게 벌금을 부과할 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-0e681882eb996e0f",
+      "fr": "entrer en collision avec",
+      "ko": "~와 충돌하다",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans le film, un vélo entre en collision avec une voiture.",
+          "ko": "영화에서 자전거 한 대가 자동차와 충돌해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-ebfcaa1a4a0cca0e",
+      "fr": "faire la lumière sur",
+      "ko": "~의 진상을 규명하다",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Cette conversation nous a permis de faire la lumière sur le malentendu.",
+          "ko": "이 대화 덕분에 오해가 생긴 이유를 명확히 알 수 있었어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-2b7fdb84eb078547",
+      "fr": "exploiter des supports audiovisuels",
+      "ko": "시청각 자료를 활용하다",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "J'aime exploiter des supports audiovisuels dans mes cours de langue.",
+          "ko": "어학 수업에서 시청각 자료를 활용하는 것을 좋아해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-0cdaf9687a4487ac",
+      "fr": "l'apprentissage par le jeu",
+      "ko": "게임 기반 학습",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "L'apprentissage par le jeu aide mes élèves à participer davantage.",
+          "ko": "게임을 통한 학습은 학생들이 더 적극적으로 참여하게 해줘요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-40a9d299116c1f0f",
+      "fr": "rendre l'apprentissage plus interactif",
+      "ko": "학습을 더욱 상호작용적으로 만들다",
+      "dates": [
+        "2026-10-29"
+      ],
+      "added": "2026-10-29",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Un jeu de rôle peut rendre l'apprentissage plus interactif.",
+          "ko": "역할극을 하면 학습이 더 상호작용적으로 바뀔 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    }
+  ]
+}

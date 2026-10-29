@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173e35">
+  <meta name="description" content="뉴스에서 만난 프랑스어를 내 말로. 예문과 함께 익히는 나만의 간격 반복 단어장.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>On y va · 뉴스 프랑스어</title>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="#study" aria-label="단어장 처음으로"><span class="brand-symbol">O<span>·</span></span><span>On y va<small>나의 뉴스 프랑스어</small></span></a>
+      <p class="sidebar-label">LE CARNET QUOTIDIEN</p>
+      <nav aria-label="주 메뉴">
+        <button class="nav active" data-view="study"><span>◧</span> 오늘의 복습 <b id="nav-count">0</b></button>
+        <button class="nav" data-view="library"><span>▤</span> 나의 단어장</button>
+        <button class="nav" data-view="settings"><span>⚙</span> 설정과 백업</button>
+      </nav>
+      <div class="daily-note"><span>UN PEU, CHAQUE JOUR.</span><p>하루에 조금씩,<br>내 말이 되는 프랑스어.</p><div id="streak">오늘도 한 걸음.</div></div>
+      <div class="sidebar-bottom"><span class="online-dot"></span><span id="connection">저장된 단어로 학습 중</span><button id="sync-button" aria-label="새 어휘 확인">↻</button></div>
+      <small class="local-note">학습 진도는 이 기기에 저장됩니다.</small>
+    </aside>
+    <main>
+      <header class="topbar"><span id="today"></span><div><button id="install-button" class="button small secondary" hidden>앱 설치</button><a class="github" href="https://github.com/elisa0402-bot/fran-ais-flashcard/tree/main/news" target="_blank" rel="noopener">GitHub ↗</a></div></header>
+      <section id="study-view">
+        <div class="intro"><p class="eyebrow">VOTRE RENDEZ-VOUS FRANÇAIS</p><h1>뉴스 속 표현을,<br><em>나의 문장으로.</em></h1><p class="description">기억이 흐려질 때 다시 만나고, 익숙해지면 조금 더 멀리.</p></div>
+        <div class="stats" aria-label="학습 현황"><div><span>모은 표현</span><strong id="total-count">0</strong><small>뉴스에서 한 문장씩</small></div><div><span>지금 학습할 카드</span><strong id="due-count">0</strong><small>복습 + 오늘의 새 표현</small></div><div><span>익숙해진 표현</span><strong id="learned-count">0</strong><small>양방향 7일 이상 간격</small></div></div>
+        <div class="study-toolbar"><div><h2>오늘의 복습</h2><span id="session-progress">하루 10개의 새 표현</span></div><label class="sr-only" for="direction">학습 방향</label><select id="direction"><option value="auto">자동 · 이해한 뒤 말하기</option><option value="fr">프랑스어 → 한국어</option><option value="ko">한국어 → 프랑스어</option></select></div>
+        <article class="flashcard" id="flashcard" aria-live="polite">
+          <div class="card-top"><span id="direction-label" class="pill">COMPRENDRE · 이해하기</span><span id="source-date"></span></div>
+          <div class="question"><p id="prompt-label">이 표현의 뜻을 떠올려 보세요.</p><h3 id="question" lang="fr"></h3><button id="speak-question" class="sound" aria-label="프랑스어 표현 듣기">듣기 ♫</button></div>
+          <div id="answer" hidden><div class="answer-divider"><span>LA RÉPONSE</span></div><h3 id="answer-main"></h3><div id="examples"></div><p class="source" id="card-source"></p></div>
+          <button id="reveal" class="button primary reveal">정답 보기 <span>Space</span></button>
+          <div id="grades" class="grades" hidden><button data-grade="again"><strong>다시</strong><small id="interval-again">1분 후</small></button><button data-grade="hard"><strong>어려워요</strong><small id="interval-hard">10분 후</small></button><button data-grade="good"><strong>알겠어요</strong><small id="interval-good">1일 후</small></button><button data-grade="easy"><strong>쉬워요</strong><small id="interval-easy">4일 후</small></button></div>
+        </article>
+        <div id="empty" class="empty" hidden><span>✓</span><h3>지금 할 복습을 마쳤어요.</h3><p id="empty-note"></p><button id="browse-button" class="button secondary">단어장 둘러보기</button></div>
+        <p class="study-hint" id="study-hint">프→한에서 두 번 기억하면, 한→프 카드가 자동으로 열립니다.<br><span>Space 정답 보기 · 1 다시 · 2 어려워요 · 3 알겠어요 · 4 쉬워요</span></p>
+      </section>
+      <section id="library-view" hidden>
+        <div class="section-intro"><p class="eyebrow">MA COLLECTION</p><h1>나의 단어장</h1><p class="description">새 표현은 쌓이고, 익힌 표현의 진도는 그대로.</p></div>
+        <div class="library-tools"><input id="search" type="search" placeholder="프랑스어, 한국어, 예문 검색" aria-label="단어 검색"><select id="library-filter" aria-label="단어 상태"><option value="all">모든 표현</option><option value="new">아직 배우기 전</option><option value="learning">학습 중</option><option value="learned">익숙해진 표현</option><option value="starred">별표한 표현</option></select><button id="open-add" class="button primary">+ 표현 추가</button></div>
+        <div id="library-count" class="list-summary"></div><div id="word-list"></div>
+      </section>
+      <section id="settings-view" hidden>
+        <div class="section-intro"><p class="eyebrow">À VOTRE RYTHME</p><h1>나의 속도로</h1><p class="description">학습 설정과 소중한 기록을 관리하세요.</p></div>
+        <div class="settings-card"><h2>학습</h2><label class="setting-row">하루 새 표현 <select id="new-per-day"><option value="5">5개</option><option value="10">10개</option><option value="15">15개</option><option value="20">20개</option><option value="50">50개</option><option value="100">100개</option></select></label><p>이미 배운 표현의 복습은 이 숫자에 포함되지 않습니다. 한국시간 자정에 새 표현 수가 갱신됩니다.</p><label class="setting-row">발음 속도 <select id="speech-rate"><option value="0.75">천천히</option><option value="0.9">보통</option><option value="1">자연스럽게</option></select></label><p>간격 반복은 1분·10분 재학습과 1일·3일 이후의 복습 간격을 사용합니다. 공식 Anki 앱이나 Anki 계정과 연결되지는 않습니다.</p></div>
+        <div class="settings-card"><h2>어휘 업데이트</h2><p id="sync-details"></p><button id="settings-sync" class="button secondary">지금 새 어휘 확인</button><p>앱을 열 때와 사용 중 15분마다 GitHub의 새 어휘를 확인합니다. 인터넷이 없어도 저장된 카드로 학습할 수 있습니다.</p></div>
+        <div class="settings-card"><h2>백업과 가져오기</h2><p>진도는 이 브라우저·기기에 저장됩니다. 브라우저 데이터를 지우거나 다른 기기로 옮기기 전에 백업해 주세요.</p><div class="button-row"><button id="backup" class="button primary">진도까지 백업</button><button id="import-button" class="button secondary">파일 가져오기</button><button id="export-anki" class="button secondary">Anki용 내보내기</button></div><p>백업 JSON, 어휘 JSON, 2열 CSV를 가져올 수 있습니다. 기존 윔피키드 CSV도 지원합니다. 다른 기기 간 진도 자동 동기화는 제공하지 않습니다.</p><input type="file" id="import-file" accept=".json,.csv,application/json,text/csv" hidden></div>
+        <div class="settings-card"><h2>바탕화면에서 열기</h2><p>Edge·Chrome에서 주소창의 앱 설치 표시를 누르거나, 아래 설치 파일을 내려받아 압축을 풀고 ‘바탕화면에 설치.cmd’를 실행하세요.</p><a class="button secondary" href="./downloads/on-y-va-carnet.zip" download>Windows 설치 파일 받기 ↓</a><p>설치 파일은 브라우저의 앱 창으로 여는 바탕화면 바로가기를 만듭니다. 오프라인용 파일도 함께 포함되어 있습니다.</p></div>
+      </section>
+      <footer>ON Y VA · 한 문장씩, 나의 프랑스어.</footer>
+    </main>
+  </div>
+  <dialog id="add-dialog"><form id="add-form"><div class="dialog-head"><h2>나만의 표현 추가</h2><button type="button" id="close-add" aria-label="닫기">×</button></div><label>프랑스어<input name="fr" required maxlength="500" lang="fr"></label><label>한국어 뜻<input name="ko" required maxlength="1000"></label><label>프랑스어 예문<textarea name="exfr" required maxlength="3000" lang="fr"></textarea></label><label>예문 해석<textarea name="exko" required maxlength="3000"></textarea></label><button class="button primary">단어장에 저장</button></form></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <div id="storage-warning" role="alert" hidden>학습 기록을 저장하지 못했습니다. 설정에서 백업한 뒤 기기의 저장 공간을 확인해 주세요.</div>
+  <script src="./seed.js"></script><script src="./core.js"></script><script src="./app.js"></script>
+</body>
+</html>

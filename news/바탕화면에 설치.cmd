@@ -1,0 +1,5 @@
+@echo off
+chcp 65001 >nul
+powershell.exe -NoProfile -Command "$targetUrl='https://elisa0402-bot.github.io/fran-ais-flashcard/news/'; $desktopPath=[Environment]::GetFolderPath('Desktop'); $browserPaths=@((Join-Path ([Environment]::GetEnvironmentVariable('ProgramFiles(x86)')) 'Microsoft\Edge\Application\msedge.exe'),(Join-Path $env:ProgramFiles 'Microsoft\Edge\Application\msedge.exe'),(Join-Path $env:ProgramFiles 'Google\Chrome\Application\chrome.exe')); $browserPath=$browserPaths | Where-Object {Test-Path -LiteralPath $_} | Select-Object -First 1; $shell=New-Object -ComObject WScript.Shell; if($browserPath){$shortcut=$shell.CreateShortcut((Join-Path $desktopPath '프랑스어 뉴스 단어장.lnk'));$shortcut.TargetPath=$browserPath;$shortcut.Arguments='--app='+$targetUrl+' --window-size=1160,920';$shortcut.Description='On y va - 프랑스어 뉴스 단어장';$shortcut.Save()}else{$shortcut=$shell.CreateShortcut((Join-Path $desktopPath '프랑스어 뉴스 단어장.url'));$shortcut.TargetPath=$targetUrl;$shortcut.Save()}; Write-Host '바탕화면에 프랑스어 뉴스 단어장을 만들었습니다.'"
+if errorlevel 1 echo 설치하지 못했습니다. 사용안내.txt의 웹 주소로 직접 접속해 주세요.
+pause
