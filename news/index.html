@@ -11,7 +11,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icon-192.png">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=tablet3">
   <title>On y va · 뉴스 프랑스어</title>
 </head>
 <body>
@@ -29,11 +29,17 @@
       <small class="local-note">학습 진도는 이 기기에 저장됩니다.</small>
     </aside>
     <main>
-      <header class="topbar"><span id="today"></span><div><button id="install-button" class="button small secondary">홈 화면에 설치</button><a class="github" href="https://github.com/elisa0402-bot/fran-ais-flashcard/tree/main/news" target="_blank" rel="noopener">GitHub ↗</a></div></header>
+      <header class="topbar"><span id="today"></span><div><a id="install-button" class="button small secondary" href="#install-guide">홈 화면에 설치</a><a class="github" href="https://github.com/elisa0402-bot/fran-ais-flashcard/tree/main/news" target="_blank" rel="noopener">GitHub ↗</a></div></header>
 
       <section id="install-banner" class="install-banner" aria-labelledby="install-heading">
         <div><p class="install-eyebrow">내 폰에서, 내 태블릿에서</p><h2 id="install-heading">프랑스어 단어장을 홈 화면에.</h2><p>코덱스 로그인 없이 바로 공부하세요.</p></div>
-        <div class="install-actions"><button id="install-now" class="button primary">홈 화면에 설치</button><p id="install-status" role="status">한 번 설치하면 홈 화면 아이콘으로 바로 열려요.</p><button id="install-help" class="install-help">설치 방법 보기</button></div>
+        <div class="install-actions"><a id="install-now" class="button primary" href="#install-guide">홈 화면에 설치</a><p id="install-status" role="status">한 번 설치하면 홈 화면 아이콘으로 바로 열려요.</p><button id="install-help" class="install-help">설치 방법 보기</button></div>
+      </section>
+      <section id="install-guide" class="install-guide" aria-labelledby="install-guide-title">
+        <h2 id="install-guide-title">설치 창이 안 뜨면, Chrome 메뉴에서 추가하세요.</h2>
+        <ol><li>Chrome 오른쪽 위의 <strong>⋮</strong> 메뉴를 누르세요.</li><li><strong>홈 화면에 추가</strong> 또는 <strong>앱 설치</strong>를 누르세요.</li><li><strong>설치</strong>를 확인하면 끝입니다.</li></ol>
+        <p>다음부터는 홈 화면의 ‘프랑스어 단어장’ 아이콘으로 여세요.</p>
+        <a class="button secondary" href="#study">단어장으로 돌아가기</a>
       </section>
       <section id="study-view">
         <div class="intro"><p class="eyebrow">VOTRE RENDEZ-VOUS FRANÇAIS</p><h1>뉴스 속 표현을,<br><em>나의 문장으로.</em></h1><p class="description">기억이 흐려질 때 다시 만나고, 익숙해지면 조금 더 멀리.</p></div>
@@ -77,6 +83,6 @@
   </dialog>
   <div id="toast" class="toast" role="status" hidden></div>
   <div id="storage-warning" role="alert" hidden>학습 기록을 저장하지 못했습니다. 설정에서 백업한 뒤 기기의 저장 공간을 확인해 주세요.</div>
-  <script src="./seed.js"></script><script src="./core.js"></script><script src="./app.js"></script><script src="./mobile-install.js"></script>
+  <script src="./seed.js"></script><script src="./core.js"></script><script src="./app.js"></script><script src="./mobile-install.js?v=tablet3"></script>
 </body>
 </html>

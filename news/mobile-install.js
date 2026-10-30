@@ -2,9 +2,11 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const mode = window.matchMedia('(display-mode: standalone)');
-  const android = /Android/i.test(navigator.userAgent);
   const ios = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const samsung = /SamsungBrowser/i.test(navigator.userAgent);
+  // Android tablets may identify as desktop Linux when desktop-site mode is on.
+  const touchTablet = navigator.maxTouchPoints > 1 && /Linux|Android|SamsungBrowser/i.test(navigator.userAgent + navigator.platform);
+  const android = !ios && (/Android/i.test(navigator.userAgent) || navigator.userAgentData?.platform === 'Android' || samsung || touchTablet);
   const mobile = android || ios;
   let deferred = null, installed = false, prompting = false;
   const dialog = $('install-dialog');
@@ -30,14 +32,21 @@
   }
   function help() {
     refresh();
-    if (!dialog.open) dialog.showModal();
+    if (typeof dialog.showModal === 'function') {
+      try { if (!dialog.open) dialog.showModal(); return; } catch (error) {}
+    }
+    location.hash = 'install-guide';
   }
   async function install() {
-    if (standalone()) return;
+    if (standalone()) { message('설치된 홈 화면 아이콘으로 열 수 있어요.'); return; }
     // On a computer this button transfers the link to a phone, rather than
     // installing a second PC app. Mobile prompts require a direct user tap.
     if (!mobile || !deferred) { help(); return; }
-    if (prompting) return;
+    // Always give immediate, usable feedback, even when prompt()/userChoice
+    // never settles in the tablet browser. No second OS prompt is attempted.
+    location.hash = 'install-guide';
+    message('설치 창이 안 뜨면 아래의 Chrome 메뉴 방법으로 추가해 주세요.');
+    if (prompting) { help(); return; }
     const event = deferred;
     deferred = null; prompting = true;
     try {
@@ -57,12 +66,17 @@
   window.addEventListener('appinstalled', () => {
     installed = true; deferred = null;
     if (dialog.open) dialog.close();
+    if (location.hash === '#install-guide') location.hash = 'study';
     refresh();
   });
   if (mode.addEventListener) mode.addEventListener('change', refresh);
   else mode.addListener(refresh);
-  $('install-now').onclick = install;
-  $('install-button').onclick = install;
+  function clickInstall(event) {
+    if (mobile && !deferred && !standalone()) return; // Native link fallback works without dialogs or JavaScript.
+    event.preventDefault(); install();
+  }
+  $('install-now').onclick = clickInstall;
+  $('install-button').onclick = clickInstall;
   $('install-native').onclick = install;
   $('install-help').onclick = help;
   $('close-install').onclick = () => dialog.close();
