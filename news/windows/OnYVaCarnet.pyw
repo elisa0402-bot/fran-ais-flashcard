@@ -484,6 +484,13 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument("--self-test");parser.add_argument("--preview");parser.add_argument("--install-only",action="store_true");parser.add_argument("--install",action="store_true");args=parser.parse_args()
     if args.self_test:self_test(args.self_test);return
     if args.install_only:install();return
+    if args.install:
+        try:
+            installed=install()
+            subprocess.Popen([str(installed.parent/"runtime"/"pythonw.exe"),str(installed)],creationflags=HIDDEN)
+        except Exception as e:
+            root=tk.Tk();root.withdraw();messagebox.showerror(TITLE,"설치하지 못했습니다.\n"+str(e),parent=root);root.destroy()
+        return
     # One normal app window protects the same progress file from concurrent writers.
     if not args.preview:
         import ctypes
@@ -497,13 +504,8 @@ def main():
                 ctypes.windll.user32.ShowWindow(window,9)
                 ctypes.windll.user32.SetForegroundWindow(window)
             return
-    root=tk.Tk();app_home=HOME
-    if args.install:
-        root.withdraw()
-        try:app_home=install().parent.parent
-        except Exception as e:messagebox.showerror(TITLE,"설치하지 못했습니다.\n"+str(e),parent=root);root.destroy();return
-        root.deiconify()
-    try:App(root,args.preview or app_home/"Data",preview=bool(args.preview));root.mainloop()
+    root=tk.Tk()
+    try:App(root,args.preview or HOME/"Data",preview=bool(args.preview));root.mainloop()
     except Exception as e:messagebox.showerror(TITLE,"단어장을 열지 못했습니다.\n"+str(e),parent=root)
 
 if __name__=="__main__":main()
