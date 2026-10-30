@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "title": "On y va · 뉴스 프랑스어",
   "cards": [
     {
@@ -1422,6 +1422,186 @@
         {
           "fr": "Un jeu de rôle peut rendre l'apprentissage plus interactif.",
           "ko": "역할극을 하면 학습이 더 상호작용적으로 바뀔 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-d11c3e48198cd290",
+      "fr": "banaliser le racisme",
+      "ko": "인종차별을 일상화하다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Répéter ce genre de blagues risque de banaliser le racisme.",
+          "ko": "이런 종류의 농담을 반복하면 인종차별을 대수롭지 않게 여기게 될 위험이 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-0a46074be79ce4da",
+      "fr": "attiser les tensions",
+      "ko": "갈등을 부추기다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce message agressif ne fait qu'attiser les tensions dans notre équipe.",
+          "ko": "이 공격적인 메시지는 우리 팀의 갈등을 부추길 뿐이에요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-b83dbad6ff25ac93",
+      "fr": "procéder à un tir de missile",
+      "ko": "미사일을 발사하다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Dans ce film, l'armée se prépare à procéder à un tir de missile.",
+          "ko": "이 영화에서 군대는 미사일 발사를 준비하고 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-debaeb50753d4fb7",
+      "fr": "renforcer la surveillance militaire",
+      "ko": "군사적 감시를 강화하다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Ce documentaire explique ce que signifie renforcer la surveillance militaire.",
+          "ko": "이 다큐멘터리는 군사적 감시를 강화한다는 말의 의미를 설명해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-6d484bc7853bfdb5",
+      "fr": "enregistrer une croissance record",
+      "ko": "기록적인 성장세를 보이다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Notre petite boutique pourrait enregistrer une croissance record cette année.",
+          "ko": "우리 작은 가게는 올해 기록적인 성장세를 보일 수도 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-7559d8317b15fdb9",
+      "fr": "relativiser les chiffres",
+      "ko": "수치를 신중하게 해석하다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Il faut relativiser les chiffres : cette semaine, nous avons travaillé un jour de plus.",
+          "ko": "이번 주에는 하루 더 일했으니 수치를 신중하게 해석해야 해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-da0542877bbe9136",
+      "fr": "intégrer le numérique dans l'enseignement",
+      "ko": "교육에 디지털 기술을 통합하다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Je cherche des moyens simples d'intégrer le numérique dans l'enseignement du français.",
+          "ko": "프랑스어 교육에 디지털 기술을 통합할 간단한 방법을 찾고 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-cc4f7117da6a1688",
+      "fr": "concevoir des activités interactives",
+      "ko": "상호작용형 활동을 설계하다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "J'aime concevoir des activités interactives pour mes cours en ligne.",
+          "ko": "온라인 수업을 위한 상호작용형 활동을 설계하는 것을 좋아해요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-5de896feee3947a9",
+      "fr": "favoriser l'apprentissage actif",
+      "ko": "능동적인 학습을 촉진하다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Demander aux élèves d'expliquer leur réponse permet de favoriser l'apprentissage actif.",
+          "ko": "학생들에게 자기 답을 설명하게 하면 능동적인 학습을 촉진할 수 있어요.",
+          "kind": "실생활 학습 예문"
+        }
+      ]
+    },
+    {
+      "id": "news-71ffc32c43a2ceb5",
+      "fr": "obtenir des résultats comparables à",
+      "ko": "~와 비슷한 성과를 얻다",
+      "dates": [
+        "2026-10-30"
+      ],
+      "added": "2026-10-30",
+      "deck": "news",
+      "source": "국제뉴스 브리핑",
+      "examples": [
+        {
+          "fr": "Avec un peu de pratique, j'ai obtenu des résultats comparables à ceux de l'année dernière.",
+          "ko": "조금 연습하고 나니 작년과 비슷한 성과를 얻었어요.",
           "kind": "실생활 학습 예문"
         }
       ]
