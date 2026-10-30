@@ -5,7 +5,7 @@
   const $=id=>document.getElementById(id);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const defaults=()=>({schemaVersion:1,cards:[],progress:{},stars:[],settings:{newPerDay:10,speechRate:.9},activity:[],lastSync:0,updated:''});
-  let state=defaults(),current=null,revealed=false,busy=false,installPrompt=null,toastTimer;
+  let state=defaults(),current=null,revealed=false,busy=false,toastTimer;
   try {
     const raw=localStorage.getItem(KEY);
     if(raw) {
@@ -239,9 +239,6 @@
     if(e.code==='Space'){e.preventDefault();reveal();}
     if(revealed&&['1','2','3','4'].includes(e.key)){e.preventDefault();grade(['again','hard','good','easy'][Number(e.key)-1]);}
   });
-  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('install-button').hidden=false;});
-  $('install-button').onclick=async()=>{if(installPrompt){await installPrompt.prompt();installPrompt=null;$('install-button').hidden=true;}};
-  window.addEventListener('appinstalled',()=>{$('install-button').hidden=true;toast('바탕화면에서 단어장을 열 수 있어요.');});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){stats();if(!current)nextCard();}});
   window.addEventListener('online',()=>sync());
   window.addEventListener('storage',e=>{if(e.key===KEY)toast('다른 창에서 진도가 바뀌었습니다. 이 창을 새로 열어 최신 진도를 불러와 주세요.');});
