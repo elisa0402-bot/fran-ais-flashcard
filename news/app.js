@@ -4,7 +4,7 @@
   const RAW='https://raw.githubusercontent.com/elisa0402-bot/fran-ais-flashcard/main/news/data.json';
   const $=id=>document.getElementById(id);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const defaults=()=>({schemaVersion:1,cards:[],progress:{},stars:[],settings:{newPerDay:10,speechRate:.9},activity:[],lastSync:0,updated:''});
+  const defaults=()=>({schemaVersion:1,cards:[],progress:{},stars:[],settings:{newPerDay:10,speechRate:.9,direction:'auto'},activity:[],lastSync:0,updated:''});
   let state=defaults(),current=null,revealed=false,busy=false,toastTimer;
   try {
     const raw=localStorage.getItem(KEY);
@@ -204,7 +204,7 @@
   $('grades').onclick=e=>{const b=e.target.closest('[data-grade]');if(b)grade(b.dataset.grade);};
   $('examples').onclick=e=>{const b=e.target.closest('[data-example]');if(b&&current)speak(current.card.examples[Number(b.dataset.example)].fr);};
   $('speak-question').onclick=()=>{if(current)speak(current.card.fr);};
-  $('direction').onchange=nextCard;
+  $('direction').onchange=()=>{state.settings.direction=$('direction').value;save();nextCard();};
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
   $('browse-button').onclick=()=>switchView('library');
   $('search').oninput=renderLibrary;$('library-filter').onchange=renderLibrary;
@@ -244,6 +244,7 @@
   window.addEventListener('storage',e=>{if(e.key===KEY)toast('다른 창에서 진도가 바뀌었습니다. 이 창을 새로 열어 최신 진도를 불러와 주세요.');});
   if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(()=>{});
   $('today').textContent=new Date().toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'long',day:'numeric',weekday:'short'});
+  $('direction').value=['auto','fr','ko'].includes(state.settings.direction)?state.settings.direction:'auto';
   save();switchView(location.hash.slice(1)||'study');sync();
   setInterval(()=>sync(),15*60000);
   setInterval(()=>{stats();if(!current&&!$('study-view').hidden)nextCard();},30000);
