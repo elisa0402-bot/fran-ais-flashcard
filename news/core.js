@@ -52,7 +52,8 @@
   }
   function candidates(cards,progress,settings,activity,now,mode,deck) {
     const today=dayKey(now);
-    const used=new Set(activity.filter(a=>a.newWord&&dayKey(a.time)===today).map(a=>a.id)).size;
+    const newDirection=mode==='ko'?'ko':'fr';
+    const used=new Set(activity.filter(a=>a.newWord&&a.dir===newDirection&&dayKey(a.time)===today).map(a=>a.id)).size;
     let remaining=Math.max(0,Number(settings.newPerDay||10)-used);
     const due=[], fresh=[];
     for(const c of cards) {
@@ -62,9 +63,11 @@
         if(p?.seen) { if(p.due<=now)due.push({card:c,dir:'fr',due:p.due}); }
         else fresh.push({card:c,dir:'fr',due:0});
       }
-      if(mode!=='fr' && reverseUnlocked(progress,c.id)) {
+      if(mode==='ko' || (mode==='auto' && reverseUnlocked(progress,c.id))) {
         const p=progress[c.id+':ko'];
-        if(!p?.seen || p.due<=now)due.push({card:c,dir:'ko',due:p?.due||0});
+        if(p?.seen) { if(p.due<=now)due.push({card:c,dir:'ko',due:p.due}); }
+        else if(mode==='ko') fresh.push({card:c,dir:'ko',due:0});
+        else due.push({card:c,dir:'ko',due:0});
       }
     }
     due.sort((a,b)=>a.due-b.due);

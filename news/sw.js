@@ -1,5 +1,5 @@
-const CACHE='onyva-news-shell-v3-tablet';
-const SHELL=['./','./index.html','./style.css?v=tablet3','./app.js','./mobile-install.js?v=tablet3','./install-qr.svg','./core.js','./seed.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
+const CACHE='onyva-news-shell-v4-review';
+const SHELL=['./','./index.html','./style.css?v=tablet3','./app.js?v=review4','./mobile-install.js?v=tablet3','./install-qr.svg','./core.js?v=review4','./seed.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{
   event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('onyva-news-shell-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-30",
+  "updated": "2026-11-01",
   "title": "On y va · 뉴스 프랑스어",
   "cards": [
     {
@@ -170,7 +170,8 @@
       "fr": "développer l'autonomie des apprenants",
       "ko": "학습자의 자율성을 기르다",
       "dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-11-01"
       ],
       "added": "2026-10-22",
       "deck": "news",
@@ -1197,7 +1198,8 @@
       "ko": "발언과 말하기 참여를 촉진하다",
       "dates": [
         "2026-10-28",
-        "2026-10-29"
+        "2026-10-29",
+        "2026-11-01"
       ],
       "added": "2026-10-28",
       "deck": "news",
@@ -1233,7 +1235,8 @@
       "fr": "fidéliser son audience",
       "ko": "시청자층을 지속적으로 유지하다",
       "dates": [
-        "2026-10-28"
+        "2026-10-28",
+        "2026-10-31"
       ],
       "added": "2026-10-28",
       "deck": "news",
@@ -1521,7 +1524,8 @@
       "fr": "relativiser les chiffres",
       "ko": "수치를 신중하게 해석하다",
       "dates": [
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-01"
       ],
       "added": "2026-10-30",
       "deck": "news",
@@ -1575,7 +1579,8 @@
       "fr": "favoriser l'apprentissage actif",
       "ko": "능동적인 학습을 촉진하다",
       "dates": [
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-01"
       ],
       "added": "2026-10-30",
       "deck": "news",
@@ -1605,6 +1610,229 @@
           "kind": "실생활 학습 예문"
         }
       ]
+    },
+    {
+      "id": "news-05127e58011e082b",
+      "fr": "une contraction de l'activité économique",
+      "ko": "경제활동의 위축",
+      "examples": [
+        {
+          "fr": "Une contraction de l'activité économique peut rendre la recherche d'emploi plus difficile.",
+          "ko": "경제활동의 위축으로 일자리를 찾기가 더 어려워질 수 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-e2eea8f239e74835",
+      "fr": "peser sur le pouvoir d'achat",
+      "ko": "구매력에 부담을 주다",
+      "examples": [
+        {
+          "fr": "Le prix des transports pèse sur mon pouvoir d'achat.",
+          "ko": "교통비가 제 구매력에 부담을 주고 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-4ddfd92d8b8957b1",
+      "fr": "dégrader les perspectives de notation",
+      "ko": "신용등급 전망을 하향 조정하다",
+      "examples": [
+        {
+          "fr": "Une agence peut dégrader les perspectives de notation d'une entreprise si sa situation financière se détériore.",
+          "ko": "기업의 재무 상태가 나빠지면 평가 기관이 신용등급 전망을 하향 조정할 수 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-c9ca7f3e4bd2eafd",
+      "fr": "assainir les finances publiques",
+      "ko": "국가재정을 건전화하다",
+      "examples": [
+        {
+          "fr": "J'ai lu un article sur les mesures proposées pour assainir les finances publiques.",
+          "ko": "국가재정을 건전화하기 위해 제안된 방안에 관한 기사를 읽었어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31",
+        "2026-11-01"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-044f12f8105c4992",
+      "fr": "franchir la ligne de démarcation militaire",
+      "ko": "군사분계선을 넘다",
+      "examples": [
+        {
+          "fr": "Dans ce roman, un personnage tente de franchir la ligne de démarcation militaire.",
+          "ko": "이 소설에서는 한 인물이 군사분계선을 넘으려고 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-9cd262f56743d9bb",
+      "fr": "prévenir une escalade militaire",
+      "ko": "군사적 긴장 고조를 방지하다",
+      "examples": [
+        {
+          "fr": "Les négociations peuvent aider à prévenir une escalade militaire.",
+          "ko": "협상은 군사적 긴장 고조를 방지하는 데 도움이 될 수 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31",
+        "2026-11-01"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-e51f107060f4ba28",
+      "fr": "mettre en valeur la diversité culturelle",
+      "ko": "문화적 다양성을 부각하다",
+      "examples": [
+        {
+          "fr": "Ce festival cherche à mettre en valeur la diversité culturelle du quartier.",
+          "ko": "이 축제는 동네의 문화적 다양성을 부각하려고 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-4ef82d8e111bc8a1",
+      "fr": "faire découvrir une œuvre littéraire",
+      "ko": "문학작품을 소개하다",
+      "examples": [
+        {
+          "fr": "J'aimerais faire découvrir une œuvre littéraire française à mes élèves.",
+          "ko": "학생들에게 프랑스 문학작품을 소개해 주고 싶어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-9218e2c0829ff7e1",
+      "fr": "automatiser certaines tâches de montage",
+      "ko": "일부 편집 작업을 자동화하다",
+      "examples": [
+        {
+          "fr": "Ce logiciel permet d'automatiser certaines tâches de montage et de gagner du temps.",
+          "ko": "이 프로그램으로 일부 편집 작업을 자동화해 시간을 절약할 수 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-10-31",
+      "dates": [
+        "2026-10-31"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-cba4afcbbd1cf5f5",
+      "fr": "réduire le déficit public",
+      "ko": "재정적자를 줄이다",
+      "examples": [
+        {
+          "fr": "Dans notre débat en classe, nous cherchons des moyens de réduire le déficit public.",
+          "ko": "수업 토론에서 재정적자를 줄일 방법을 찾고 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-01",
+      "dates": [
+        "2026-11-01"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-5ed14838dd64d106",
+      "fr": "être tributaire de",
+      "ko": "~에 크게 의존하다",
+      "examples": [
+        {
+          "fr": "Quand on habite à la campagne, on peut être tributaire des horaires de bus.",
+          "ko": "시골에 살면 버스 시간표에 크게 의존하게 될 수 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-01",
+      "dates": [
+        "2026-11-01"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-6ad6dbb8c7dfda17",
+      "fr": "reprendre le dialogue",
+      "ko": "대화를 재개하다",
+      "examples": [
+        {
+          "fr": "Après notre dispute, nous avons décidé de reprendre le dialogue.",
+          "ko": "말다툼 후에 우리는 대화를 재개하기로 했어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-01",
+      "dates": [
+        "2026-11-01"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-e5112b0cee9cf32a",
+      "fr": "exploiter un support audiovisuel",
+      "ko": "시청각 자료를 활용하다",
+      "examples": [
+        {
+          "fr": "Pour ce cours, je voudrais exploiter un support audiovisuel plutôt qu'un long texte.",
+          "ko": "이번 수업에서는 긴 글보다 시청각 자료를 활용하고 싶어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-01",
+      "dates": [
+        "2026-11-01"
+      ],
+      "source": "국제뉴스 브리핑"
     }
   ]
 }

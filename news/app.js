@@ -31,7 +31,7 @@
     return (state.progress[c.id+':fr']?.interval||0)>=7 && (state.progress[c.id+':ko']?.interval||0)>=7;
   }
   function stats() {
-    const now=Date.now(),queue=Core.candidates(state.cards,state.progress,state.settings,state.activity,now,'auto','all');
+    const now=Date.now(),queue=Core.candidates(state.cards,state.progress,state.settings,state.activity,now,$('direction').value,'all');
     $('total-count').textContent=state.cards.length;$('due-count').textContent=queue.length;
     $('nav-count').textContent=queue.length;$('learned-count').textContent=state.cards.filter(learned).length;
     const doneToday=state.activity.filter(a=>Core.dayKey(a.time)===Core.dayKey(now)).length;
@@ -49,15 +49,13 @@
     current=queue()[0]||null;revealed=false;
     $('flashcard').hidden=!current;$('empty').hidden=!!current;
     if(!current) {
-      const locked=$('direction').value==='ko' && !state.cards.some(c=>Core.reverseUnlocked(state.progress,c.id));
-      $('empty-note').textContent=locked ? '프랑스어→한국어에서 같은 표현을 두 번 기억하면 한국어→프랑스어 카드가 열립니다.' :
-        '새 표현은 하루 '+state.settings.newPerDay+'개까지 학습합니다. 짧은 재학습은 1분 또는 10분 뒤 다시 열려요. 필요하면 설정에서 새 표현 수를 바꿀 수 있어요.';
+      $('empty-note').textContent='선택한 방향의 새 표현은 하루 '+state.settings.newPerDay+'개까지 학습합니다. 짧은 재학습은 1분 또는 10분 뒤 다시 열려요. 필요하면 설정에서 새 표현 수를 바꿀 수 있어요.';
       stats(); return;
     }
     const c=current.card,dir=current.dir;
     $('direction-label').textContent=dir==='fr'?'COMPRENDRE · 프랑스어 → 한국어':'S’EXPRIMER · 한국어 → 프랑스어';
     $('source-date').textContent=c.deck==='news'?'뉴스에서 만난 날 '+(c.dates||[]).slice(-1)[0]:'내가 추가한 표현';
-    $('prompt-label').textContent=dir==='fr'?'이 표현의 뜻을 떠올려 보세요.':'프랑스어로 어떻게 말할까요?';
+    $('prompt-label').textContent=(state.progress[c.id+':'+dir]?.seen?'복습 · ':'새 표현 · ')+(dir==='fr'?'이 표현의 뜻을 떠올려 보세요.':'프랑스어로 어떻게 말할까요?');
     $('question').textContent=dir==='fr'?c.fr:c.ko;$('question').lang=dir==='fr'?'fr':'ko';
     $('speak-question').hidden=dir!=='fr';
     $('answer-main').textContent=dir==='fr'?c.ko:c.fr;$('answer-main').lang=dir==='fr'?'ko':'fr';
@@ -76,9 +74,11 @@
     if(!current||!revealed)return;
     const key=current.card.id+':'+current.dir,old=state.progress[key],now=Date.now();
     state.progress[key]=Core.grade(old,rating,now);
-    state.activity.push({id:current.card.id,dir:current.dir,rating,time:now,newWord:current.dir==='fr'&&!old?.seen});
+    state.activity.push({id:current.card.id,dir:current.dir,rating,time:now,newWord:!old?.seen});
     if(state.activity.length>10000)state.activity=state.activity.slice(-10000);
-    save();nextCard();
+    const stored=save(),reviewed=current.card.fr;
+    $('review-status').textContent=stored?'‘'+reviewed+'’ 학습 저장 · '+intervalLabel(state.progress[key].due-now)+' 다시 복습합니다.':'진도를 저장하지 못했습니다. 설정에서 백업해 주세요.';
+    nextCard();
   }
   function speak(text) {
     if(!('speechSynthesis' in window)){toast('이 브라우저에서는 발음 듣기를 지원하지 않습니다.');return;}

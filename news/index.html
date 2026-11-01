@@ -53,7 +53,8 @@
           <div id="grades" class="grades" hidden><button data-grade="again"><strong>다시</strong><small id="interval-again">1분 후</small></button><button data-grade="hard"><strong>어려워요</strong><small id="interval-hard">10분 후</small></button><button data-grade="good"><strong>알겠어요</strong><small id="interval-good">1일 후</small></button><button data-grade="easy"><strong>쉬워요</strong><small id="interval-easy">4일 후</small></button></div>
         </article>
         <div id="empty" class="empty" hidden><span>✓</span><h3>지금 할 복습을 마쳤어요.</h3><p id="empty-note"></p><button id="browse-button" class="button secondary">단어장 둘러보기</button></div>
-        <p class="study-hint" id="study-hint">프→한에서 두 번 기억하면, 한→프 카드가 자동으로 열립니다.<br><span>Space 정답 보기 · 1 다시 · 2 어려워요 · 3 알겠어요 · 4 쉬워요</span></p>
+        <p id="review-status" class="study-hint" role="status">정답을 본 뒤 아래 평가 버튼을 누르면 진도가 저장되고 다음 표현으로 넘어갑니다.</p>
+        <p class="study-hint" id="study-hint">자동 모드는 프→한부터 익힙니다. 방향을 직접 고르면 바로 연습할 수 있어요.<br><span>Space 정답 보기 · 1 다시 · 2 어려워요 · 3 알겠어요 · 4 쉬워요</span></p>
       </section>
       <section id="library-view" hidden>
         <div class="section-intro"><p class="eyebrow">MA COLLECTION</p><h1>나의 단어장</h1><p class="description">새 표현은 쌓이고, 익힌 표현의 진도는 그대로.</p></div>
@@ -62,7 +63,7 @@
       </section>
       <section id="settings-view" hidden>
         <div class="section-intro"><p class="eyebrow">À VOTRE RYTHME</p><h1>나의 속도로</h1><p class="description">학습 설정과 소중한 기록을 관리하세요.</p></div>
-        <div class="settings-card"><h2>학습</h2><label class="setting-row">하루 새 표현 <select id="new-per-day"><option value="5">5개</option><option value="10">10개</option><option value="15">15개</option><option value="20">20개</option><option value="50">50개</option><option value="100">100개</option></select></label><p>이미 배운 표현의 복습은 이 숫자에 포함되지 않습니다. 한국시간 자정에 새 표현 수가 갱신됩니다.</p><label class="setting-row">발음 속도 <select id="speech-rate"><option value="0.75">천천히</option><option value="0.9">보통</option><option value="1">자연스럽게</option></select></label><p>간격 반복은 1분·10분 재학습과 1일·3일 이후의 복습 간격을 사용합니다. 공식 Anki 앱이나 Anki 계정과 연결되지는 않습니다.</p></div>
+        <div class="settings-card"><h2>학습</h2><label class="setting-row">하루 새 표현 <select id="new-per-day"><option value="5">5개</option><option value="10">10개</option><option value="15">15개</option><option value="20">20개</option><option value="50">50개</option><option value="100">100개</option></select></label><p>각 방향의 새 표현 수입니다. 이미 배운 표현의 복습은 이 숫자에 포함되지 않습니다. 한국시간 자정에 새 표현 수가 갱신됩니다.</p><label class="setting-row">발음 속도 <select id="speech-rate"><option value="0.75">천천히</option><option value="0.9">보통</option><option value="1">자연스럽게</option></select></label><p>간격 반복은 1분·10분 재학습과 1일·3일 이후의 복습 간격을 사용합니다. 공식 Anki 앱이나 Anki 계정과 연결되지는 않습니다.</p></div>
         <div class="settings-card"><h2>어휘 업데이트</h2><p id="sync-details"></p><button id="settings-sync" class="button secondary">지금 새 어휘 확인</button><p>앱을 열 때와 사용 중 15분마다 GitHub의 새 어휘를 확인합니다. 인터넷이 없어도 저장된 카드로 학습할 수 있습니다.</p></div>
         <div class="settings-card"><h2>백업과 가져오기</h2><p>진도는 이 브라우저·기기에 저장됩니다. 브라우저 데이터를 지우거나 다른 기기로 옮기기 전에 백업해 주세요.</p><div class="button-row"><button id="backup" class="button primary">진도까지 백업</button><button id="import-button" class="button secondary">파일 가져오기</button><button id="export-anki" class="button secondary">Anki용 내보내기</button></div><p>백업 JSON, 어휘 JSON, 2열 CSV를 가져올 수 있습니다. 기존 윔피키드 CSV도 지원합니다. 새 뉴스 어휘는 모든 기기에 반영됩니다. 학습 진도는 기기별로 저장되며 자동으로 서로 합쳐지지는 않습니다.</p><input type="file" id="import-file" accept=".json,.csv,application/json,text/csv" hidden></div>
         <div id="windows-download" class="settings-card"><h2>Windows 전용 앱</h2><p>브라우저 없이 독립된 창에서 학습하고, 인터넷이 없어도 저장된 단어와 진도를 사용할 수 있습니다.</p><a class="button secondary" href="./downloads/OnYVa-Windows.zip" download>Windows 앱 받기 ↓</a><p>ZIP 파일을 모두 압축 푼 뒤 ‘설치하고 열기.vbs’를 실행하세요. 바탕화면에 ‘프랑스어 뉴스 단어장’ 아이콘이 생깁니다. 실행에 필요한 파일이 모두 포함되어 있습니다.</p><p>웹에서 학습한 진도는 먼저 백업한 뒤 새 앱의 ‘설정과 백업’에서 불러올 수 있습니다.</p></div>
@@ -83,6 +84,6 @@
   </dialog>
   <div id="toast" class="toast" role="status" hidden></div>
   <div id="storage-warning" role="alert" hidden>학습 기록을 저장하지 못했습니다. 설정에서 백업한 뒤 기기의 저장 공간을 확인해 주세요.</div>
-  <script src="./seed.js"></script><script src="./core.js"></script><script src="./app.js"></script><script src="./mobile-install.js?v=tablet3"></script>
+  <script src="./seed.js"></script><script src="./core.js?v=review4"></script><script src="./app.js?v=review4"></script><script src="./mobile-install.js?v=tablet3"></script>
 </body>
 </html>
