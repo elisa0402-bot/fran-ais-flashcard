@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-01",
+  "updated": "2026-11-02",
   "title": "On y va · 뉴스 프랑스어",
   "cards": [
     {
@@ -134,7 +134,8 @@
       "fr": "parvenir à un accord",
       "ko": "합의에 도달하다",
       "dates": [
-        "2026-10-22"
+        "2026-10-22",
+        "2026-11-02"
       ],
       "added": "2026-10-22",
       "deck": "news",
@@ -1053,7 +1054,8 @@
       "fr": "développer l'esprit critique",
       "ko": "비판적 사고력을 기르다",
       "dates": [
-        "2026-10-27"
+        "2026-10-27",
+        "2026-11-02"
       ],
       "added": "2026-10-27",
       "deck": "news",
@@ -1125,7 +1127,8 @@
       "fr": "être fortement tributaire de",
       "ko": "~에 크게 의존하다",
       "dates": [
-        "2026-10-28"
+        "2026-10-28",
+        "2026-11-02"
       ],
       "added": "2026-10-28",
       "deck": "news",
@@ -1728,7 +1731,8 @@
       "deck": "news",
       "added": "2026-10-31",
       "dates": [
-        "2026-10-31"
+        "2026-10-31",
+        "2026-11-02"
       ],
       "source": "국제뉴스 브리핑"
     },
@@ -1745,7 +1749,8 @@
       "deck": "news",
       "added": "2026-10-31",
       "dates": [
-        "2026-10-31"
+        "2026-10-31",
+        "2026-11-02"
       ],
       "source": "국제뉴스 브리핑"
     },
@@ -1831,6 +1836,91 @@
       "added": "2026-11-01",
       "dates": [
         "2026-11-01"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-60c0d419a20cf314",
+      "fr": "le pouvoir d'achat",
+      "ko": "구매력",
+      "examples": [
+        {
+          "fr": "Mon pouvoir d'achat a diminué, alors je compare les prix avant de faire mes courses.",
+          "ko": "구매력이 줄어서 장을 보기 전에 가격을 비교해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-ab65ce51561657d4",
+      "fr": "appeler à la grève",
+      "ko": "파업을 촉구하다",
+      "examples": [
+        {
+          "fr": "Dans ce roman, les ouvriers décident d'appeler à la grève.",
+          "ko": "이 소설에서는 노동자들이 파업을 촉구하기로 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-fd69e92add4aeda0",
+      "fr": "une hausse spectaculaire des exportations",
+      "ko": "수출의 급격한 증가",
+      "examples": [
+        {
+          "fr": "Pour mon exposé, je dois expliquer les effets possibles d'une hausse spectaculaire des exportations.",
+          "ko": "발표를 위해 수출의 급격한 증가가 미칠 수 있는 영향을 설명해야 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-f76e1ac879206a97",
+      "fr": "privilégier la voie diplomatique",
+      "ko": "외교적 해결을 우선하다",
+      "examples": [
+        {
+          "fr": "Dans notre débat, je propose de privilégier la voie diplomatique pour résoudre ce différend.",
+          "ko": "토론에서 저는 이 분쟁을 해결하기 위해 외교적 해결을 우선하자고 제안해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-6336a342abbac530",
+      "fr": "favoriser l'apprentissage autonome",
+      "ko": "자기주도적 학습을 촉진하다",
+      "examples": [
+        {
+          "fr": "Je prépare des exercices corrigés pour favoriser l'apprentissage autonome de mes élèves.",
+          "ko": "학생들의 자기주도적 학습을 촉진하려고 정답과 해설이 있는 연습문제를 준비해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-02",
+      "dates": [
+        "2026-11-02"
       ],
       "source": "국제뉴스 브리핑"
     }
