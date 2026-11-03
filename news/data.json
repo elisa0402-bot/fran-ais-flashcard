@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "title": "On y va · 뉴스 프랑스어",
   "cards": [
     {
@@ -1239,7 +1239,8 @@
       "ko": "시청자층을 지속적으로 유지하다",
       "dates": [
         "2026-10-28",
-        "2026-10-31"
+        "2026-10-31",
+        "2026-11-03"
       ],
       "added": "2026-10-28",
       "deck": "news",
@@ -1921,6 +1922,159 @@
       "added": "2026-11-02",
       "dates": [
         "2026-11-02"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-290c752f93cfa8f6",
+      "fr": "réduire les coûts de production",
+      "ko": "생산 비용을 줄이다",
+      "examples": [
+        {
+          "fr": "Pour réduire les coûts de production, nous commandons les matériaux en plus grande quantité.",
+          "ko": "생산 비용을 줄이려고 우리는 재료를 더 많이 한꺼번에 주문해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-18c950079e1b2985",
+      "fr": "faire face à la concurrence",
+      "ko": "경쟁에 대응하다",
+      "examples": [
+        {
+          "fr": "Ma sœur propose un service plus personnalisé pour faire face à la concurrence.",
+          "ko": "제 여동생은 경쟁에 대응하려고 더 세심한 맞춤 서비스를 제공해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-c3e1d8ee6532277d",
+      "fr": "investir massivement dans",
+      "ko": "~에 대규모로 투자하다",
+      "examples": [
+        {
+          "fr": "Avant d'investir massivement dans du nouveau matériel, je préfère tester ce dont nous avons vraiment besoin.",
+          "ko": "새 장비에 대규모로 투자하기 전에 우리에게 정말 필요한 것이 무엇인지 시험해 보고 싶어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-9fa1b09bb5a5e402",
+      "fr": "renforcer la compétitivité",
+      "ko": "경쟁력을 강화하다",
+      "examples": [
+        {
+          "fr": "Je souhaite renforcer la compétitivité de ma petite entreprise en améliorant la qualité du service.",
+          "ko": "서비스의 질을 높여 제 작은 회사의 경쟁력을 강화하고 싶어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-fbd3aa792f1249cd",
+      "fr": "être dans l'impasse",
+      "ko": "교착상태에 빠져 있다",
+      "examples": [
+        {
+          "fr": "Nous sommes dans l'impasse : personne n'accepte de modifier le calendrier.",
+          "ko": "아무도 일정을 바꾸려 하지 않아서 우리는 해결책을 찾지 못하고 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-e69a91e29a5ab327",
+      "fr": "parvenir à un cessez-le-feu",
+      "ko": "휴전 합의에 도달하다",
+      "examples": [
+        {
+          "fr": "Dans le roman que je lis, les deux camps tentent de parvenir à un cessez-le-feu.",
+          "ko": "제가 읽는 소설에서는 양측이 휴전 합의에 도달하려고 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-2592c4cf89d3c9fd",
+      "fr": "exploiter des documents authentiques",
+      "ko": "실제 언어 자료를 활용하다",
+      "examples": [
+        {
+          "fr": "Dans mes cours, j'aime exploiter des documents authentiques, comme des menus et des petites annonces.",
+          "ko": "저는 수업에서 메뉴나 짧은 광고 같은 실제 언어 자료를 활용하는 것을 좋아해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-8117d9b719da5f31",
+      "fr": "mettre en contexte",
+      "ko": "맥락 속에서 제시하다",
+      "examples": [
+        {
+          "fr": "Pour mieux retenir un mot, j'essaie de le mettre en contexte dans une courte histoire.",
+          "ko": "단어를 더 잘 기억하려고 짧은 이야기 속 맥락에 넣어 보려고 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-8321094763609bf4",
+      "fr": "favoriser la mémorisation à long terme",
+      "ko": "장기 기억을 촉진하다",
+      "examples": [
+        {
+          "fr": "Je révise mes cartes à intervalles réguliers pour favoriser la mémorisation à long terme.",
+          "ko": "장기 기억을 촉진하려고 일정한 간격을 두고 카드를 복습해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-03",
+      "dates": [
+        "2026-11-03"
       ],
       "source": "국제뉴스 브리핑"
     }
