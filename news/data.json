@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-03",
+  "updated": "2026-11-05",
   "title": "On y va · 뉴스 프랑스어",
   "cards": [
     {
@@ -1202,7 +1202,8 @@
       "dates": [
         "2026-10-28",
         "2026-10-29",
-        "2026-11-01"
+        "2026-11-01",
+        "2026-11-05"
       ],
       "added": "2026-10-28",
       "deck": "news",
@@ -2075,6 +2076,329 @@
       "added": "2026-11-03",
       "dates": [
         "2026-11-03"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-de3fb09b4fd80a66",
+      "fr": "bloquer un établissement scolaire",
+      "ko": "학교를 봉쇄하다",
+      "examples": [
+        {
+          "fr": "Dans le roman que je lis, les élèves décident de bloquer un établissement scolaire pour protester.",
+          "ko": "제가 읽는 소설에서는 학생들이 항의하려고 학교를 봉쇄하기로 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-3325de84730e3278",
+      "fr": "appeler à une mobilisation nationale",
+      "ko": "전국적인 집단행동을 촉구하다",
+      "examples": [
+        {
+          "fr": "Pour mon exposé, je dois expliquer ce que signifie appeler à une mobilisation nationale.",
+          "ko": "발표를 위해 전국적인 집단행동을 촉구한다는 것이 무슨 뜻인지 설명해야 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-71353a80dc56392d",
+      "fr": "renforcer la cybersécurité",
+      "ko": "사이버보안을 강화하다",
+      "examples": [
+        {
+          "fr": "Je change régulièrement mes mots de passe pour renforcer la cybersécurité de mon entreprise.",
+          "ko": "회사 사이버보안을 강화하려고 비밀번호를 정기적으로 바꿔요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-3a267ae8e5acb2be",
+      "fr": "adopter une approche préventive",
+      "ko": "예방 중심의 접근법을 채택하다",
+      "examples": [
+        {
+          "fr": "Pour éviter les pannes, nous préférons adopter une approche préventive et vérifier les machines chaque mois.",
+          "ko": "고장을 피하려고 우리는 예방 중심의 접근법을 채택해 매달 기계를 점검하는 쪽을 선호해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-77a13e5c33d1034f",
+      "fr": "frapper les infrastructures énergétiques",
+      "ko": "에너지 기반시설을 공격하다",
+      "examples": [
+        {
+          "fr": "Dans ce jeu de stratégie, frapper les infrastructures énergétiques prive les villes d'électricité.",
+          "ko": "이 전략 게임에서는 에너지 기반시설을 공격하면 도시들에 전기가 끊겨요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-e3bd2a93744922aa",
+      "fr": "provoquer des coupures d'électricité",
+      "ko": "정전을 일으키다",
+      "examples": [
+        {
+          "fr": "Un orage violent peut provoquer des coupures d'électricité ; je garde donc une lampe de poche à portée de main.",
+          "ko": "심한 뇌우는 정전을 일으킬 수 있어서 저는 손전등을 가까이 두어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-dc9b8265d891a4b1",
+      "fr": "renforcer les compétences linguistiques",
+      "ko": "언어 능력을 강화하다",
+      "examples": [
+        {
+          "fr": "Je lis un article en français chaque matin pour renforcer mes compétences linguistiques.",
+          "ko": "언어 능력을 강화하려고 매일 아침 프랑스어 기사를 하나씩 읽어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-dce22ec201b71cb1",
+      "fr": "développer l'enseignement précoce",
+      "ko": "조기교육을 발전시키다",
+      "examples": [
+        {
+          "fr": "Lors de notre réunion, nous avons discuté des moyens de développer l'enseignement précoce des langues par le jeu.",
+          "ko": "회의에서 놀이를 통해 언어 조기교육을 발전시킬 방법을 논의했어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-814b806afd14399a",
+      "fr": "guider l'apprenant",
+      "ko": "학습자를 안내하다",
+      "examples": [
+        {
+          "fr": "Je préfère guider l'apprenant avec des questions plutôt que lui donner immédiatement la réponse.",
+          "ko": "저는 학습자에게 바로 답을 알려 주기보다 질문으로 안내하는 것을 선호해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-9924bc4de38b09d8",
+      "fr": "favoriser l'autonomie des apprenants",
+      "ko": "학습자의 자기주도성을 촉진하다",
+      "examples": [
+        {
+          "fr": "Pour favoriser l'autonomie des apprenants, je leur laisse choisir un sujet de présentation.",
+          "ko": "학습자의 자기주도성을 촉진하려고 발표 주제를 직접 고르게 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-04",
+      "dates": [
+        "2026-11-04"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-385e9c65caa10c27",
+      "fr": "maintenir ses prévisions de croissance",
+      "ko": "경제성장률 전망을 유지하다",
+      "examples": [
+        {
+          "fr": "Dans cet exercice de gestion, notre entreprise doit décider si elle peut maintenir ses prévisions de croissance.",
+          "ko": "이 경영 연습에서 우리 회사는 성장률 전망을 유지할 수 있을지 결정해야 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-836ed1a73dfa626f",
+      "fr": "un objectif difficilement atteignable",
+      "ko": "달성하기 어려운 목표",
+      "examples": [
+        {
+          "fr": "Lire trois romans en une semaine est un objectif difficilement atteignable avec mon emploi du temps.",
+          "ko": "제 일정으로는 일주일에 소설 세 권을 읽는 것이 달성하기 어려운 목표예요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-762398e591d4a58f",
+      "fr": "les élections de mi-mandat",
+      "ko": "중간선거",
+      "examples": [
+        {
+          "fr": "Je voudrais comprendre comment fonctionnent les élections de mi-mandat aux États-Unis.",
+          "ko": "미국의 중간선거가 어떻게 이루어지는지 이해하고 싶어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-77c19aad3faba3dd",
+      "fr": "freiner une politique",
+      "ko": "정책 추진에 제동을 걸다",
+      "examples": [
+        {
+          "fr": "Dans notre débat, je dois expliquer quels obstacles peuvent freiner une politique de développement du vélo.",
+          "ko": "토론에서 자전거 이용 확대 정책 추진에 어떤 장애물이 제동을 걸 수 있는지 설명해야 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-f84ac818f696e338",
+      "fr": "la consommation énergétique",
+      "ko": "에너지 소비",
+      "examples": [
+        {
+          "fr": "J'éteins les appareils inutilisés pour réduire la consommation énergétique de la maison.",
+          "ko": "집의 에너지 소비를 줄이려고 사용하지 않는 기기의 전원을 꺼요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-c7ec7a707025f47d",
+      "fr": "susciter une opposition locale",
+      "ko": "지역사회의 반대를 불러일으키다",
+      "examples": [
+        {
+          "fr": "Un projet de parking peut susciter une opposition locale si les riverains craignent davantage de bruit.",
+          "ko": "주변 주민들이 소음 증가를 걱정하면 주차장 건설 계획이 지역사회의 반대를 불러일으킬 수 있어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-adf3342194402459",
+      "fr": "exploiter des extraits de séries",
+      "ko": "드라마 장면을 수업에 활용하다",
+      "examples": [
+        {
+          "fr": "J'aime exploiter des extraits de séries en classe pour faire travailler la compréhension orale.",
+          "ko": "듣기 이해 연습을 위해 수업에서 드라마 장면을 활용하는 것을 좋아해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-72ac3ee28ffdf162",
+      "fr": "encadrer l'utilisation de l'IA",
+      "ko": "AI 사용을 관리·규제하다",
+      "examples": [
+        {
+          "fr": "Dans mes cours, je souhaite encadrer l'utilisation de l'IA en définissant des règles simples.",
+          "ko": "저는 수업에서 간단한 규칙을 정해 AI 사용을 관리하고 싶어요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
+      ],
+      "source": "국제뉴스 브리핑"
+    },
+    {
+      "id": "news-dd3ec2434b023d7e",
+      "fr": "préserver l'autonomie des apprenants",
+      "ko": "학습자의 자기주도성을 유지하다",
+      "examples": [
+        {
+          "fr": "Pour préserver l'autonomie des apprenants, je leur demande de rédiger une première version sans aide.",
+          "ko": "학습자의 자기주도성을 유지하려고 도움 없이 초안을 먼저 쓰도록 해요."
+        }
+      ],
+      "deck": "news",
+      "added": "2026-11-05",
+      "dates": [
+        "2026-11-05"
       ],
       "source": "국제뉴스 브리핑"
     }
